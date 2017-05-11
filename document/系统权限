@@ -1,0 +1,48 @@
+CREATE TABLE `mana_sys_resource` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除,Y删除,N未删除',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '更新时间',
+  `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
+  `modifier` varchar(20) NOT NULL DEFAULT '' COMMENT '修改人',
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '父级id',
+  `resource_name` varchar(30) NOT NULL DEFAULT '' COMMENT '资源名称',
+  `resource_url` varchar(255) NOT NULL DEFAULT '' COMMENT '资源路径',
+  `resource_type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '资源类型 0:菜单 1:操作',
+  `resource_description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
+  `resource_sort` int(10) unsigned NOT NULL DEFAULT '999' COMMENT '排序',
+  `resource_permission` varchar(100) NOT NULL DEFAULT '' COMMENT '资源操作权限',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='系统资源表';
+
+CREATE TABLE `mana_sys_role` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除,Y删除,N未删除',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '更新时间',
+  `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
+  `modifier` varchar(20) NOT NULL DEFAULT '' COMMENT '修改人',
+  `role_name` varchar(30) NOT NULL DEFAULT '' COMMENT '角色名',
+  `role_description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
+  `role_sort` int(10) unsigned NOT NULL DEFAULT '999' COMMENT '排序',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='系统角色表';
+
+CREATE TABLE `mana_sys_role_resource` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
+  `resource_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '资源id',
+  `role_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '角色id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='系统角色资源关系表';
+
+CREATE TABLE `mana_sys_user_role` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
+  `user_name` varchar(30) NOT NULL DEFAULT '' COMMENT '用户名(目前存放工号)',
+  `role_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '角色id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='系统用户角色关系表';
+
