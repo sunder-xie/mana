@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleServiceCheckDetailDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleServiceCheckDetailDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="insurance_order_sn" property="insuranceOrderSn" jdbcType="VARCHAR" />
+    <result column="settle_package_order_sn" property="settlePackageOrderSn" jdbcType="VARCHAR" />
+    <result column="settle_package_name" property="settlePackageName" jdbcType="VARCHAR" />
+    <result column="settle_package_price" property="settlePackagePrice" jdbcType="DECIMAL" />
+    <result column="settle_package_fee" property="settlePackageFee" jdbcType="DECIMAL" />
+    <result column="settle_package_status" property="settlePackageStatus" jdbcType="BIT" />
+    <result column="gmt_first_paid" property="gmtFirstPaid" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, insurance_order_sn, 
+    settle_package_order_sn, settle_package_name, settle_package_price, settle_package_fee, 
+    settle_package_status, gmt_first_paid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_service_check_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_service_check_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleServiceCheckDetailDO" >
+    insert into settle_service_check_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="insuranceOrderSn != null" >
+        insurance_order_sn,
+      </if>
+      <if test="settlePackageOrderSn != null" >
+        settle_package_order_sn,
+      </if>
+      <if test="settlePackageName != null" >
+        settle_package_name,
+      </if>
+      <if test="settlePackagePrice != null" >
+        settle_package_price,
+      </if>
+      <if test="settlePackageFee != null" >
+        settle_package_fee,
+      </if>
+      <if test="settlePackageStatus != null" >
+        settle_package_status,
+      </if>
+      <if test="gmtFirstPaid != null" >
+        gmt_first_paid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator},
+      </if>
+      <if test="modifier != null" >
+        #{modifier},
+      </if>
+      <if test="insuranceOrderSn != null" >
+        #{insuranceOrderSn},
+      </if>
+      <if test="settlePackageOrderSn != null" >
+        #{settlePackageOrderSn},
+      </if>
+      <if test="settlePackageName != null" >
+        #{settlePackageName},
+      </if>
+      <if test="settlePackagePrice != null" >
+        #{settlePackagePrice},
+      </if>
+      <if test="settlePackageFee != null" >
+        #{settlePackageFee},
+      </if>
+      <if test="settlePackageStatus != null" >
+        #{settlePackageStatus},
+      </if>
+      <if test="gmtFirstPaid != null" >
+        #{gmtFirstPaid},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleServiceCheckDetailDO" >
+    update settle_service_check_detail
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier},
+      </if>
+      <if test="insuranceOrderSn != null" >
+        insurance_order_sn = #{insuranceOrderSn},
+      </if>
+      <if test="settlePackageOrderSn != null" >
+        settle_package_order_sn = #{settlePackageOrderSn},
+      </if>
+      <if test="settlePackageName != null" >
+        settle_package_name = #{settlePackageName},
+      </if>
+      <if test="settlePackagePrice != null" >
+        settle_package_price = #{settlePackagePrice},
+      </if>
+      <if test="settlePackageFee != null" >
+        settle_package_fee = #{settlePackageFee},
+      </if>
+      <if test="settlePackageStatus != null" >
+        settle_package_status = #{settlePackageStatus},
+      </if>
+      <if test="gmtFirstPaid != null" >
+        gmt_first_paid = #{gmtFirstPaid},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectByOrderSnList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_service_check_detail
+    where is_deleted='N' and settle_package_order_sn in
+    <foreach collection="orderSnList" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+  
+  <select id="selectBySearchDO" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_service_check_detail
+    <where>
+      is_deleted='N'
+      <if test="insuranceOrderSn != null" >
+        and insurance_order_sn = #{insuranceOrderSn} 
+      </if>
+      <if test="settlePackageOrderSn != null" >
+        and settle_package_order_sn = #{settlePackageOrderSn} 
+      </if>
+      <if test="settlePackageName != null" >
+        and settle_package_name = #{settlePackageName} 
+      </if>
+      <if test="settlePackagePrice != null" >
+        and settle_package_price = #{settlePackagePrice} 
+      </if>
+      <if test="settlePackageFee != null" >
+        and settle_package_fee = #{settlePackageFee} 
+      </if>
+      <if test="settlePackageStatus != null" >
+        and settle_package_status = #{settlePackageStatus} 
+      </if>
+      <if test="gmtFirstPaid != null" >
+        and gmt_first_paid = #{gmtFirstPaid} 
+      </if>
+    </where>
+    
+  </select>
+
+
+  <select id="selectByInsuranceOrderSnList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_service_check_detail
+    where is_deleted='N' and insurance_order_sn in
+    <foreach collection="orderSnList" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+
+  <select id="getDeletedData" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_service_check_detail
+    where is_deleted='Y'
+    and insurance_order_sn in
+    <foreach collection="insuranceOrderSnList" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+</mapper>

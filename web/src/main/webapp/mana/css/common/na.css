@@ -1,0 +1,116 @@
+form {
+    overflow: visible!important;
+}
+/*.nFocus {*/
+    /*border-color: #66afe9;*/
+    /*outline: 0;*/
+    /*box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);*/
+/*}*/
+.multiDownList,.simpleList {
+    position:absolute;
+    background:white;
+    z-index:961211;
+    max-height:400px;
+    overflow:auto;
+    display: none;
+    border:1px solid #ccc;
+    margin-top: 35px;
+    font-size:14px;
+}
+.na520MultiSelect {
+    /*display: none!important;*/
+}
+.multiSelect {
+    padding-right: 0 !important;
+    cursor: default;
+    overflow-x:auto;
+    padding: 0!important;
+    float: left;
+}
+.multiSelect .mark {
+    float:right;
+    transform:scale(-0.78);
+    padding-right:20px;
+    color:black;
+    background:white;
+}
+.multiDownList p,.simpleList p{
+    margin:0;
+    padding-left:3px;
+    line-height:25px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.multiDownList p span,.simpleList p span {
+    padding-left:10px;
+    white-space: nowrap;
+}
+.multiDownList .itemI,.multiDownList .selectAll {
+    cursor:pointer;
+    overflow:hidden;
+}
+.multiDownList p:hover,.simpleList p:hover {
+    color:white;
+    background:#9900E4;
+    cursor:pointer;
+}
+.selectItem p,.selectAll p {
+    float:right;
+    text-align:left;
+    width:84%;
+    margin:0;
+}
+.multiSelect::-webkit-scrollbar {
+    width:0;
+    height:0;
+}
+.selectDes {
+    /*float:left;*/
+    line-height: 28px;
+    padding:0px 0 0px 3px;
+    position: relative;
+    margin-right: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+}
+.selectDes:last-child {
+    margin:0;
+    height: 100%!important;
+}
+.msContent {
+    white-space: nowrap;
+    box-sizing: content-box;
+    font-size: 14px;
+}
+.closeArea{
+    height:100%;
+    width:10px;
+    position:absolute;
+    right:-11px;
+    top:-6px;
+    cursor:pointer;
+}
+.multiInput {
+    padding-right: 20px;
+}
+/*.multiInput,.multiInput:focus {*/
+    /*border:none;*/
+    /*outline: none;*/
+    /*line-height: 28px;*/
+    /*padding-left:5px;*/
+/*}*/
+/*单选框样式*/
+.simpleList .simpleChecked {
+    background:#02aadb;
+}
+.multiDownList,.simpleList {
+    box-sizing: border-box;
+}
+.detail input{
+    background: #eee;
+}
+.detail input.comment{
+    background: #fff;
+}

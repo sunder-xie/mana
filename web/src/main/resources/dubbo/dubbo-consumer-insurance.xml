@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcInsuranceFormService"
+                     id="rpcInsuranceFormService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcInsuranceCompanyService"
+                     id="rpcInsuranceCompanyService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcInsuranceVirtualFormService"
+                      id="rpcInsuranceVirtualFormService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcInsuranceUserService"
+                     id="rpcInsuranceUserService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcInsuranceShopConfigService"
+                     id="rpcInsuranceShopConfigService" version="${dubbo.consumer.insurance.version}" check="false"/>
+    
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcInsuranceRegionService"
+                     id="rpcInsuranceRegionService" version="${dubbo.consumer.insurance.version}" check="false" />
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcServiceItemService"
+                     id="rpcServiceItemService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcPackageService"
+                     id="rpcPackageService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcPackageAllowanceService"
+                     id="rpcPackageAllowanceService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.offline.RpcInsuranceOffLineService"
+                     id="rpcInsuranceOffLineService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.cashcoupon.RpcInsuranceCashCouponService"
+                     id="rpcInsuranceCashCouponService" version="${dubbo.consumer.insurance.version}" check="false"/>
+
+</beans>

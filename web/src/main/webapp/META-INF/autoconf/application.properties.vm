@@ -1,0 +1,61 @@
+jdbc.driverClassName=${jdbc.driverClassName}
+#数据库配置
+jdbc.url=${jdbc.url}
+jdbc.username=${jdbc.username}
+jdbc.password=${jdbc.password}
+
+#redis
+redis.host=${redis.host}
+
+
+#==========dubbo==========
+dubbo.application.name=${dubbo.application.name}
+zookeeper.address=${zookeeper.address}
+dubbo.port=${dubbo.port}
+dubbo.service.version=${dubbo.service.version}
+
+# 消费方
+dubbo.consumer.insurance.version=${dubbo.consumer.insurance.version}
+dubbo.consumer.stall.version=${dubbo.consumer.stall.version}
+dubbo.consumer.athena.version=${dubbo.consumer.athena.version}
+dubbo.consumer.ucenter.version=${dubbo.consumer.ucenter.version}
+dubbo.consumer.search.version=${dubbo.consumer.search.version}
+dubbo.consumer.holy.version=${dubbo.consumer.holy.version}
+dubbo.consumer.finance.version=${dubbo.consumer.finance.version}
+
+
+# 访问优惠券页面的密钥
+send.coupon.key=${send.coupon.key}
+
+# 云修
+legend.host=${legend.host}
+
+#============openid============
+#分配的clientId
+openid.client.clientId=${openid.client.clientId}
+#分配的secret
+openid.client.clientSecret=${openid.client.clientSecret}
+#openId源地址
+idp.url=${idp.url}
+
+#保险mq配置
+insurance.mq.host=${insurance.mq.host}
+insurance.mq.port=${insurance.mq.port}
+insurance.mq.userName=${insurance.mq.userName}
+insurance.mq.password=${insurance.mq.password}
+
+#mq开关  本地配置off，服务器上on
+mana.mq.switch=${mana.mq.switch}
+
+mana.mq.insurance.form.queue=${mana.mq.insurance.form.queue}
+mana.mq.insurance.settle.queue=${mana.mq.insurance.settle.queue}
+
+# 默认城市站id，目前用于查询热门车品牌（杭州）
+default.city.id=${default.city.id}
+
+# 环境版本（线上=online 其他环境=dev）
+environment.version=${environment.version}
+
+
+#商品编码搜索
+search.domain = ${search.domain}

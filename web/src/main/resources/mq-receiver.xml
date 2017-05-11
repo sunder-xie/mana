@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!-- 保单信息 -->
+    <bean id="insuranceFormMqReceiver" class="com.tqmall.mana.biz.mq.insurance.InsuranceFormMqReceiver">
+        <property name="queueName" value="${mana.mq.insurance.form.queue}"/>
+    </bean>
+
+    <!-- 保险结算 -->
+    <bean id="insuranceSettleMqReceiver" class="com.tqmall.mana.biz.mq.insurance.settle.InsuranceSettleMqReceiver">
+        <property name="queueName" value="${mana.mq.insurance.settle.queue}"/>
+    </bean>
+
+
+    <bean id="mqReceiverFactory" class="com.tqmall.mana.biz.mq.MqReceiverFactory"
+          init-method="init" destroy-method="destroy">
+        <property name="virtualHost" value="tqmall"/>
+        <property name="host" value="${insurance.mq.host}"/>
+        <property name="port" value="${insurance.mq.port}"/>
+        <property name="userName" value="${insurance.mq.userName}"/>
+        <property name="password" value="${insurance.mq.password}"/>
+        <property name="mqSwitch" value="${mana.mq.switch}"/>
+        <property name="processList">
+            <list>
+                <ref bean="insuranceFormMqReceiver"/>
+                <ref bean="insuranceSettleMqReceiver"/>
+
+            </list>
+        </property>
+    </bean>
+
+</beans>

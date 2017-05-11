@@ -1,0 +1,194 @@
+#couponListDiv,#sendCouponDiv{
+    /*width: 985px;*/
+    /*margin: 20px auto;*/
+}
+.note-success{
+    background-color: #eef7ea;
+    border-color: #bbdba1;
+    color: #3c763d;
+    line-height: 20px;
+    font-size: 13px;
+    font-family: "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+}
+.note-success p:nth-child(1){
+    margin-bottom: 10px;
+}
+.row{
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.row .col-md-6{
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;
+}
+#refreshBtn{
+    width: 56px;
+    height: 34px;
+    line-height: 34px;
+    background: #4B8DF8;
+    color: #fff;
+    font-size: 14px;
+}
+#sendCouponBtn, #exportExcelBtn{
+    width: 98px;
+    height: 34px;
+    line-height: 34px;
+    color: #fff;
+    font-size: 14px;
+}
+#sendCouponBtn{
+    background: #1BBC9B;
+}
+#exportExcelBtn{
+    background: #d84a38;
+}
+.btn-div{
+    margin-bottom: 20px;
+}
+.btn-div .btn{
+    border-radius: 3px !important;
+    margin-right: 20px;
+}
+.send-coupon-div{
+    padding: 10px 20px;
+}
+
+.send-coupon-table td, .send-coupon-table th{
+    padding: 10px;
+}
+.send-coupon-table th{
+    text-align: right;
+}
+.send-coupon-table input, .send-coupon-table select{
+    width: 550px;
+    height: 35px;
+}
+.phone-textarea{
+    width: 550px;
+    height: 200px;
+}
+.send-coupon-table input, .send-coupon-table textarea{
+    border: 1px solid #ccc;
+    border-radius: 4px !important;
+    padding: 5px 10px;
+    background: #fff;
+}
+
+.confirm-send-div{
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.coupon-list-content label{
+    color: orangered;
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+/* 短信模板表格 */
+.sms-template-table{
+    margin-bottom: 5px;
+}
+.sms-template-table td{
+    background-color: #f9f9f9;
+}
+.sms-template-table input{
+    width: auto;
+    height: auto;
+}
+.sms-template-table th{
+    text-align: center;
+}
+.sms-template-content{
+    max-width: 570px;
+}
+.sms-template-desc{
+    max-width: 200px;
+}
+.template-radio{
+    width: 60px;
+}
+
+.date-input{
+    width: 165px;
+    padding-left: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.search-condition{
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+}
+.search-phone{
+    width: 150px;
+    padding-left: 5px;
+    height: 30px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 30px;
+}
+.search-condition input{
+    border: 1px solid #ccc;
+    font-weight: normal;
+    vertical-align: baseline;
+}
+.search-condition select{
+    height: 28px;
+    width: 100px;
+    font-weight: normal;
+    border: 1px solid;
+    background: #fff;
+}
+table{
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-size: 12px;
+    background: #fff;
+    font-family: "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+}
+table thead tr, table tbody tr:nth-of-type(even){
+    background: #f1f3fa;
+}
+table thead tr th, .table tbody td{
+    border: 1px solid #ddd;
+    padding: 12px 10px;
+    vertical-align: top;
+}
+.send-coupon-table{
+    border: none;
+    background: #f1f3fa;
+}
+#typeSelect{
+    border: 1px solid #999;
+}
+#sendNum{
+    padding: 0 10px;
+}
+#confirmSendBtn{
+    width: 84px;
+    height: 34px;
+    line-height: 34px;
+    background: #1BBC9B;
+    color: #fff;
+    font-size: 14px;
+}
+#returnCouponListBtn{
+    width: 154px;
+    height: 34px;
+    line-height: 34px;
+    background: #ffaa24;
+    color: #fff;
+    font-size: 14px;
+}

@@ -1,0 +1,50 @@
+.p-title{
+    font-size: 14px;
+    color: #999999;
+    height: 40px;
+    line-height: 35px;
+}
+.search-box{
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #d2d6de;
+    border-bottom: 1px solid #d2d6de;
+}
+.settle-introduction{
+    float: left;
+    width: 314px;
+    padding: 0 15px;
+}
+.introduction-ext{
+    border-right: 1px solid rgba(212,214,215,0.45);
+}
+.introduction-title{
+    font-size: 17px;
+    padding: 4px 0;
+}
+.introduction-ul{
+    float: left;
+}
+.introduction-li{
+    color: rgba(153,153,153,0.7);
+    font-size: 14px;
+    line-height: 18px;
+}
+.cash-img{
+    height: 36px;
+    float: left;
+    margin-right: 15px;
+}
+.edit-box{
+    float: right;
+    width: 40px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 24px;
+    color: #999999;
+    background: #f4f4f4;
+    cursor: pointer;
+    border: 1px solid #D4D6D7;
+}

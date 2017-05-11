@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.extend.SettleShopDetailMapper" >
+
+  <sql id="commonConditionSql">
+    and sd.is_deleted='N'
+    <if test="insuranceCompanyId != null">
+      and sd.insurance_company_id = #{insuranceCompanyId}
+    </if>
+    <if test="cooperationModeId != null">
+      and sd.cooperation_mode_id = #{cooperationModeId}
+    </if>
+    <if test="settleFeeStatus != null">
+      and sd.settle_fee_status = #{settleFeeStatus}
+    </if>
+    <if test="settleRuleType != null">
+      and sd.settle_rule_type = #{settleRuleType}
+    </if>
+    <if test="vehicleSn != null">
+      and (sd.vehicle_sn = #{vehicleSn} or sd.new_vehicle_sn = #{vehicleSn})
+    </if>
+    <if test="shopId != null">
+      and sd.agent_id = #{shopId}
+    </if>
+    <if test="balanceStatus != null">
+      and sd.balance_status = #{balanceStatus}
+    </if>
+    <if test="ifUseCoupon != null">
+      and sd.if_use_coupon = #{ifUseCoupon}
+    </if>
+    <if test="applyTimeStart != null">
+      and sd.apply_time >= #{applyTimeStart}
+    </if>
+    <if test="applyTimeEnd != null">
+      <![CDATA[
+        and sd.apply_time < #{applyTimeEnd}
+        ]]>
+    </if>
+    <if test="agentTag != null">
+      and sd.agent_tag = #{agentTag}
+    </if>
+
+    <if test="insuredProvinceCode != null">
+      and sf.insured_province_code = #{insuredProvinceCode}
+    </if>
+    <if test="insuredCityCode != null">
+      and sf.insured_city_code = #{insuredCityCode}
+    </if>
+    <if test="insuredFormNo != null">
+      and sf.insured_form_no = #{insuredFormNo}
+    </if>
+    <if test="insuranceTypeId != null">
+      and sf.insurance_type_id = #{insuranceTypeId}
+    </if>
+    <if test="billSignTimeStart != null">
+      and sf.bill_sign_time >= #{billSignTimeStart}
+    </if>
+    <if test="billSignTimeEnd != null">
+      <![CDATA[
+        and sf.bill_sign_time < #{billSignTimeEnd}
+        ]]>
+    </if>
+    <if test="insuredStartTimeStart != null">
+      and sf.insured_start_time >= #{insuredStartTimeStart}
+    </if>
+    <if test="insuredStartTimeEnd != null">
+      <![CDATA[
+        and sf.insured_start_time < #{insuredStartTimeEnd}
+        ]]>
+    </if>
+  </sql>
+
+
+  <!-- 奖励金模式数据查询 -->
+  <sql id="ShopSettleDetailSelectSql">
+    select
+    sd.id,
+    sd.insurance_order_sn as insuranceOrderSn,
+    sd.cooperation_mode_name as cooperationModeName,
+    sd.insurance_company_name as insuranceCompanyName,
+    sd.settle_rate as settleRate,
+    sd.settle_fee as settleFee,
+    sd.settle_fee_status as settleFeeStatus,
+    sd.vehicle_sn as vehicleSn,
+    sd.new_vehicle_sn as newVehicleSn,
+    sd.agent_id as shopId,
+    sd.agent_name as shopName,
+    sd.agent_account as shopAccount,
+    sd.agent_tag as agentTag,
+    sd.audit_people_name as auditPeopleName,
+    sd.audit_time as auditTime,
+    sd.settle_people_name as settlePeopleName,
+    sd.settle_time as settleTime,
+    sd.balance_status as balanceStatus,
+    sd.apply_people_name as applyPeopleName,
+    sd.apply_time as applyTime,
+    sd.if_use_coupon as ifUseCoupon,
+    sd.coupon_number as couponNumber,
+    sd.coupon_amount as couponAmount,
+    sd.settle_base_amount as settleBaseAmount,
+
+    sf.insurance_form_id as insuranceFormId,
+    sf.insured_form_no as insuredFormNo,
+    sf.insured_province as insuredProvince,
+    sf.insured_city as insuredCity,
+    sf.insurance_type_id as insuranceTypeId,
+    sf.insured_fee as insuredFee,
+    sf.bill_sign_time as billSignTime,
+    sf.insured_start_time as insuredStartTime,
+    sf.applicant_name as applicantName,
+    sf.be_applied_name as beAppliedName,
+    sf.tax_fee as taxFee,
+
+    cd.confirm_money_status as confirmMoneyStatus,
+    cd.confirm_money_time as confirmMoneyTime,
+    cd.confirm_money_people_name as confirmMoneyPeopleName,
+
+    sde.reward_status as rewardStatus,
+    sde.reward_effect_time as rewardEffectTime
+
+  </sql>
+
+  <sql id="ShopSettleDetailConditionSql">
+    from settle_shop_check_detail sd
+    inner join settle_form sf
+    on sd.biz_sn = sf.insured_form_no
+    and sd.insurance_company_id = sf.insurance_company_id
+    inner join settle_shop_check_detail_extend sde
+    on sd.id=sde.shop_check_detail_id
+    left join settle_company_check_detail cd
+    on sf.insured_form_no=cd.settle_form_sn
+    and cd.is_deleted='N'
+    where sf.is_deleted='N'
+    and sde.is_deleted='N'
+    <include refid="commonConditionSql"/>
+    <if test="rewardStatus != null">
+      and sde.reward_status = #{rewardStatus}
+    </if>
+
+  </sql>
+
+  <select id="selectShopSettleDetail" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleDetailDO"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    <include refid="ShopSettleDetailSelectSql"/>
+    <include refid="ShopSettleDetailConditionSql"/>
+    order by billSignTime desc
+    limit #{offerSet},#{pageSize}
+  </select>
+
+  <select id="selectShopSettleDetailCount" resultType="java.lang.Integer"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    select count(1)
+    <include refid="ShopSettleDetailConditionSql"/>
+  </select>
+
+  <select id="selectShopSettleDetailStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleStatisticsDO"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    select
+      sum(sf.insured_fee) as totalInsuredFee,
+      sum(sd.settle_fee) as totalSettleFee,
+      sum(sd.coupon_amount) as totalCouponAmount
+    <include refid="ShopSettleDetailConditionSql"/>
+  </select>
+
+
+
+  <!--&lt;!&ndash; 服务包模式数据查询 &ndash;&gt;-->
+  <!--<sql id="ShopSettleDetailForPackageSelectSql">-->
+    <!--<include refid="ShopSettleDetailSelectSql"/>-->
+    <!--,-->
+    <!--sd.audit_people_name as auditPeopleName,-->
+    <!--sd.audit_time as auditTime,-->
+    <!--sd.settle_people_name as settlePeopleName,-->
+    <!--sd.settle_time as settleTime,-->
+    <!--&lt;!&ndash;-->
+    <!--sd.settle_package_order_sn as settlePackageOrderSn,-->
+    <!--&ndash;&gt;-->
+    <!--sd.settle_project_id as settleProjectId,-->
+    <!--sp.settle_package_order_sn as settlePackageOrderSn,-->
+    <!--sp.settle_package_name as settlePackageName,-->
+    <!--sp.settle_package_price as settlePackagePrice,-->
+    <!--sp.settle_package_fee as settlePackageFee,-->
+    <!--sp.gmt_first_paid as gmtFirstPaid,-->
+    <!--&lt;!&ndash;-->
+    <!--sp.settle_package_status as ,-->
+    <!--&ndash;&gt;-->
+    <!--cd.confirm_money_status as confirmMoneyStatus,-->
+    <!--cd.confirm_money_time as confirmMoneyTime-->
+  <!--</sql>-->
+
+  <!--<sql id="ShopSettleDetailForPackageConditionSql">-->
+    <!--from settle_shop_check_detail sd-->
+    <!--left join settle_form sf-->
+    <!--on sd.biz_sn = sf.insured_form_no-->
+    <!--and sf.is_deleted='N'-->
+    <!--left join settle_service_check_detail sp-->
+    <!--on sd.biz_sn=sp.settle_package_order_sn-->
+    <!--and sp.is_deleted='N'-->
+    <!--left join settle_company_check_detail cd-->
+    <!--on cd.settle_form_sn=sf.insured_form_no-->
+    <!--and cd.is_deleted='N'-->
+    <!--&lt;!&ndash; 外链接主表的过滤条件一定要放在where里面 &ndash;&gt;-->
+    <!--<where>-->
+      <!--<include refid="commonConditionSql"/>-->
+      <!--&lt;!&ndash;-->
+          <!--<include refid="shopCheckConditionSql"/>-->
+
+          <!--<if test="packageOrderSn != null">-->
+            <!--and sd.settle_package_order_sn = #{packageOrderSn}-->
+          <!--</if>-->
+      <!--&ndash;&gt;-->
+      <!--<if test="packageOrderSn != null">-->
+        <!--and sp.settle_package_order_sn = #{packageOrderSn}-->
+      <!--</if>-->
+      <!--<if test="confirmMoneyStatus != null">-->
+        <!--and cd.confirm_money_status = #{confirmMoneyStatus}-->
+      <!--</if>-->
+    <!--</where>-->
+  <!--</sql>-->
+
+  <!--<select id="selectShopSettleDetailForPackage" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleDetailDO"-->
+          <!--parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">-->
+    <!--<include refid="ShopSettleDetailForPackageSelectSql"/>-->
+    <!--<include refid="ShopSettleDetailForPackageConditionSql"/>-->
+    <!--<if test="erpFlag != null">-->
+      <!--and sd.erp_flag = #{erpFlag}-->
+    <!--</if>-->
+    <!--order by sf.bill_sign_time desc, sd.gmt_create desc-->
+    <!--limit #{offerSet},#{pageSize}-->
+  <!--</select>-->
+
+  <!--<select id="selectShopSettleDetailForPackageCount" resultType="java.lang.Integer"-->
+          <!--parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">-->
+    <!--select count(1)-->
+    <!--<include refid="ShopSettleDetailForPackageConditionSql"/>-->
+    <!--<if test="erpFlag != null">-->
+      <!--and sd.erp_flag = #{erpFlag}-->
+    <!--</if>-->
+  <!--</select>-->
+
+  <!--<select id="selectShopSettleDetailForCashStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleStatisticsDO"-->
+          <!--parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">-->
+    <!--select-->
+    <!--sum(ifnull(sf.insured_fee,0)) as totalInsuredFee,-->
+    <!--sum(sd.settle_fee) as totalCash-->
+    <!--&lt;!&ndash;-->
+        <!--,-->
+        <!--sum(ifnull(sp.settle_package_fee,0)) as totalServiceFee-->
+
+        <!--sum(case sd.settle_project_id-->
+        <!--when 3 then sd.settle_fee-->
+        <!--else 0 end) as totalServiceFee-->
+    <!--&ndash;&gt;-->
+    <!--<include refid="ShopSettleDetailForPackageConditionSql"/>-->
+    <!--&lt;!&ndash; 只统计商业+交强险返利 &ndash;&gt;-->
+    <!--and sd.settle_project_id in(1, 2)-->
+  <!--</select>-->
+
+  <!--<select id="selectShopSettleDetailForPackageStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleStatisticsDO"-->
+          <!--parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">-->
+    <!--select sum(t2.settle_package_fee) as totalServiceFee-->
+    <!--from-->
+    <!--(select distinct sd.insurance_order_sn-->
+    <!--<include refid="ShopSettleDetailForPackageConditionSql"/>-->
+    <!--) t1, settle_service_check_detail t2-->
+    <!--where t1.insurance_order_sn=t2.insurance_order_sn-->
+  <!--</select>-->
+
+
+
+
+
+  <!-- 服务包模式数据查询 -->
+  <sql id="selectSqlForPackageMode">
+    select
+	sd.gmt_create as gmtCreate,
+    sd.id,
+    sd.insurance_order_sn as insuranceOrderSn,
+    sd.cooperation_mode_name as cooperationModeName,
+    sd.insurance_company_name as insuranceCompanyName,
+    sd.settle_rate as settleRate,
+    sd.settle_fee as settleFee,
+    sd.settle_fee_status as settleFeeStatus,
+    sd.vehicle_sn as vehicleSn,
+    sd.new_vehicle_sn as newVehicleSn,
+    sd.agent_id as shopId,
+    sd.agent_name as shopName,
+    sd.agent_account as shopAccount,
+    sd.agent_tag as agentTag,
+    sd.audit_people_name as auditPeopleName,
+    sd.audit_time as auditTime,
+    sd.settle_people_name as settlePeopleName,
+    sd.settle_time as settleTime,
+    sd.settle_project_id as settleProjectId,
+    sd.balance_status as balanceStatus,
+    sd.apply_people_name as applyPeopleName,
+    sd.apply_time as applyTime,
+    sd.if_use_coupon as ifUseCoupon,
+    sd.coupon_number as couponNumber,
+    sd.coupon_amount as couponAmount,
+    sd.settle_base_amount as settleBaseAmount,
+
+	sf.insurance_form_id as insuranceFormId,
+    sf.insured_form_no as insuredFormNo,
+    sf.insured_province as insuredProvince,
+    sf.insured_city as insuredCity,
+    sf.insurance_type_id as insuranceTypeId,
+    sf.insured_fee as insuredFee,
+    sf.bill_sign_time as billSignTime,
+    sf.insured_start_time as insuredStartTime,
+    sf.applicant_name as applicantName,
+    sf.be_applied_name as beAppliedName,
+    sf.tax_fee as taxFee,
+
+	cd.confirm_money_status as confirmMoneyStatus,
+    cd.confirm_money_time as confirmMoneyTime,
+    cd.confirm_money_people_name as confirmMoneyPeopleName,
+
+	sp.settle_package_order_sn as settlePackageOrderSn,
+    sp.settle_package_name as settlePackageName,
+    sp.settle_package_price as settlePackagePrice,
+    sp.settle_package_fee as settlePackageFee,
+    sp.gmt_first_paid as gmtFirstPaid
+
+  </sql>
+
+  <!-- #查询交强险返利（后续优化：参数中有订单号时，就不需要查询了） -->
+  <sql id="forceInsuranceSql">
+    from settle_shop_check_detail sd
+    inner join settle_form sf
+    on sd.biz_sn=sf.insured_form_no
+    and sd.insurance_company_id = sf.insurance_company_id
+    inner join settle_company_check_detail cd
+    on cd.settle_form_sn=sf.insured_form_no
+    left join settle_service_check_detail sp on 1=0
+    where sf.is_deleted='N' and cd.is_deleted='N'
+    and sd.settle_project_id=2
+
+  </sql>
+
+  <!-- #查询商业险返利+服务包工时费 -->
+  <sql id="bizInsuranceSql">
+    from settle_shop_check_detail sd,settle_form sf,
+    settle_company_check_detail cd,settle_service_check_detail sp
+    where sd.biz_sn=sf.insured_form_no
+    and sd.insurance_company_id = sf.insurance_company_id
+    and cd.settle_form_sn=sf.insured_form_no
+    and sd.insurance_order_sn=sp.insurance_order_sn
+    and sf.is_deleted='N' and cd.is_deleted='N' and sp.is_deleted='N'
+    and sd.settle_project_id=1
+
+  </sql>
+
+  <!-- #查询服务包第一次支付，并未投保的数据（） -->
+  <sql id="onlyPackageSql">
+    from settle_shop_check_detail sd
+    inner join settle_service_check_detail sp
+    on sd.insurance_order_sn=sp.insurance_order_sn
+    left join settle_form sf on 1=0
+    left join settle_company_check_detail cd on 1=0
+    where sp.is_deleted='N'
+    and sd.settle_project_id=3
+
+  </sql>
+
+  <sql id="whereSqlForPackageMode">
+    and sd.erp_flag=1
+    <include refid="commonConditionSql"/>
+    <if test="packageOrderSn != null">
+      and sp.settle_package_order_sn = #{packageOrderSn}
+    </if>
+    <if test="confirmMoneyStatus != null">
+      and cd.confirm_money_status = #{confirmMoneyStatus}
+    </if>
+  </sql>
+
+  <select id="selectSettleDataForPackageMode" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleDetailDO"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    <include refid="selectSqlForPackageMode"/>
+    <include refid="forceInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    union all
+    <include refid="selectSqlForPackageMode"/>
+    <include refid="bizInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    union all
+    <include refid="selectSqlForPackageMode"/>
+    <include refid="onlyPackageSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    order by billSignTime desc, gmtCreate desc
+    limit #{offerSet},#{pageSize}
+  </select>
+
+  <select id="selectSettleDataForPackageModeCount" resultType="java.lang.Integer"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    select sum(tt.num)
+    from (
+    select count(1) as num
+    <include refid="forceInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    union all
+    select count(1) as num
+    <include refid="bizInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    union all
+    select count(1) as num
+    <include refid="onlyPackageSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    ) tt
+  </select>
+
+  <!-- 保费、现金返利统计  -->
+  <select id="selectSettleDataForCashStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleStatisticsDO"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    select
+      sum(ifnull(tt.insuredFee, 0)) as totalInsuredFee,
+      sum(ifnull(tt.settleFee, 0)) as totalCash
+    from (
+    select
+      sum(sf.insured_fee) as insuredFee,
+      sum(sd.settle_fee) as settleFee
+    <include refid="forceInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    union all
+    select
+      sum(sf.insured_fee) as insuredFee,
+      sum(sd.settle_fee) as settleFee
+    <include refid="bizInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    ) tt
+  </select>
+
+  <!-- 服务包工时费统计 -->
+  <select id="selectSettleDataForPackageStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleStatisticsDO"
+          parameterType="com.tqmall.mana.beans.param.settle.ShopSettleDetailQueryPO">
+    select
+      sum(ifnull(tt.settlePackageFee, 0)) as totalServiceFee
+    from (
+    select
+      sum(sp.settle_package_fee) as settlePackageFee
+    <include refid="bizInsuranceSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    union all
+    select
+      sum(sp.settle_package_fee) as settlePackageFee
+    <include refid="onlyPackageSql"/>
+    <include refid="whereSqlForPackageMode"/>
+    ) tt
+  </select>
+
+
+</mapper>

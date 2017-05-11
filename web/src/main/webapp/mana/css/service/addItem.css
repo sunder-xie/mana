@@ -1,0 +1,196 @@
+/*列表公用样式开始*/
+select{
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+    width: 150px;
+    background: #f4f4f4;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.display-none{
+    display: none;
+}
+.float-left{
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.background-white{
+    background: #ffffff!important;
+}
+.p-title{
+    font-size: 14px;
+    color: #999999;
+    height: 40px;
+    line-height: 40px;
+}
+.search-box{
+    padding: 10px 15px;
+    background: #FFFFFF;
+    margin-bottom: 10px;
+    border-top: 1px solid rgba(153,154,162,0.3);
+    border-bottom: 1px solid rgba(153,154,162,0.3);
+}
+button{
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.sure-button,.save-button{
+    margin-right: 8px;
+    color: #ffffff;
+    background: #287f87;
+    border: 1px solid #24696f;
+}
+.cancel-button{
+    color: #999999;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+}
+.div-left{
+    width: 49.4%;
+    overflow: hidden;
+    border-top: 1px solid #287f87;
+}
+.div-left-input{
+    width: 86px!important;
+}
+.div-left-checkbox{
+    width: 20px!important;
+    height: 15px!important;
+}
+.div-title{
+    font-size: 14px;
+    line-height: 40px;
+    padding-left: 15px;
+    background: #ffffff!important;
+    border-bottom: 1px solid rgba(153,154,162,0.15);;
+}
+.div-left-ul{
+    display: block;
+    padding: 10px 0;
+}
+.div-left-ul > li{
+    padding: 5px 0;
+}
+.div-left-ul > li span{
+    width: 100px;
+    font-size: 14px;
+    text-align: right;
+    margin-right: 15px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.div-left-ul > li label{
+    font-size:14px;
+}
+.div-left-ul > li i{
+    font-size:14px;
+    margin-right: 85px;
+}
+.label-text-color{
+    color: #AFAFAF;
+}
+.div-left-ul > li input{
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+    width: 200px;
+    background: #f4f4f4;
+    border-radius: 2px;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.li-title{
+    text-align: left!important;
+    width: 56px!important;
+}
+.add-one-button,.subtract-one-button{
+    width: 30px;
+    height: 33px;
+    line-height: 8px;
+    font-size: 23px;
+    padding-bottom: 3px;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+}
+.num-input{
+    width: 50px!important;
+    text-align: center;
+}
+.div-right{
+    width: 49.4%;
+    overflow: hidden;
+}
+.div-right-box{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #F9F9F9;
+    border-top: 1px solid rgba(153,154,162,0.3);
+    border-bottom: 1px solid rgba(153,154,162,0.3);
+}
+.mana-table a{
+    text-decoration: underline;
+    margin-right: 4px;
+    color: #113C78;
+}
+.item-box{
+    width:383px;
+    display: inline-block;
+    border-top: 1px solid #dcdbd9;
+}
+.goods-input{
+    width: 116px!important;
+}
+.down-ul-input{
+    width: 370px;
+}
+.select-width{
+    width: 130px;
+}
+.inner-box{
+    padding: 15px;
+}
+.input-width{
+    width: 370px;
+}
+.div-left-box{
+    margin-bottom: 10px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(153,154,162,0.3);
+}
+.must-mark:before{
+    content: "*";
+    font-size: 16px;
+    color: red;
+}
+
+/*商品编码样式*/
+.mdsug {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    border: 1px solid #dddddd;
+    background: #f4f4f4;
+    width: 128px;
+    line-height: 30px;
+    left: 388px;
+    top: 582px;
+    border-top: none;
+}
+.mdsug li {
+    line-height: 30px;
+    padding: 2px 10px;
+    border-top: 1px solid #dddddd;
+    cursor: pointer;
+}
+.mdsug li:hover {
+    background: #FFFFFF;
+}

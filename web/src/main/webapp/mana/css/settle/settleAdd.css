@@ -1,0 +1,332 @@
+/*新增组公用样式开始*/
+.width-100{
+    width:100%;
+}
+.p-title{
+    font-size: 14px;
+    color: #999999;
+    height: 40px;
+    line-height: 35px;
+}
+.display-none{
+    display: none!important;
+}
+input, select, textarea {
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+    width: 150px;
+    background: #f4f4f4;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.clearFix{
+    clear: both;
+    overflow: hidden;
+}
+.select-condition-item{
+    width: 300px;
+    display: inline-block;
+}
+.select-condition-item span{
+    font-size: 14px;
+    color: #444444;
+    display: inline-block;
+    margin-right: 13px;
+}
+.select-condition-box{
+    padding: 14px 0 14px 20px;
+    border-top: 1px solid #d2d6de;
+    border-bottom: 1px solid #d2d6de;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+.add-box{
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid #d2d6de;
+    border-bottom: 1px solid #d2d6de;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+.opa-radio{
+    font-size: 12px;
+    width: 38px;
+    height: 18px;
+}
+.operate-btn,.cancel-btn{
+    width: 32px;
+    height: 32px;
+    background-color: #f4f4f4;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    line-height: 32px;
+    font-size: 20px;
+}
+.cancel-button,.sure-button{
+    width: 100px;
+    height: 40px;
+    border-radius: 2px;
+}
+.sure-button{
+    background: #287f87;
+    color: #ffffff;
+    border: 1px solid #24696f;
+}
+.cancel-button{
+    background: #f4f4f4;
+    color: #999999;
+    border: 1px solid #d2d6de;
+    margin-left: 10px;
+}
+input.Wdate{
+    height: 32px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    width: 160px;
+}
+.second-level-title{
+    float: left;
+    margin-right: 10px;
+}
+/*新增组公用样式结束*/
+
+/*基础资料新增返点比例样式  开始*/
+.insurance-box{
+    padding: 0 20px;
+    width: 478px;
+    float: left;
+    border-right: 1px solid #d2d6de;
+}
+.inner-box{
+    border-bottom: 1px solid #f4f4f4;
+}
+.insurance-box:last-child{
+    border-right:none;
+}
+.insurance-title{
+    font-size: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f4f4f4 ;
+}
+.add-item-box{
+    font-size: 14px;
+}
+.add-item,.add-item-title{
+    margin: 16px 0;
+}
+.js-add-commercial-item,.js-add-compulsory-item{
+    clear: both;
+    overflow: hidden;
+    margin: 16px 0;
+}
+.group-name{
+    width: 218px;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+.interval-title{
+    float: left;
+    width: 75px;
+    margin-top: 6px;
+}
+.interval-box{
+    float: left;
+}
+.interval-input{
+    width: 90px;
+    margin: 0 8px 0 6px;
+    border-radius: 2px;
+}
+.scale-input{
+    width: 38px;
+    margin-left: 10px;
+    border-radius: 2px;
+}
+.interval-div{
+    display: inline-block;
+    width: 90px;
+}
+.interval-item{
+    margin-bottom: 5px;
+}
+.btn-div{
+    padding: 10px 0 20px 10px;
+    box-sizing: border-box;
+}
+.add{
+    margin-left: 5px;
+}
+.add-table-style{
+    border: 1px solid #f4f4f4;
+    margin-bottom: 20px;
+}
+.margin-r-10{
+    margin-right: 10px;
+}
+/*基础资料新增返点比例样式  结束*/
+/**保险公司的返点配置页面**/
+.scenario-div{
+    display: inline-block;
+    margin-left:100px;
+}
+.list-div{
+    margin-right:8px;
+    display:inline-block;
+}
+/*.select-div{*/
+   /*width:260px;*/
+    /*height:40px;*/
+/*}*/
+/*.select-div span{*/
+    /*float:right;*/
+    /*margin-right:200px;*/
+/*}*/
+/*.select-div select{*/
+    /*margin-left:70px;*/
+    /*margin-top:5px;*/
+    /*margin-bottom:10px;*/
+/*}*/
+.select-span-title{
+    display: inline-block;
+    width: 57px;
+}
+.scenario-input{
+    height: 25px;
+    width: 38px;
+    margin: 10px;
+}
+.opa-check{
+    font-size: 12px;
+    width: 20px;
+    height: 18px;
+}
+.layout-div{
+    margin-left:25px;
+}
+/**保险公司的返点配置页面**/
+/*奖励金配置样式 开始*/
+ .dispose{
+     margin: 21px 0 10px 62px;
+ }
+ .area-dispose-box,.store-dispose-box{
+     margin: 0 0 10px 70px;
+ }
+ .area-dispose-item{
+     margin-top: 10px;
+ }
+.area-dispose-item input{
+    padding-left: 0;
+    width: 28px;
+}
+ul.area-dispose-item li{
+    display: inline-block;
+}
+.insurance-box-row{
+    margin-left: 20px;
+}
+.insurance-box-outer{
+    border-top: 1px solid #d2d6de;
+}
+.title-margin{
+    margin-top: 14px;
+}
+.dispose-condition-item{
+    display: inline-block;
+    margin-right: 40px;
+}
+.second-level-box{
+    float: left;
+    width: 950px;
+}
+.second-level-box li{
+    display: inline-block;
+}
+/*奖励金配置样式 结束*/
+.mdsug {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    border: 1px solid #dddddd;
+    background: #f4f4f4;
+    width: 162px;
+    line-height: 30px;
+    left: 285px;
+    top: 228px;
+    border-top: none;
+}
+.mdsug li {
+    line-height: 30px;
+    padding: 2px 10px;
+    border-top: 1px solid #dddddd;
+    cursor: pointer;
+}
+.mdsug li:hover {
+    background: #FFFFFF;
+}
+.cxdate {
+    width: 115px;
+    height: 20px;
+    padding: 6px 25px 6px 10px;
+    background: #f4f4f4 url("/static/img/dd.gif") no-repeat right;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #444444;
+    margin: 0 10px;
+}
+.float-left{
+    float: left!important;
+}
+.compulsory-box-title{
+    padding-top: 14px;
+}
+.ver-align{
+    vertical-align: middle;
+}
+
+.storeInput {
+    width: 150px!important;
+    text-indent: 5px;
+    box-sizing: border-box;
+}
+.selectQueryArea {
+    position: relative;
+}
+.selectQuery {
+    position: absolute;
+    top: 10px;
+    width: 150px;
+    background-color: #fff;
+    font-size: 14px;
+}
+.selectQuery>li {
+    border: 1px solid #ddd ;
+    background-color: #f4f4f4;
+    border-bottom: none;
+    min-height: 20px;
+    padding: 5px;
+}
+.selectQuery>li:hover {
+    background-color: #fff;
+}
+.selectQuery :last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+/*覆盖基础css 开始*/
+.mana-table thead tr, .mana-table tbody tr:nth-of-type(even){
+    background:none;
+}
+.mana-table tbody >tr,.mana-table tbody >tr tbody tr{
+    background: #f9f9f9;
+}
+.mana-table > thead>tr,
+.mana-table > tbody>tr:nth-of-type(even),
+.mana-table > thead>tr tbody tr,
+.mana-table > tbody>tr:nth-of-type(even) tbody tr{
+    background: #fff;
+}
+/*覆盖基础css 结束*/

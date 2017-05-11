@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <dubbo:provider timeout="60000" />
+
+    <!--centerCarCate,车型下的分类信息-->
+    <bean id="insuranceCompareService" class="com.tqmall.mana.server.InsuranceCompareServiceImpl" />
+    <dubbo:service interface="com.tqmall.mana.client.service.InsuranceCompareService"
+                   ref="insuranceCompareService" version="${dubbo.service.version}" owner="xigeng.zhong"/>
+
+    <!-- 保险的dubbo服务-->
+    <import resource="dubbo-service-insurance.xml"/>
+    <!--保险对账相关dubbo服务-->
+    <import resource="dubbo-service-settle.xml"/>
+
+</beans>

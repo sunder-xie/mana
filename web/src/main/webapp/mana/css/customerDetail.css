@@ -1,0 +1,220 @@
+.owerBox {
+    width: 1040px;
+    margin: 0 auto;
+}
+.topbar {
+    font-size: 14px;
+    color: #999999;
+    line-height: 40px;
+}
+.topbar a {
+    font-size: 14px;
+    color: #999999;
+}
+.dleft {
+    float: left;
+    width: 515px;
+}
+.card-box {
+    border-top: 1px solid #287f87;
+    border-bottom: 1px solid #d2d6de;
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+.card-box h2 {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #444444;
+    border-bottom: 1px solid #f4f4f4;
+}
+.card-nav {
+    float: right;
+}
+.card-nav span {
+    display: inline-block;
+    line-height: 24px;
+    border: 1px solid #d2d6de;
+    border-radius: 2px;
+    background: #f4f4f4;
+    padding: 0 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.card-nav span.blue {
+    background: #287f87;
+    color: #FFFFFF;
+    border: 1px solid #24696f;
+}
+.tab-cont {
+    padding: 15px;
+}
+.tab-cont a{
+    color: #115599;
+    text-decoration: underline;
+}
+.tab-cont table tr {
+    background: #FFFFFF;
+    height: inherit;
+    line-height: inherit;
+    text-align: left;
+}
+.tab-cont table span {
+    display: inline-block;
+    line-height: 30px;
+    font-size: 12px;
+    color: #444444;
+}
+.tab-cont table span.tit {
+    width: 60px;
+    color: #999999;
+    text-align: right;
+    margin-right: 20px;
+}
+.tab-cont table span.tit em {
+    display: inline-block;
+    line-height: normal;
+    width: 57px;
+    /*border-left: 3px solid #f05a28;*/
+}
+.tab-cont table span.cot {
+    width: 160px;
+    margin-right: 10px;
+}
+.tab-cont table span.cotp {
+    margin-right: 10px;
+}
+.dright {
+    float: right;
+    width: 515px;
+}
+.clear {
+    clear: both;
+}
+.tab-list li {
+    padding: 0 15px;
+    display: block;
+    line-height: 39px;
+    font-size: 12px;
+    color: #999999;
+    border-bottom: 1px solid #f4f4f4;
+}
+.tab-list li.gray,.tab-list div.gray {
+    background: #f9f9f9;
+}
+.tab-list li .left {
+    float: left;
+    text-align: left;
+}
+.tab-list li .right {
+    float: right;
+    text-align: right;
+}
+.tab-list li span {
+    /*display: inline-block;*/
+    margin: 0 3px;
+}
+.tab-list li span.bigger {
+    font-weight: bold;
+    color: #444444;
+}
+.tab-list li span.cheng {
+    font-weight: bold;
+    color: #ff7800;
+}
+.tab-list li a.lian {
+    color: #115599;
+    text-decoration: underline;
+}
+.listw .left {
+    width: 70px;
+}
+.listw .right {
+    width: 414px;
+    text-align: left!important;
+}
+.gengd {
+    text-align: center;
+    background: #f9f9f9;
+    line-height: 39px;
+}
+.gengd a {
+    color: #115599;
+}
+
+.card-nav .noEditor {
+    display: inline-block;
+}
+.card-nav .editor {
+    display: none;
+}
+.customerEdit input {
+    font-size: 12px;
+    padding: 4px 6px;
+    width: 140px;
+    height: 16px;
+    border: 1px solid #dddddd;
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+.customerEdit select {
+    font-size: 12px;
+    width: 154px;
+    height: 26px;
+    border: 1px solid #dddddd;
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+.customerEdit select:disabled, .customerEdit input:disabled {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #FFFFFF;
+    background: transparent;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.customerEdit input[name="vehicleType"]:disabled {
+    width: 160px!important;
+}
+.addbox, .insureAddressBox, .insureCompanyBox{
+    display: none;
+    line-height: 30px;
+}
+.customerEdit td {
+    vertical-align: middle;
+}
+.customerEdit .addsel {
+    width: 72px;
+    margin-right: 8px;
+}
+.addsel-ext{
+    width: 140px;
+    margin-right: 8px;
+}
+
+.hasSync{
+    cursor: default !important;
+
+}
+
+.carSelectResult {
+    width: 80px!important;
+    margin-right: 5px;
+}
+.carSelectBut {
+    display: none;
+    height: 26px;
+    width: 55px;
+    background: #f4f4f4;
+    border: 1px solid #d2d6de;
+}
+
+.cot label{
+    margin-left: 7px;
+}
+.dztxt{
+    margin-left: 7px;
+}

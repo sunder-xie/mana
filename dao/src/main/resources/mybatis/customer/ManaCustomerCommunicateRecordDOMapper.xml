@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.customer.ManaCustomerCommunicateRecordDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.customer.ManaCustomerCommunicateRecordDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="customer_vehicle_id" property="customerVehicleId" jdbcType="INTEGER" />
+    <result column="customer_mobile" property="customerMobile" jdbcType="VARCHAR" />
+    <result column="communicate_channel" property="communicateChannel" jdbcType="TINYINT" />
+    <result column="communicate_date" property="communicateDate" jdbcType="TIMESTAMP" />
+    <result column="communicate_content" property="communicateContent" jdbcType="VARCHAR" />
+    <result column="recommend_shop_id" property="recommendShopId" jdbcType="INTEGER" />
+    <result column="recommend_shop_info" property="recommendShopInfo" jdbcType="VARCHAR" />
+    <result column="remark_info" property="remarkInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_create, gmt_modified, creator, modifier, customer_vehicle_id, customer_mobile, 
+    communicate_channel, communicate_date, communicate_content, recommend_shop_id, recommend_shop_info, 
+    remark_info
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mana_customer_communicate_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mana_customer_communicate_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerCommunicateRecordDO" >
+    insert into mana_customer_communicate_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="customerVehicleId != null" >
+        customer_vehicle_id,
+      </if>
+      <if test="customerMobile != null" >
+        customer_mobile,
+      </if>
+      <if test="communicateChannel != null" >
+        communicate_channel,
+      </if>
+      <if test="communicateDate != null" >
+        communicate_date,
+      </if>
+      <if test="communicateContent != null" >
+        communicate_content,
+      </if>
+      <if test="recommendShopId != null" >
+        recommend_shop_id,
+      </if>
+      <if test="recommendShopInfo != null" >
+        recommend_shop_info,
+      </if>
+      <if test="remarkInfo != null" >
+        remark_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerVehicleId != null" >
+        #{customerVehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="customerMobile != null" >
+        #{customerMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="communicateChannel != null" >
+        #{communicateChannel,jdbcType=TINYINT},
+      </if>
+      <if test="communicateDate != null" >
+        #{communicateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="communicateContent != null" >
+        #{communicateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendShopId != null" >
+        #{recommendShopId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendShopInfo != null" >
+        #{recommendShopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkInfo != null" >
+        #{remarkInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerCommunicateRecordDO" >
+    update mana_customer_communicate_record
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerVehicleId != null" >
+        customer_vehicle_id = #{customerVehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="customerMobile != null" >
+        customer_mobile = #{customerMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="communicateChannel != null" >
+        communicate_channel = #{communicateChannel,jdbcType=TINYINT},
+      </if>
+      <if test="communicateDate != null" >
+        communicate_date = #{communicateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="communicateContent != null" >
+        communicate_content = #{communicateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendShopId != null" >
+        recommend_shop_id = #{recommendShopId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendShopInfo != null" >
+        recommend_shop_info = #{recommendShopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkInfo != null" >
+        remark_info = #{remarkInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectCommunicateRecordDOList" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.param.CommonPageParam">
+    select
+    <include refid="Base_Column_List" />
+    from mana_customer_communicate_record
+    where 1 = 1
+    <if test="customerVehicleId != null">
+      and customer_vehicle_id = #{customerVehicleId,jdbcType=INTEGER}
+    </if>
+    ORDER by communicate_date DESC,gmt_create DESC
+    limit #{offerSet},#{pageSize}
+  </select>
+
+  <select id="selectCommunicateRecordDOCount" resultType="java.lang.Integer" parameterType="com.tqmall.mana.beans.param.CommonPageParam">
+    select count(1)
+    from mana_customer_communicate_record
+    where 1 = 1
+    <if test="customerVehicleId != null">
+      and customer_vehicle_id = #{customerVehicleId,jdbcType=INTEGER}
+    </if>
+    ORDER by communicate_date DESC,gmt_create DESC
+  </select>
+
+
+  <select id="selectLatestCommunicateRecordDOById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT
+    <include refid="Base_Column_List" />
+    from mana_customer_communicate_record
+    where customer_vehicle_id = #{customerVehicleId,jdbcType=INTEGER}
+    ORDER by communicate_date DESC,gmt_create DESC
+    limit 1
+  </select>
+
+</mapper>

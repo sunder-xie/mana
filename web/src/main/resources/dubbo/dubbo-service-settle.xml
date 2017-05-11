@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--保险对账-门店基础信息-->
+    <bean id="rpcSettleShopService" class="com.tqmall.mana.server.settle.RpcSettleShopServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleShopService"
+                   ref="rpcSettleShopService" version="${dubbo.service.version}" owner="xigeng.zhong"/>
+
+    <!--保险对账-服务包信息-->
+    <bean id="rpcSettleServicePackageService" class="com.tqmall.mana.server.settle.RpcSettleServicePackageServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleServicePackageService"
+                   ref="rpcSettleServicePackageService" version="${dubbo.service.version}" owner="xigeng.zhong"/>
+
+    <bean id="rpcSettleCarOwnerCheckerService"
+          class="com.tqmall.mana.server.settle.RpcSettleCarOwnerCheckerServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleCarOwnerCheckerService"
+                   ref="rpcSettleCarOwnerCheckerService" version="${dubbo.service.version}" owner="jinju.zeng"/>
+
+    <bean id="rpcSettleCompanyCheckServer" class="com.tqmall.mana.server.settle.RpcSettleCompanyCheckServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleCompanyCheckService"
+                   ref="rpcSettleCompanyCheckServer" version="${dubbo.service.version}" owner="jinju.zeng"/>
+
+    <bean id="rpcSettleShopRuleIntroductionService"
+          class="com.tqmall.mana.server.settle.RpcSettleShopRuleIntroductionServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleShopRuleIntroductionService"
+                   ref="rpcSettleShopRuleIntroductionService" version="${dubbo.service.version}" owner="xigeng.zhong"/>
+
+    <bean id="rpcSettleShopCheckDetailService"
+          class="com.tqmall.mana.server.settle.RpcSettleShopCheckDetailServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleShopCheckDetailService"
+                   ref="rpcSettleShopCheckDetailService" version="${dubbo.service.version}" owner="wenbing.zhu"/>
+
+    <!-- 结算公式相关服务 -->
+    <!--<bean id="rpcSettleFormulaConfigService" class="com.tqmall.mana.server.settle.RpcSettleFormulaConfigServiceImpl"/>-->
+    <!--<dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleFormulaConfigService"-->
+                   <!--ref="rpcSettleFormulaConfigService" version="${dubbo.service.version}" owner="hzt"/>-->
+
+    <!-- 结算金额相关服务 -->
+    <bean id="rpcSettleFeeService" class="com.tqmall.mana.server.settle.RpcSettleFeeServiceImpl"/>
+    <dubbo:service interface="com.tqmall.mana.client.service.settle.RpcSettleFeeService"
+                   ref="rpcSettleFeeService" version="${dubbo.service.version}" owner="hzt"/>
+
+
+</beans>

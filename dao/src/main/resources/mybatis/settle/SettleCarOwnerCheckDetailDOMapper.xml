@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleCarOwnerCheckDetailDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleCarOwnerCheckDetailDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="settle_service_sn" property="settleServiceSn" jdbcType="VARCHAR" />
+    <result column="insurance_order_sn" property="insuranceOrderSn" jdbcType="VARCHAR" />
+    <result column="vehicle_people_name" property="vehiclePeopleName" jdbcType="VARCHAR" />
+    <result column="vehicle_sn" property="vehicleSn" jdbcType="VARCHAR" />
+    <result column="vehicle_license" property="vehicleLicense" jdbcType="VARCHAR" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="agent_name" property="agentName" jdbcType="VARCHAR" />
+    <result column="agent_tag" property="agentTag" jdbcType="TINYINT" />
+    <result column="insurance_company_id" property="insuranceCompanyId" jdbcType="INTEGER" />
+    <result column="insurance_company_name" property="insuranceCompanyName" jdbcType="VARCHAR" />
+    <result column="sy_payable_insured_fee" property="syPayableInsuredFee" jdbcType="DECIMAL" />
+    <result column="jq_payable_insured_fee" property="jqPayableInsuredFee" jdbcType="DECIMAL" />
+    <result column="first_pay_id" property="firstPayId" jdbcType="INTEGER" />
+    <result column="first_paid_amount" property="firstPaidAmount" jdbcType="DECIMAL" />
+    <result column="gmt_first_paid" property="gmtFirstPaid" jdbcType="TIMESTAMP" />
+    <result column="first_pay_no" property="firstPayNo" jdbcType="VARCHAR" />
+    <result column="first_pay_status" property="firstPayStatus" jdbcType="BIT" />
+    <result column="second_pay_id" property="secondPayId" jdbcType="INTEGER" />
+    <result column="second_paid_amount" property="secondPaidAmount" jdbcType="DECIMAL" />
+    <result column="gmt_second_paid" property="gmtSecondPaid" jdbcType="TIMESTAMP" />
+    <result column="second_pay_no" property="secondPayNo" jdbcType="VARCHAR" />
+    <result column="second_pay_status" property="secondPayStatus" jdbcType="BIT" />
+    <result column="is_tqmall_get_paid" property="isTqmallGetPaid" jdbcType="BIT" />
+    <result column="tqmall_get_paid_people_name" property="tqmallGetPaidPeopleName" jdbcType="VARCHAR" />
+    <result column="tqmall_get_paid_time" property="tqmallGetPaidTime" jdbcType="TIMESTAMP" />
+    <result column="is_tqmall_pay_status" property="isTqmallPayStatus" jdbcType="BIT" />
+    <result column="audit_people_name" property="auditPeopleName" jdbcType="VARCHAR" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="jq_tax_fee" property="jqTaxFee" jdbcType="TIMESTAMP" />
+    <result column="new_vehicle_sn" property="newVehicleSn" jdbcType="VARCHAR" />
+    <result column="agent_account" property="agentAccount" jdbcType="VARCHAR" />
+    <result column="cooperation_mode_id" property="cooperationModeId" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, settle_service_sn, insurance_order_sn, 
+    vehicle_people_name, vehicle_sn, vehicle_license, agent_id, agent_name, agent_tag, insurance_company_id,
+    insurance_company_name, sy_payable_insured_fee, jq_payable_insured_fee,
+    first_pay_id, first_paid_amount, gmt_first_paid, first_pay_no, first_pay_status, 
+    second_pay_id, second_paid_amount, gmt_second_paid, second_pay_no, second_pay_status, 
+    is_tqmall_get_paid, tqmall_get_paid_people_name, tqmall_get_paid_time, is_tqmall_pay_status, 
+    audit_people_name, audit_time,jq_tax_fee, new_vehicle_sn,
+    agent_account, cooperation_mode_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_car_owner_check_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_car_owner_check_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleCarOwnerCheckDetailDO" >
+    insert into settle_car_owner_check_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="settleServiceSn != null" >
+        settle_service_sn,
+      </if>
+      <if test="insuranceOrderSn != null" >
+        insurance_order_sn,
+      </if>
+      <if test="vehiclePeopleName != null" >
+        vehicle_people_name,
+      </if>
+      <if test="vehicleSn != null" >
+        vehicle_sn,
+      </if>
+      <if test="vehicleLicense != null" >
+        vehicle_license,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="agentName != null" >
+        agent_name,
+      </if>
+      <if test="agentTag != null" >
+        agent_tag,
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id,
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name,
+      </if>
+      <if test="syPayableInsuredFee != null" >
+        sy_payable_insured_fee,
+      </if>
+      <if test="jqPayableInsuredFee != null" >
+        jq_payable_insured_fee,
+      </if>
+      <if test="firstPayId != null" >
+        first_pay_id,
+      </if>
+      <if test="firstPaidAmount != null" >
+        first_paid_amount,
+      </if>
+      <if test="gmtFirstPaid != null" >
+        gmt_first_paid,
+      </if>
+      <if test="firstPayNo != null" >
+        first_pay_no,
+      </if>
+      <if test="firstPayStatus != null" >
+        first_pay_status,
+      </if>
+      <if test="secondPayId != null" >
+        second_pay_id,
+      </if>
+      <if test="secondPaidAmount != null" >
+        second_paid_amount,
+      </if>
+      <if test="gmtSecondPaid != null" >
+        gmt_second_paid,
+      </if>
+      <if test="secondPayNo != null" >
+        second_pay_no,
+      </if>
+      <if test="secondPayStatus != null" >
+        second_pay_status,
+      </if>
+      <if test="isTqmallGetPaid != null" >
+        is_tqmall_get_paid,
+      </if>
+      <if test="tqmallGetPaidPeopleName != null" >
+        tqmall_get_paid_people_name,
+      </if>
+      <if test="tqmallGetPaidTime != null" >
+        tqmall_get_paid_time,
+      </if>
+      <if test="isTqmallPayStatus != null" >
+        is_tqmall_pay_status,
+      </if>
+      <if test="auditPeopleName != null" >
+        audit_people_name,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="agentAccount != null" >
+        agent_account,
+      </if>
+      <if test="cooperationModeId != null" >
+        cooperation_mode_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleServiceSn != null" >
+        #{settleServiceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceOrderSn != null" >
+        #{insuranceOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclePeopleName != null" >
+        #{vehiclePeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleSn != null" >
+        #{vehicleSn,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleLicense != null" >
+        #{vehicleLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentTag != null" >
+        #{agentTag},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        #{insuranceCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        #{insuranceCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="syPayableInsuredFee != null" >
+        #{syPayableInsuredFee,jdbcType=DECIMAL},
+      </if>
+      <if test="jqPayableInsuredFee != null" >
+        #{jqPayableInsuredFee,jdbcType=DECIMAL},
+      </if>
+      <if test="firstPayId != null" >
+        #{firstPayId,jdbcType=INTEGER},
+      </if>
+      <if test="firstPaidAmount != null" >
+        #{firstPaidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtFirstPaid != null" >
+        #{gmtFirstPaid,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPayNo != null" >
+        #{firstPayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstPayStatus != null" >
+        #{firstPayStatus,jdbcType=BIT},
+      </if>
+      <if test="secondPayId != null" >
+        #{secondPayId,jdbcType=INTEGER},
+      </if>
+      <if test="secondPaidAmount != null" >
+        #{secondPaidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtSecondPaid != null" >
+        #{gmtSecondPaid,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondPayNo != null" >
+        #{secondPayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="secondPayStatus != null" >
+        #{secondPayStatus,jdbcType=BIT},
+      </if>
+      <if test="isTqmallGetPaid != null" >
+        #{isTqmallGetPaid,jdbcType=BIT},
+      </if>
+      <if test="tqmallGetPaidPeopleName != null" >
+        #{tqmallGetPaidPeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tqmallGetPaidTime != null" >
+        #{tqmallGetPaidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isTqmallPayStatus != null" >
+        #{isTqmallPayStatus,jdbcType=BIT},
+      </if>
+      <if test="auditPeopleName != null" >
+        #{auditPeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentAccount != null" >
+        #{agentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationModeId != null" >
+        #{cooperationModeId},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleCarOwnerCheckDetailDO" >
+    update settle_car_owner_check_detail
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleServiceSn != null" >
+        settle_service_sn = #{settleServiceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceOrderSn != null" >
+        insurance_order_sn = #{insuranceOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclePeopleName != null" >
+        vehicle_people_name = #{vehiclePeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleSn != null" >
+        vehicle_sn = #{vehicleSn,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleLicense != null" >
+        vehicle_license = #{vehicleLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id = #{insuranceCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name = #{insuranceCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="syPayableInsuredFee != null" >
+        sy_payable_insured_fee = #{syPayableInsuredFee,jdbcType=DECIMAL},
+      </if>
+      <if test="jqPayableInsuredFee != null" >
+        jq_payable_insured_fee = #{jqPayableInsuredFee,jdbcType=DECIMAL},
+      </if>
+      <if test="firstPayId != null" >
+        first_pay_id = #{firstPayId,jdbcType=INTEGER},
+      </if>
+      <if test="firstPaidAmount != null" >
+        first_paid_amount = #{firstPaidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtFirstPaid != null" >
+        gmt_first_paid = #{gmtFirstPaid,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPayNo != null" >
+        first_pay_no = #{firstPayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstPayStatus != null" >
+        first_pay_status = #{firstPayStatus,jdbcType=BIT},
+      </if>
+      <if test="secondPayId != null" >
+        second_pay_id = #{secondPayId,jdbcType=INTEGER},
+      </if>
+      <if test="secondPaidAmount != null" >
+        second_paid_amount = #{secondPaidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtSecondPaid != null" >
+        gmt_second_paid = #{gmtSecondPaid,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondPayNo != null" >
+        second_pay_no = #{secondPayNo,jdbcType=VARCHAR},
+      </if>
+      <if test="secondPayStatus != null" >
+        second_pay_status = #{secondPayStatus,jdbcType=BIT},
+      </if>
+      <if test="isTqmallGetPaid != null" >
+        is_tqmall_get_paid = #{isTqmallGetPaid,jdbcType=BIT},
+      </if>
+      <if test="tqmallGetPaidPeopleName != null" >
+        tqmall_get_paid_people_name = #{tqmallGetPaidPeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="tqmallGetPaidTime != null" >
+        tqmall_get_paid_time = #{tqmallGetPaidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isTqmallPayStatus != null" >
+        is_tqmall_pay_status = #{isTqmallPayStatus,jdbcType=BIT},
+      </if>
+      <if test="auditPeopleName != null" >
+        audit_people_name = #{auditPeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newVehicleSn != null" >
+        new_vehicle_sn = #{newVehicleSn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <sql id="Condition">
+    <where>
+      is_deleted='N'
+      <if test="vehiclePeopleName!=null">
+        and vehicle_people_name=#{vehiclePeopleName}
+      </if>
+      <if test="vehicleSn!=null">
+        and (vehicle_sn=#{vehicleSn} or new_vehicle_sn=#{vehicleSn})
+      </if>
+      <if test="insuranceOrderSn!=null">
+        and insurance_order_sn=#{insuranceOrderSn}
+      </if>
+      <if test="secondPayNo!=null">
+        and second_pay_no=#{secondPayNo}
+      </if>
+      <if test="firstPayNo!=null">
+        and first_pay_no=#{firstPayNo}
+      </if>
+      <if test="secondPayStatus!=null">
+        and second_pay_status=#{secondPayStatus}
+      </if>
+      <if test="gmtFirstPaidStart!=null">
+        and gmt_first_paid &gt;= #{gmtFirstPaidStart}
+      </if>
+      <if test="gmtFirstPaidEnd!=null">
+        and gmt_first_paid &lt; #{gmtFirstPaidEnd}
+      </if>
+      <if test="gmtSecondPaidStart!=null">
+        and gmt_second_paid &gt;= #{gmtSecondPaidStart}
+      </if>
+      <if test="gmtSecondPaidEnd!=null">
+        and gmt_second_paid &lt; #{gmtSecondPaidEnd}
+      </if>
+      <if test="agentName!=null">
+        and agent_name=#{agentName}
+      </if>
+      <if test="isTqmallPayStatus!=null">
+        and is_tqmall_pay_status=#{isTqmallPayStatus}
+      </if>
+      <if test="isTqmallGetPaid!=null">
+        and is_tqmall_get_paid=#{isTqmallGetPaid}
+      </if>
+      <if test="insuranceCompanyId!=null">
+        and insurance_company_id=#{insuranceCompanyId}
+      </if>
+      <if test="settleServiceSn!=null">
+        and settle_service_sn=#{settleServiceSn}
+      </if>
+      <if test="agentTag != null">
+        and agent_tag=#{agentTag}
+      </if>
+    </where>
+  </sql>
+
+  <select id="getCountByCondation" resultType="java.lang.Integer" parameterType="java.util.Map">
+    select count(*) from
+    (SELECT insurance_order_sn from settle_car_owner_check_detail
+    <include refid="Condition" />
+    group by insurance_order_sn) as a
+  </select>
+
+  <select id="getCarOwnerCheckDetailForPageByInsuranceOrderSnList" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from settle_car_owner_check_detail
+    where is_deleted='N' and insurance_order_sn in
+    <foreach collection="insuranceOrderSnList" item="item" index="index" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+    order by gmt_first_paid desc
+  </select>
+
+  <select id="getInsuranceFeeTotalAmount" parameterType="java.util.HashMap" resultType="com.tqmall.mana.beans.BO.settle.SettleCarOwnerAmountSumBO">
+    SELECT
+    sum(first_paid_amount) as  firstPayTotalAmount,
+    sum(second_paid_amount) as secondPayTotalAmount,
+    sum(sy_payable_insured_fee) as syTotalPayableInsuredFee,
+    sum(jq_payable_insured_fee) as jqTotalPayableInsuredFee,
+    sum(jq_tax_fee) as totalJqTaxFee
+    from settle_car_owner_check_detail
+    <include refid="Condition" />
+  </select>
+
+
+  <select id="selectByPackageOrderSn" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_car_owner_check_detail
+    where settle_service_sn = #{packageOrderSn}
+    and is_deleted='N'
+    limit 1
+  </select>
+
+    <update id="updateConfirmMoneyStatusByIds">
+        update settle_car_owner_check_detail
+        set is_tqmall_get_paid=#{status},gmt_modified=now(),tqmall_get_paid_people_name=#{operator},tqmall_get_paid_time=now()
+        where id in
+        <foreach collection="idList" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updatePayStatusById">
+        update settle_car_owner_check_detail
+        set is_tqmall_pay_status=#{status},gmt_modified=now(),audit_time=now(),audit_people_name=#{operator}
+        where id=#{id}
+    </update>
+
+  <update id="updateByInsuranceOrderSn">
+    update settle_car_owner_check_detail
+    set gmt_modified=now(),sy_payable_insured_fee=#{syPayableInsuredFee},jq_payable_insured_fee=#{jqPayableInsuredFee},jq_tax_fee=#{texFee}
+    where is_deleted='N' and insurance_order_sn=#{insuranceOrderSn}
+  </update>
+
+  <select id="getInsuranceOrderSnForPage" resultType="java.lang.String">
+    select insurance_order_sn
+    from settle_car_owner_check_detail
+    <include refid="Condition" />
+    group by insurance_order_sn
+    order by gmt_first_paid desc
+    <if test="start!=null and limit!=null">
+      limit #{start},#{limit}
+    </if>
+  </select>
+
+  <select id="getCarOwnerCheckDetailDOByIdListAndTqmallGetPaidStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_car_owner_check_detail
+    where is_deleted='N' and is_tqmall_pay_status=#{status} and id in
+    <foreach collection="idList" item="item" index="index" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="getCarOwnerCheckerDetailDOByIdAndTqmallPayStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_car_owner_check_detail
+    where is_deleted='N' and is_tqmall_pay_status=#{payStatus} and id=#{id}
+  </select>
+
+
+  <select id="getDeletedData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_car_owner_check_detail
+    where is_deleted='Y'
+    and insurance_order_sn in
+    <foreach collection="insuranceOrderSnList" item="item" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+</mapper>

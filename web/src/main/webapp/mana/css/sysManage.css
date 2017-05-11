@@ -1,0 +1,132 @@
+
+.common-table{
+    border-spacing: 0;
+    width: 100%;
+}
+.common-table th,.common-table td{
+    padding: 0.5em 0.5em;
+    border: solid 1px #dcdcdc;
+}
+.common-table th{
+    text-align: right;
+    font-weight: bold;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.common-table input,.common-table select{
+    font-size: 14px;
+    width: 190px;
+    border: 1px solid #ccc;
+    padding: 4px 5px;
+}
+
+.content-div{
+    padding-top: 25px;
+}
+.content-div label{
+    font-size: 14px;
+    color: orangered;
+}
+.search-div{
+    font-size: 14px;
+    font-weight: bold;
+}
+.search-div input{
+    padding: 6px 6px;
+    margin-right: 15px;
+}
+.search-div button{
+    margin-right: 10px;
+}
+.remark-span{
+    color:green;
+    margin-left:5px;
+}
+.z-tree-ul{
+    max-height:250px;
+    width:100%;
+    overflow:auto;
+}
+.clear-span{
+    cursor:pointer;
+    color:green;
+    margin-left:5px;
+}
+.clear-span:hover{
+    color: red;
+}
+
+/* btn样式 */
+.btn {
+    border-width: 0;
+    padding: 7px 14px;
+    font-size: 14px;
+    outline: none !important;
+    background-image: none !important;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 3px !important;
+}
+
+.btn-sm{
+    font-size: 12px;
+    padding: 2px 5px;
+}
+
+.blue.btn {
+    color: #FFFFFF;
+    background-color: #4B8DF8;
+}
+.green.btn {
+    color: #FFFFFF;
+    background-color: #35aa47;
+}
+.purple.btn {
+    color: #FFFFFF;
+    background-color: #8E44AD;
+}
+.red.btn {
+    color: #FFFFFF;
+    background-color: #d84a38;
+}
+.yellow.btn {
+    color: #FFFFFF;
+    background-color: #FFB848;
+}
+
+/* table */
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+.table-bordered {
+    border: 1px solid #ddd;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+}
+.table.table-bordered thead > tr > th {
+    border-bottom: 0;
+}
+
+.table thead tr th {
+    font-size: 14px;
+    font-weight: 600;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #ddd;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}

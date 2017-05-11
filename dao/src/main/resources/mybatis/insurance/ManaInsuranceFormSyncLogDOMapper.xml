@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.insurance.ManaInsuranceFormSyncLogDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.insurance.ManaInsuranceFormSyncLogDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="customer_vehicle_id" property="customerVehicleId" jdbcType="INTEGER" />
+    <result column="insurance_form_id" property="insuranceFormId" jdbcType="INTEGER" />
+    <result column="insure_company_id" property="insureCompanyId" jdbcType="INTEGER" />
+    <result column="cooperation_mode" property="cooperationMode" jdbcType="TINYINT" />
+    <result column="vehicle_owner_cert_type" property="vehicleOwnerCertType" jdbcType="VARCHAR" />
+    <result column="vehicle_owner_cert_code" property="vehicleOwnerCertCode" jdbcType="VARCHAR" />
+    <result column="vehicle_owner_name" property="vehicleOwnerName" jdbcType="VARCHAR" />
+    <result column="vehicle_owner_phone" property="vehicleOwnerPhone" jdbcType="VARCHAR" />
+    <result column="agent_type" property="agentType" jdbcType="TINYINT" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="agent_name" property="agentName" jdbcType="VARCHAR" />
+    <result column="insure_start_time" property="insureStartTime" jdbcType="TIMESTAMP" />
+    <result column="insure_end_time" property="insureEndTime" jdbcType="TIMESTAMP" />
+    <result column="insured_province" property="insuredProvince" jdbcType="VARCHAR" />
+    <result column="insured_city" property="insuredCity" jdbcType="VARCHAR" />
+    <result column="insured_province_code" property="insuredProvinceCode" jdbcType="VARCHAR" />
+    <result column="insured_city_code" property="insuredCityCode" jdbcType="VARCHAR" />
+    <result column="licence_plate" property="licencePlate" jdbcType="VARCHAR" />
+    <result column="has_licence_plate" property="hasLicencePlate" jdbcType="TINYINT" />
+    <result column="config_type" property="configType" jdbcType="VARCHAR" />
+    <result column="engine_no" property="engineNo" jdbcType="VARCHAR" />
+    <result column="vin_no" property="vinNo" jdbcType="VARCHAR" />
+    <result column="vehicle_reg_date" property="vehicleRegDate" jdbcType="TIMESTAMP" />
+    <result column="insurance_basic_id" property="insuranceBasicId" jdbcType="INTEGER"/>
+    <result column="is_virtual" property="isVirtual" jdbcType="TINYINT" />
+    <result column="virtual_insurance_form_id" property="virtualInsuranceFormId" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, customer_vehicle_id, 
+    insurance_form_id, insure_company_id, cooperation_mode, vehicle_owner_cert_type, 
+    vehicle_owner_cert_code, vehicle_owner_name, vehicle_owner_phone, agent_type, agent_id, 
+    agent_name, insure_start_time, insure_end_time, insured_province,
+    insured_city, insured_province_code, insured_city_code, licence_plate, has_licence_plate, 
+    config_type, engine_no, vin_no, vehicle_reg_date, insurance_basic_id,
+    is_virtual, virtual_insurance_form_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mana_insurance_form_sync_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mana_insurance_form_sync_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.insurance.ManaInsuranceFormSyncLogDO" >
+    insert into mana_insurance_form_sync_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="customerVehicleId != null" >
+        customer_vehicle_id,
+      </if>
+      <if test="insuranceFormId != null" >
+        insurance_form_id,
+      </if>
+      <if test="insureCompanyId != null" >
+        insure_company_id,
+      </if>
+      <if test="cooperationMode != null" >
+        cooperation_mode,
+      </if>
+      <if test="vehicleOwnerCertType != null" >
+        vehicle_owner_cert_type,
+      </if>
+      <if test="vehicleOwnerCertCode != null" >
+        vehicle_owner_cert_code,
+      </if>
+      <if test="vehicleOwnerName != null" >
+        vehicle_owner_name,
+      </if>
+      <if test="vehicleOwnerPhone != null" >
+        vehicle_owner_phone,
+      </if>
+      <if test="agentType != null" >
+        agent_type,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="agentName != null" >
+        agent_name,
+      </if>
+      <if test="insureStartTime != null" >
+        insure_start_time,
+      </if>
+      <if test="insureEndTime != null" >
+        insure_end_time,
+      </if>
+      <if test="insuredProvince != null" >
+        insured_province,
+      </if>
+      <if test="insuredCity != null" >
+        insured_city,
+      </if>
+      <if test="insuredProvinceCode != null" >
+        insured_province_code,
+      </if>
+      <if test="insuredCityCode != null" >
+        insured_city_code,
+      </if>
+      <if test="licencePlate != null" >
+        licence_plate,
+      </if>
+      <if test="hasLicencePlate != null" >
+        has_licence_plate,
+      </if>
+      <if test="configType != null" >
+        config_type,
+      </if>
+      <if test="engineNo != null" >
+        engine_no,
+      </if>
+      <if test="vinNo != null" >
+        vin_no,
+      </if>
+      <if test="vehicleRegDate != null" >
+        vehicle_reg_date,
+      </if>
+      <if test="insuranceBasicId != null">
+        insurance_basic_id,
+      </if>
+      <if test="isVirtual != null">
+        is_virtual,
+      </if>
+      <if test="virtualInsuranceFormId != null">
+        virtual_insurance_form_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerVehicleId != null" >
+        #{customerVehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceFormId != null" >
+        #{insuranceFormId,jdbcType=INTEGER},
+      </if>
+      <if test="insureCompanyId != null" >
+        #{insureCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="cooperationMode != null" >
+        #{cooperationMode,jdbcType=TINYINT},
+      </if>
+      <if test="vehicleOwnerCertType != null" >
+        #{vehicleOwnerCertType,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleOwnerCertCode != null" >
+        #{vehicleOwnerCertCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleOwnerName != null" >
+        #{vehicleOwnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleOwnerPhone != null" >
+        #{vehicleOwnerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="agentType != null" >
+        #{agentType,jdbcType=TINYINT},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="insureStartTime != null" >
+        #{insureStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insureEndTime != null" >
+        #{insureEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuredProvince != null" >
+        #{insuredProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCity != null" >
+        #{insuredCity,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredProvinceCode != null" >
+        #{insuredProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCityCode != null" >
+        #{insuredCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="licencePlate != null" >
+        #{licencePlate,jdbcType=VARCHAR},
+      </if>
+      <if test="hasLicencePlate != null" >
+        #{hasLicencePlate,jdbcType=TINYINT},
+      </if>
+      <if test="configType != null" >
+        #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vinNo != null" >
+        #{vinNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleRegDate != null" >
+        #{vehicleRegDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuranceBasicId != null">
+        #{insuranceBasicId},
+      </if>
+      <if test="isVirtual != null">
+        #{isVirtual},
+      </if>
+      <if test="virtualInsuranceFormId != null">
+        #{virtualInsuranceFormId},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.insurance.ManaInsuranceFormSyncLogDO" >
+    update mana_insurance_form_sync_log
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerVehicleId != null" >
+        customer_vehicle_id = #{customerVehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceFormId != null" >
+        insurance_form_id = #{insuranceFormId,jdbcType=INTEGER},
+      </if>
+      <if test="insureCompanyId != null" >
+        insure_company_id = #{insureCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="cooperationMode != null" >
+        cooperation_mode = #{cooperationMode,jdbcType=TINYINT},
+      </if>
+      <if test="vehicleOwnerCertType != null" >
+        vehicle_owner_cert_type = #{vehicleOwnerCertType,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleOwnerCertCode != null" >
+        vehicle_owner_cert_code = #{vehicleOwnerCertCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleOwnerName != null" >
+        vehicle_owner_name = #{vehicleOwnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleOwnerPhone != null" >
+        vehicle_owner_phone = #{vehicleOwnerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="agentType != null" >
+        agent_type = #{agentType,jdbcType=TINYINT},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="insureStartTime != null" >
+        insure_start_time = #{insureStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insureEndTime != null" >
+        insure_end_time = #{insureEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuredProvince != null" >
+        insured_province = #{insuredProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCity != null" >
+        insured_city = #{insuredCity,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredProvinceCode != null" >
+        insured_province_code = #{insuredProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCityCode != null" >
+        insured_city_code = #{insuredCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="licencePlate != null" >
+        licence_plate = #{licencePlate,jdbcType=VARCHAR},
+      </if>
+      <if test="hasLicencePlate != null" >
+        has_licence_plate = #{hasLicencePlate,jdbcType=TINYINT},
+      </if>
+      <if test="configType != null" >
+        config_type = #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        engine_no = #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vinNo != null" >
+        vin_no = #{vinNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleRegDate != null" >
+        vehicle_reg_date = #{vehicleRegDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuranceBasicId != null">
+        insurance_basic_id = #{insuranceBasicId},
+      </if>
+      <if test="isVirtual != null">
+        is_virtual = #{isVirtual},
+      </if>
+      <if test="virtualInsuranceFormId != null">
+        virtual_insurance_form_id = #{virtualInsuranceFormId},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--limit #{offerSet},#{pageSize}-->
+  <select id="selectInsuranceFormList" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.param.CommonPageParam">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from mana_insurance_form_sync_log
+    where is_deleted = 'N'
+    and customer_vehicle_id = #{customerVehicleId,jdbcType=INTEGER}
+    order by gmt_create DESC
+  </select>
+
+</mapper>

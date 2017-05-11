@@ -1,0 +1,75 @@
+CREATE TABLE `mana_insurance_item` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除,Y删除,N未删除',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '更新时间',
+  `insurance_basic_id` int(11) unsigned NOT NULL COMMENT '保单项目id,关联insurance_basic.id',
+  `insurance_type` tinyint(3) unsigned NOT NULL default 0 COMMENT '保险类别:1表示交强险,2表示商业险',
+  `is_deductible` tinyint(3) unsigned NOT NULL DEFAULT '2' COMMENT '是否不计免赔:0表示不记免赔,1表示记录免赔,2表示没有免赔选项',
+  `insurance_name` varchar(100) not null DEFAULT '' COMMENT '险别名称',
+  `insurance_amount` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '保险额度',
+  `insurance_fee` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '保费(安心)',
+`insurance_fee_ren_bao` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '保费(人保)',
+ren_bao_remark varchar(300) not null default '' comment '人保备注',
+`insurance_fee_ping_an` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '保费(平安)',
+ping_an_remark varchar(300) not null default '' comment '平安备注',
+  PRIMARY KEY (`id`),
+  key idx_basic_id(insurance_basic_id)
+) COMMENT='mana项目保单详细险别表';
+
+
+CREATE TABLE `mana_other_insurance_relation` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除,Y删除，N未删除',
+  `gmt_modified` datetime NOT NULL DEFAULT '1970-01-01 12:00:00',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00',
+  `anxin_insurance_name` varchar(57) NOT NULL DEFAULT '' COMMENT '安心保险的项目名',
+  `ping_an_insurance_name` varchar(57) NOT NULL DEFAULT '' COMMENT '平安保险对应的项目名字段',
+  `ping_an_deductible` varchar(57) NOT NULL DEFAULT '' COMMENT '平安保险对应的项目的不计免赔字段',
+  `ren_insurance_name` varchar(57) NOT NULL DEFAULT '' COMMENT '人保对应的项目名字段',
+  `ren_deductible` varchar(57) NOT NULL DEFAULT '' COMMENT '人保对应的项目的不计免赔字段',
+  PRIMARY KEY (`id`)
+) COMMENT='安心险种对应其他保险的字段基础表';
+
+
+### 2016-12-06 发放电影券
+create table mana_coupon_send_log(
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  creator varchar(20) not null default '' comment '创建人',
+  send_date varchar(10) not null default '' comment '发送日期:yyyy-MM-dd',
+  send_content varchar(1000) not null default '' comment '发送内容',
+  send_status tinyint unsigned not null default 1 comment '状态 1:发送成功 2:发送失败',
+  send_mobile varchar(11) not null default '' comment '发送手机号',
+  coupon_num int unsigned not null default 1 comment '发送数量',
+  coupon_type_id int unsigned not null default 0 comment '优惠券类型id',
+  primary key(id)
+)DEFAULT CHARSET=utf8 comment '优惠券发送记录表';
+
+create table mana_coupon(
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除,Y删除,N未删除',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '更新时间',
+  creator varchar(20) not null default '' comment '创建人',
+  modifier varchar(20) not null default '' comment '修改人',
+  coupon_content varchar(100) not null default '' comment '优惠券内容',
+  coupon_type_id int unsigned not null default 0 comment '优惠券类型id',
+  coupon_status tinyint unsigned not null default 0 comment '状态 0:待发送 1:发送成功 2:发送失败 3:已失效',
+  start_date datetime not null comment '有效期开始时间',
+  end_date datetime not null comment '有效期结束时间',
+  primary key(id)
+)DEFAULT CHARSET=utf8 comment '优惠券表';
+
+create table mana_coupon_type(
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除,Y删除,N未删除',
+  `gmt_create` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT '1970-01-01 12:00:00' COMMENT '更新时间',
+  creator varchar(20) not null default '' comment '创建人',
+  modifier varchar(20) not null default '' comment '修改人',
+  type_name varchar(30) not null default '' comment '类型名称',
+  primary key(id)
+)DEFAULT CHARSET=utf8 comment '优惠券类型表';
+
+insert into mana_coupon_type(gmt_create, type_name) value(now(), '电影票');

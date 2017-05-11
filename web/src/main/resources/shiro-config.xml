@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!-- -->
+    <bean id="sysUserRealm" class="com.tqmall.mana.web.common.shiro.SysUserRealm" />
+
+
+    <!-- 会话ID生成器 -->
+    <bean id="sessionIdGenerator"
+          class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+    <!-- 会话DAO -->
+    <bean id="shiroSessionDao"
+          class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+    </bean>
+    <!-- 会话Cookie模板 -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="sid"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="-1"/>
+    </bean>
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- 超时时间1天 -->
+        <property name="globalSessionTimeout" value="86400000"/>
+        <!-- 定时检查失效的session -->
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <property name="deleteInvalidSessions" value="true"/>
+        <property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <property name="sessionDAO" ref="shiroSessionDao"/>
+    </bean>
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="sysUserRealm" />
+        <!--<property name="realms">-->
+            <!--<list><ref bean="myRealm"/></list>-->
+        <!--</property>-->
+        <property name="sessionManager" ref="sessionManager" />
+        <!-- 缓存管理器 -->
+        <!--<property name="cacheManager" ref="shiroCacheManager" />-->
+    </bean>
+
+    <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+    <!--
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod"
+                  value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+    -->
+
+    <!-- Subject logout 两种形式
+        1、使用 shiro自带的LogoutFilter
+            需要配置 filterChainDefinitions /mega/user/logout = logout
+        2、自己实现
+            该项目使用自己实现方式
+
+    <bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+        <property name="redirectUrl" value="/mega/user/loginPage" />
+    </bean>
+    -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <!-- shiro认证失败，重定向到下面这个路径，这个路径spring security会再次拦截，重定向到openid登录页面 -->
+        <property name="loginUrl" value="/common/unauthorized" />
+
+        <property name="successUrl" value="/home" />
+        <property name="unauthorizedUrl" value="/unauthorized.html" />
+        <property name="filters">
+            <map>
+                <!-- 自定义的过滤器，key可直接使用在 filterChainDefinitions 中，例如：/common/** = myKey -->
+                <entry key="user">
+                    <bean class="com.tqmall.mana.web.common.shiro.SysUserFilter" />
+                </entry>
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /common/unauthorized = anon
+                /common/** = user
+
+                <!-- 保险比价 -->
+                /priceParity/** = user,perms[priceParity]
+
+                <!-- 优惠券 -->
+                /coupon = user,perms[coupon:listPage]
+                /coupon/sendCoupon = user,perms[coupon:send]
+                /coupon/getSendLogPage = user,perms[coupon:get]
+                /coupon/exportSendLog = user,perms[coupon:export]
+
+                <!-- 车主管理 -->
+                /customer/home = user,perms[customer:home]
+                /customer/addPage = user,perms[customer:add]
+                /customer/listPage = user,perms[customer:list]
+                /customer/detailPage = user,perms[customer:detail]
+
+                <!-- 车险结算管理 -->
+                /settle/insuranceCompanyRule/listPage = user,perms[companyRule:list]
+                /settle/insuranceCompanyRule/rulePage = user,perms[companyRule:manage]
+                /settle/insuranceCompanyRule/** = user
+
+                <!-- 系统权限 -->
+                /sys/userPage = user,perms[sys:user]
+                /sys/rolePage = user,perms[sys:role]
+                /sys/resourcePage = user,perms[sys:resource]
+                /sys/** = user,perms[sys:operate]
+
+                <!-- 清理测试数据 -->
+                /clearTestData/** = user
+                <!-- 恢复被删除数据 -->
+                /recoveryClearedData/** = user
+                <!-- 保险数据同步 -->
+                /insuranceDataSync/** = user
+
+                /** = anon
+            </value>
+        </property>
+    </bean>
+
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <!--
+        使用shiro的注解方式，必须在springmvc配置文件里面配置aop
+        没试成功，所以使用配置文件方式控制权限
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    -->
+
+
+</beans>

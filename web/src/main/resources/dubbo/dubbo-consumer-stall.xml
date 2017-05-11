@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <!-- 短信接口 -->
+    <dubbo:reference interface="com.tqmall.tqmallstall.service.sms.AppSmsService"
+                     id="appSmsService" version="${dubbo.consumer.stall.version}" check="true"/>
+
+    <!-- 地区接口 -->
+    <dubbo:reference interface="com.tqmall.tqmallstall.service.common.AppRegionService"
+                     id="appRegionService" version="${dubbo.consumer.stall.version}" check="false"/>
+
+    <!--开放地区-->
+    <dubbo:reference interface="com.tqmall.tqmallstall.service.region.RpcRegionService"
+                     id="rpcRegionService" version="${dubbo.consumer.stall.version}" check="false"/>
+</beans>

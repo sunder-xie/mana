@@ -1,0 +1,263 @@
+.owerBox {
+    width: 1040px;
+    margin: 0 auto;
+}
+.topbar {
+    font-size: 14px;
+    color: #999999;
+    line-height: 40px;
+}
+.topbar a {
+    font-size: 14px;
+    color: #999999;
+}
+.search-box {
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.search-box input {
+    height: 20px;
+    padding: 9px 15px;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #999999;
+    overflow: hidden;
+    width: 680px;
+    margin-right: 10px;
+}
+.search-box button {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #287f87;
+    border: 1px solid #24696f;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.card-box {
+    border-top: 1px solid #287f87;
+    border-bottom: 1px solid #d2d6de;
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+.card-box h2 {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #444444;
+}
+.card-nav {
+    float: right;
+}
+.card-nav span {
+    display: inline-block;
+    padding: 0 10px;
+}
+.card-nav a {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 12px;
+    border: 1px solid #adadad;
+    color: #444444;
+    background: #eeeeee;
+}
+.bum {
+    width: 30px;
+    padding: 4px;
+    height: 20px;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+}
+.yeshu {
+    width: 30px;
+    padding: 4px;
+    height: 20px;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+}
+.fbiao {
+    width: 100%;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 10px 0;
+}
+.fbiao td {
+    height: 50px;
+    vertical-align: middle;
+    color: #444444;
+    font-size: 14px;
+}
+.laiyuan {
+    width: 123px;
+    height: 34px;
+    border: 1px solid #dddddd;
+    background: #f4f4f4;
+    color: #444444;
+    margin-left: 20px;
+}
+.baoxian {
+    width: 175px;
+    height: 34px;
+    border: 1px solid #dddddd;
+    background: #f4f4f4;
+    color: #444444;
+    margin-left: 10px;
+}
+.mdname {
+    width: 180px;
+    height: 20px;
+    padding: 6px 10px;
+    border: 1px solid #dddddd;
+    background: #f4f4f4;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+.xiam {
+    padding: 10px 20px;
+}
+.xiam button {
+    width: 100px;
+    height: 40px;
+    background: #f4f4f4;
+    border: 1px solid #d2d6de;
+    color: #999999;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+.xiam button.blue {
+    background: #287f87;
+    border: 1px solid #24696f;
+    color: #FFFFFF;
+}
+.miaos {
+    border-top: 1px solid #f4f4f4;
+    padding: 10px 20px;
+}
+.miaos button {
+    width: 100px;
+    height: 40px;
+    background: #f05a28;
+    color: #FFFFFF;
+    border: 1px solid #c45530;
+    border-radius: 2px;
+}
+.clist {
+    width: 100%;
+    font-size: 12px;
+    color: #444444;
+}
+.clist th {
+    font-weight: bold;
+    color: #333333;
+    vertical-align: middle;
+    height: 40px;
+    border-top: 1px solid #f4f4f4;
+    padding-left: 10px;
+}
+.clist td {
+    vertical-align: middle;
+    border-top: 1px solid #f4f4f4;
+    padding: 10px;
+    line-height: 20px;
+}
+.clist td a {
+    color: #115599;
+    text-decoration: underline;
+}
+.clist td .lv {
+    color: #18a55d;
+}
+.xzk {
+    margin-right: 5px;
+    vertical-align: middle;
+    background: #d7dcde;
+}
+.clist tbody.cont tr:nth-child(2n - 1) {
+    background: #f9f9f9;
+}
+.clist tbody.cont tr:hover {
+    background: #e3eced;
+}
+.cxdate {
+    width: 86px;
+    height: 20px;
+    padding: 6px 25px 6px 10px;
+    background: #f4f4f4 url("/static/img/dd.gif") no-repeat right;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #444444;
+    margin: 0 10px;
+}
+.fenye {
+    float: right;
+    line-height: normal;
+    padding-top: 5px;
+}
+.tk-q {
+    width: 790px;
+    height: 40px;
+    line-height: 40px;
+    padding: 15px 30px;
+    background: #ffffff;
+}
+.tk-q span {
+    display: inline-block;
+    margin: 0 10px;
+}
+.quans {
+    width: 190px;
+    height: 34px;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+    display: inline-block;
+    margin-right: 10px;
+}
+.qnum {
+    width: 88px;
+    height: 20px;
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+    padding: 6px 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+.faquan {
+    vertical-align: middle;
+    display: block;
+    float: right;
+    width: 100px;
+    height: 40px;
+    color: #FFFFFF;
+    background: #287f87;
+    border: 1px solid #24696f;
+    border-radius: 3px;
+}
+.mdsug {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    border: 1px solid #dddddd;
+    background: #f4f4f4;
+    width: 200px;
+    line-height: 30px;
+    left: 345px;
+    top: 330px;
+    border-top: none;
+}
+.mdsug li {
+    line-height: 30px;
+    padding: 2px 10px;
+    border-top: 1px solid #dddddd;
+    cursor: pointer;
+}
+.mdsug li:hover {
+    background: #FFFFFF;
+}

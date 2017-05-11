@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <import resource="properties.xml"/>
+
+    <context:component-scan base-package="com.tqmall.mana.web"/>
+
+    <!-- 数据转换 -->
+    <!--<bean id="dateConvert" class="com.tqmall.mana.web.common.convert.DateConvert"/>-->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+        <!--<property name="converters">-->
+            <!--<set>-->
+                <!--<ref bean="dateConvert"/>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <!-- SpringMVC自动注册 -->
+    <mvc:annotation-driven />
+
+    <mvc:default-servlet-handler/>
+
+    <!--freemarker 路径配置-->
+    <!--<bean id="freemarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">-->
+    <bean id="freemarkerConfigurer" class="com.tqmall.mana.web.common.shiro.ShiroTagFreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="preferFileSystemAccess" value="false"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="template_exception_handler">ignore</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--freemarker数据暴露-->
+    <bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="requestContextAttribute" value="request"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="order" value="1"/>
+    </bean>
+
+    <!-- html视图解析器 -->
+    <bean id="htmlViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".html"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="order" value="2"/>
+    </bean>
+
+    <mvc:interceptors>
+        <!-- 请求记录拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <mvc:exclude-mapping path="/mana/js/**"/>
+            <mvc:exclude-mapping path="/mana/css/**"/>
+            <bean id="requestRecordInterceptor" class="com.tqmall.mana.web.common.interceptor.RequestRecordInterceptor"/>
+        </mvc:interceptor>
+
+        <!-- 特殊权限拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <mvc:exclude-mapping path="/mana/js/**"/>
+            <mvc:exclude-mapping path="/mana/css/**"/>
+            <bean id="specialAuthorityInterceptor" class="com.tqmall.mana.web.common.interceptor.SpecialAuthorityInterceptor"/>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+
+</beans>
+

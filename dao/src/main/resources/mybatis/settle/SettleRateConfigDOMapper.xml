@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleRateConfigDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleRateConfigDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="rate_key" property="rateKey" jdbcType="VARCHAR" />
+    <result column="rate_value" property="rateValue" jdbcType="DECIMAL" />
+    <result column="rate_explain" property="rateExplain" jdbcType="VARCHAR" />
+    <result column="rate_type" property="rateType" jdbcType="TINYINT" />
+    <result column="insurance_company_id" property="insuranceCompanyId" jdbcType="INTEGER" />
+    <result column="insurance_company_name" property="insuranceCompanyName" jdbcType="VARCHAR" />
+    <result column="apply_range" property="applyRange" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, rate_key, rate_value, 
+    rate_explain, rate_type, insurance_company_id, insurance_company_name, apply_range
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_rate_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_rate_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleRateConfigDO" >
+    insert into settle_rate_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="rateKey != null" >
+        rate_key,
+      </if>
+      <if test="rateValue != null" >
+        rate_value,
+      </if>
+      <if test="rateExplain != null" >
+        rate_explain,
+      </if>
+      <if test="rateType != null" >
+        rate_type,
+      </if>
+      <if test="applyRange != null" >
+        apply_range,
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id,
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="rateKey != null" >
+        #{rateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="rateValue != null" >
+        #{rateValue,jdbcType=DECIMAL},
+      </if>
+      <if test="rateExplain != null" >
+        #{rateExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="rateType != null" >
+        #{rateType},
+      </if>
+      <if test="applyRange != null" >
+        #{applyRange},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        #{insuranceCompanyId},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        #{insuranceCompanyName},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleRateConfigDO" >
+    update settle_rate_config
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="rateKey != null" >
+        rate_key = #{rateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="rateValue != null" >
+        rate_value = #{rateValue,jdbcType=DECIMAL},
+      </if>
+      <if test="rateExplain != null" >
+        rate_explain = #{rateExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="rateType != null" >
+        rate_type = #{rateType},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.param.settle.RateConfigQueryPO">
+    select
+    <include refid="Base_Column_List" />
+    from settle_rate_config
+    where is_deleted='N'
+    <if test="ids != null">
+      and id in
+      <foreach collection="ids" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="insuranceCompanyId != null">
+      and insurance_company_id = #{insuranceCompanyId}
+    </if>
+    <if test="applyRange != null">
+      and apply_range = #{applyRange}
+    </if>
+  </select>
+
+</mapper>

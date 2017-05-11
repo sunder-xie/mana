@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleShopRuleItemDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleShopRuleItemDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="settle_rule_id" property="settleRuleId" jdbcType="INTEGER" />
+    <result column="settle_condition" property="settleCondition" jdbcType="TINYINT" />
+    <result column="rebate_standard" property="rebateStandard" jdbcType="TINYINT" />
+    <result column="fund_type" property="fundType" jdbcType="TINYINT" />
+    <result column="rebate_type" property="rebateType" jdbcType="TINYINT" />
+    <result column="calculate_mode" property="calculateMode" jdbcType="TINYINT" />
+    <result column="calculate_time" property="calculateTime" jdbcType="TIMESTAMP" />
+    <result column="settle_config_basic_id" property="settleConfigBasicId" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, settle_rule_id, settle_condition, 
+    rebate_standard, fund_type, rebate_type, calculate_mode, calculate_time, settle_config_basic_id, 
+    start_time, end_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_shop_rule_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_shop_rule_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopRuleItemDO" >
+    insert into settle_shop_rule_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="settleRuleId != null" >
+        settle_rule_id,
+      </if>
+      <if test="settleCondition != null" >
+        settle_condition,
+      </if>
+      <if test="rebateStandard != null" >
+        rebate_standard,
+      </if>
+      <if test="fundType != null" >
+        fund_type,
+      </if>
+      <if test="rebateType != null" >
+        rebate_type,
+      </if>
+      <if test="calculateMode != null" >
+        calculate_mode,
+      </if>
+      <if test="calculateTime != null" >
+        calculate_time,
+      </if>
+      <if test="settleConfigBasicId != null" >
+        settle_config_basic_id,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleRuleId != null" >
+        #{settleRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="settleCondition != null" >
+        #{settleCondition,jdbcType=TINYINT},
+      </if>
+      <if test="rebateStandard != null" >
+        #{rebateStandard,jdbcType=TINYINT},
+      </if>
+      <if test="fundType != null" >
+        #{fundType,jdbcType=TINYINT},
+      </if>
+      <if test="rebateType != null" >
+        #{rebateType,jdbcType=TINYINT},
+      </if>
+      <if test="calculateMode != null" >
+        #{calculateMode,jdbcType=TINYINT},
+      </if>
+      <if test="calculateTime != null" >
+        #{calculateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleConfigBasicId != null" >
+        #{settleConfigBasicId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopRuleItemDO" >
+    update settle_shop_rule_item
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleRuleId != null" >
+        settle_rule_id = #{settleRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="settleCondition != null" >
+        settle_condition = #{settleCondition,jdbcType=TINYINT},
+      </if>
+      <if test="rebateStandard != null" >
+        rebate_standard = #{rebateStandard,jdbcType=TINYINT},
+      </if>
+      <if test="fundType != null" >
+        fund_type = #{fundType,jdbcType=TINYINT},
+      </if>
+      <if test="rebateType != null" >
+        rebate_type = #{rebateType,jdbcType=TINYINT},
+      </if>
+      <if test="calculateMode != null" >
+        calculate_mode = #{calculateMode,jdbcType=TINYINT},
+      </if>
+      <if test="calculateTime != null" >
+        calculate_time = #{calculateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleConfigBasicId != null" >
+        settle_config_basic_id = #{settleConfigBasicId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <insert id="batchInsert" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopRuleItemDO" >
+    insert into settle_shop_rule_item(
+    gmt_create,creator,settle_rule_id,settle_condition,
+    rebate_standard,fund_type,rebate_type,calculate_mode,
+    settle_config_basic_id,start_time,end_time
+    )values
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.gmtCreate},#{item.creator},#{item.settleRuleId},#{item.settleCondition},
+      #{item.rebateStandard},#{item.fundType},#{item.rebateType},#{item.calculateMode},
+      #{item.settleConfigBasicId},#{item.startTime},#{item.endTime}
+      )
+    </foreach>
+  </insert>
+
+  <select id="selectShopItemCountByBasicId" resultType="java.lang.Integer">
+    select id
+    from settle_shop_rule_item
+    where is_deleted = 'N'
+    and settle_config_basic_id = #{settleConfigBasicId}
+    limit 1;
+  </select>
+
+
+  <select id="selectByRuleIds" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_shop_rule_item
+    where settle_rule_id in
+    <foreach collection="ruleIds" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and is_deleted='N'
+  </select>
+
+  <select id="selectByDO" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_shop_rule_item
+    <where>
+      is_deleted = 'N'
+      <if test="settleRuleId != null" >
+        and settle_rule_id = #{settleRuleId,jdbcType=INTEGER}
+      </if>
+      <if test="settleCondition != null" >
+        and settle_condition = #{settleCondition,jdbcType=TINYINT}
+      </if>
+      <if test="rebateStandard != null" >
+        and rebate_standard = #{rebateStandard,jdbcType=TINYINT}
+      </if>
+      <if test="fundType != null" >
+        and fund_type = #{fundType,jdbcType=TINYINT}
+      </if>
+      <if test="rebateType != null" >
+        and rebate_type = #{rebateType,jdbcType=TINYINT}
+      </if>
+      <if test="calculateMode != null" >
+        and calculate_mode = #{calculateMode,jdbcType=TINYINT}
+      </if>
+      <if test="calculateTime != null" >
+        and calculate_time = #{calculateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="settleConfigBasicId != null" >
+        and settle_config_basic_id = #{settleConfigBasicId,jdbcType=INTEGER}
+      </if>
+      <if test="startTime != null" >
+        and start_time = #{startTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endTime != null" >
+        and end_time = #{endTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+
+  </select>
+
+
+  <update id="deleteItemBySettleRuleId" parameterType="com.tqmall.mana.beans.BO.settle.DeleteShopRuleItemBO" >
+    update settle_shop_rule_item
+    set gmt_modified = #{gmtModified}, modifier = #{modifier}, is_deleted = 'Y'
+    where settle_rule_id = #{settleRuleId}
+  </update>
+
+  <select id="selectItemIdListByRuleId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select id
+    from settle_shop_rule_item
+    where is_deleted='N'
+    and settle_rule_id = #{ruleId}
+  </select>
+
+  <update id="batchDeleteShopRuleItemByIds">
+    update settle_shop_rule_item
+    set gmt_modified = now(), is_deleted = 'Y'
+    where is_deleted = 'N'
+    and id IN
+    <foreach collection="shopRuleIds" open="(" item="itemId" separator="," close=")">
+      #{itemId}
+    </foreach>
+  </update>
+
+</mapper>

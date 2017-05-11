@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+        >
+
+
+    <bean id="connectionFactory"
+          class="com.rabbitmq.client.ConnectionFactory">
+        <property name="virtualHost" value="tqmall"/>
+        <property name="host" value="${insurance.mq.host}"/>
+        <property name="port" value="${insurance.mq.port}"/>
+        <property name="username" value="${insurance.mq.userName}"/>
+        <property name="password" value="${insurance.mq.password}"/>
+    </bean>
+
+    <bean id="cachingConnectionFactory"
+          class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+        <constructor-arg ref="connectionFactory"/>
+    </bean>
+
+    <bean id="rabbitTemplate"
+          class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+        <constructor-arg ref="cachingConnectionFactory"/>
+    </bean>
+
+    <bean id="baseMqSenderInfo" class="com.tqmall.mana.biz.mq.MqSenderInfo" abstract="true"/>
+
+
+    <bean id="tradeMqSenderInfo" parent="baseMqSenderInfo">
+        <property name="senderName" value="mana"/>
+        <property name="exchange" value="${insurance.mq.exchange}"/>
+        <property name="routingKey" value="${insurance.trade.routingKey}"/>
+    </bean>
+
+    <!-- mana项目同步保单 -->
+    <bean id="manaInsuranceFormMqSenderInfo" parent="baseMqSenderInfo">
+        <property name="senderName" value="mana"/>
+        <property name="exchange" value="${insurance.mq.exchange}"/>
+        <property name="routingKey" value="${mana.insurance.form.routingKey}"/>
+    </bean>
+
+
+    <bean id="mqSendFactory" class="com.tqmall.mana.biz.mq.MqSendFactory">
+        <property name="mqSwitch" value="${mana.mq.switch}"/>
+        <property name="rabbitTemplate" ref="rabbitTemplate"/>
+        <property name="senderMap">
+            <map>
+                <entry key="trade" value-ref="tradeMqSenderInfo"/>
+                <entry key="manaInsuranceForm" value-ref="manaInsuranceFormMqSenderInfo"/>
+            </map>
+        </property>
+    </bean>
+</beans>

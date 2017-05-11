@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleShopRuleRegionConfigDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleShopRuleRegionConfigDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="settle_rule_id" property="settleRuleId" jdbcType="INTEGER" />
+    <result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, settle_rule_id, province_code, 
+    province_name, city_code, city_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_shop_rule_region_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_shop_rule_region_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopRuleRegionConfigDO" >
+    insert into settle_shop_rule_region_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="settleRuleId != null" >
+        settle_rule_id,
+      </if>
+      <if test="provinceCode != null" >
+        province_code,
+      </if>
+      <if test="provinceName != null" >
+        province_name,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleRuleId != null" >
+        #{settleRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopRuleRegionConfigDO" >
+    update settle_shop_rule_region_config
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleRuleId != null" >
+        settle_rule_id = #{settleRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceCode != null" >
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="batchInsert" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopRuleRegionConfigDO">
+    insert into settle_shop_rule_region_config
+    (gmt_create,creator,settle_rule_id,province_code,province_name,city_code,city_name)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.gmtCreate},#{item.creator},#{item.settleRuleId},
+      #{item.provinceCode},#{item.provinceName},#{item.cityCode},#{item.cityName}
+      )
+    </foreach>
+  </insert>
+
+  <select id="checkRegionConfig" resultType="java.lang.String" parameterType="com.tqmall.mana.beans.BO.settle.CheckSettleApplyRangeConfigBO">
+    select rc.city_name
+    from settle_shop_rule_region_config rc,settle_shop_rule r
+    where rc.settle_rule_id=r.id
+    and rc.city_code in
+    <foreach collection="cityCodeList" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and r.insurance_company_id = #{insuranceCompanyId}
+    and r.cooperation_mode = #{cooperationMode}
+    and r.is_deleted='N'
+    and rc.is_deleted='N'
+  </select>
+
+
+  <select id="selectByRuleIds" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_shop_rule_region_config
+    where settle_rule_id in
+    <foreach collection="ruleIds" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and is_deleted='N'
+  </select>
+
+
+  <update id="deleteBySettleRuleId" parameterType="com.tqmall.mana.beans.BO.settle.DeleteRegionConfigBO" >
+    update settle_shop_rule_region_config
+    set gmt_modified = #{gmtModified}, modifier = #{modifier}, is_deleted = 'Y'
+    where settle_rule_id = #{settleRuleId}
+  </update>
+
+  <select id="selectAvailableRegionList" resultType="java.lang.String">
+    select DISTINCT city_code
+    from settle_shop_rule_region_config
+    where is_deleted = 'N'
+    and province_code = #{regionParentCode}
+    <if test="listIds != null">
+      and settle_rule_id IN
+      <foreach collection="listIds" item="ruleId" open="(" separator="," close=")">
+        #{ruleId}
+      </foreach>
+    </if>
+  </select>
+
+</mapper>

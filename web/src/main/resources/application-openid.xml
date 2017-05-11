@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--此处配置 不需要进行认证的资源-->
+    <security:http pattern="/static/**" security="none"/>
+    <security:http pattern="/mana/js/**" security="none"/>
+    <security:http pattern="/mana/css/**" security="none"/>
+
+
+    <!--openId，基础配置-->
+    <security:http auto-config="false" use-expressions="true" disable-url-rewriting="true"
+                   access-decision-manager-ref="accessDecisionManager"
+                   entry-point-ref="authenticationEntryPoint" pattern="/**">
+        <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <security:custom-filter before="PRE_AUTH_FILTER"
+                                ref="openIdConnectAuthenticationFilter"/>
+        <security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
+    </security:http>
+
+
+    <bean id="logoutSuccessHandler" class="com.tqmall.mana.web.common.security.LogoutSuccessHandler"/>
+
+
+    <!--请求资源进行安全认证，最后一个RoleVoter为自定义类，实现自定义权限验证策略-->
+    <bean id="accessDecisionManager"
+          class="org.springframework.security.access.vote.AffirmativeBased">
+        <property name="decisionVoters">
+            <list>
+                <!--<bean class="org.springframework.security.web.access.expression.WebExpressionVoter"/>-->
+                <bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+                <bean class="com.tqmall.mana.web.common.security.RoleVoter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--入口点，会跳到登录的页面-->
+    <bean id="authenticationEntryPoint"
+          class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <property name="loginFormUrl" value="/openid_connect_login"/>
+    </bean>
+
+
+    <!-- - - 权限过滤器，此处做权限判断，即登录成功后的一些session 存入 - -->
+    <bean id="openIdConnectAuthenticationFilter"
+          class="com.tqmall.mana.web.common.security.AuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="issuerService" ref="staticIssuerService"/>
+        <property name="serverConfigurationService" ref="staticServerConfigurationService"/>
+        <property name="clientConfigurationService" ref="staticClientConfigurationService"/>
+        <property name="authRequestOptionsService" ref="staticAuthRequestOptionsService"/>
+        <property name="authRequestUrlBuilder" ref="plainAuthRequestUrlBuilder"/>
+
+    </bean>
+
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="openIdConnectAuthenticationProvider"/>
+    </security:authentication-manager>
+
+    <bean id="openIdConnectAuthenticationProvider"
+          class="org.mitre.openid.connect.client.OIDCAuthenticationProvider">
+    </bean>
+
+
+
+    <!-- Static issuer service, returns the same issuer for every request. -->
+    <bean class="org.mitre.openid.connect.client.service.impl.StaticSingleIssuerService"
+          id="staticIssuerService">
+        <property name="issuer" value="${idp.url}"/>
+    </bean>
+
+
+    <!-- Static server configuration, contains a map of server configuration objects keyed by the issuer URL. -->
+    <bean class="org.mitre.openid.connect.client.service.impl.StaticServerConfigurationService"
+          id="staticServerConfigurationService">
+        <property name="servers">
+            <map>
+                <entry key="${idp.url}">
+                    <bean class="org.mitre.openid.connect.config.ServerConfiguration">
+                        <property name="issuer" value="${idp.url}"/>
+                        <property name="authorizationEndpointUri" value="${idp.url}authorize"/>
+                        <property name="tokenEndpointUri" value="${idp.url}token"/>
+                        <property name="userInfoUri" value="${idp.url}userinfo"/>
+                        <property name="jwksUri" value="${idp.url}jwk"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+
+    <bean class="org.mitre.openid.connect.client.service.impl.StaticClientConfigurationService"
+          id="staticClientConfigurationService">
+        <property name="clients">
+            <map>
+                <entry key="${idp.url}">
+                    <bean class="org.mitre.oauth2.model.RegisteredClient">
+                        <property name="clientId" value="${openid.client.clientId}"/>
+                        <property name="clientSecret" value="${openid.client.clientSecret}"/>
+                        <property name="scope">
+                            <set value-type="java.lang.String">
+                                <value>openid</value>
+                                <value>email</value>
+                                <value>address</value>
+                                <value>profile</value>
+                                <value>phone</value>
+                            </set>
+                        </property>
+                        <property name="tokenEndpointAuthMethod" value="SECRET_BASIC"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <!-- - - Auth request options service: returns the optional components of the request - -->
+    <bean class="org.mitre.openid.connect.client.service.impl.StaticAuthRequestOptionsService"
+          id="staticAuthRequestOptionsService">
+        <property name="options">
+            <map>
+                <!-- Entries in this map are sent as key-value parameters to the auth request -->
+                <!-- <entry key="display" value="page" /> <entry key="prompt" value="consent" /> -->
+            </map>
+        </property>
+    </bean>
+
+    <!-- Plain authorization request builder, puts all options as query parameters on the GET request -->
+    <bean class="org.mitre.openid.connect.client.service.impl.PlainAuthRequestUrlBuilder"
+          id="plainAuthRequestUrlBuilder"/>
+
+
+    <!-- Encrypted authorization request builder, puts all the options as elements in a JWE-encrypted request object -->
+    <bean class="org.mitre.openid.connect.client.service.impl.EncryptedAuthRequestUrlBuilder">
+        <property name="encrypterService" ref="validatorCache"/>
+        <property name="alg">
+            <util:constant static-field="com.nimbusds.jose.JWEAlgorithm.RSA1_5"/>
+        </property>
+        <property name="enc">
+            <util:constant static-field="com.nimbusds.jose.EncryptionMethod.A128GCM"/>
+        </property>
+    </bean>
+
+
+    <!-- - - Utility beans for the above classes - -->
+
+    <!-- This service fetches and caches JWK sets from URLs. -->
+    <bean id="validatorCache" class="org.mitre.jwt.signer.service.impl.JWKSetCacheService"/>
+</beans>
+

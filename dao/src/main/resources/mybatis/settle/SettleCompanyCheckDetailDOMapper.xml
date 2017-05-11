@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleCompanyCheckDetailDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleCompanyCheckDetailDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="settle_form_sn" property="settleFormSn" jdbcType="VARCHAR" />
+    <result column="insurance_company_id" property="insuranceCompanyId" jdbcType="INTEGER" />
+    <result column="insurance_company_name" property="insuranceCompanyName" jdbcType="VARCHAR" />
+    <result column="scenario_type_id" property="scenarioTypeId" jdbcType="BIT" />
+    <result column="insured_royalty_rate" property="insuredRoyaltyRate" jdbcType="DECIMAL" />
+    <result column="insured_royalty_fee" property="insuredRoyaltyFee" jdbcType="DECIMAL" />
+    <result column="confirm_money_status" property="confirmMoneyStatus" jdbcType="BIT" />
+    <result column="confirm_money_time" property="confirmMoneyTime" jdbcType="TIMESTAMP" />
+    <result column="confirm_money_people_name" property="confirmMoneyPeopleName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, settle_form_sn, insurance_company_id, 
+    insurance_company_name, scenario_type_id, insured_royalty_rate, insured_royalty_fee, 
+    confirm_money_status, confirm_money_time, confirm_money_people_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_company_check_detail
+    where id = #{id,jdbcType=INTEGER} and is_deleted='N'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_company_check_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleCompanyCheckDetailDO" >
+    insert into settle_company_check_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="settleFormSn != null" >
+        settle_form_sn,
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id,
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name,
+      </if>
+      <if test="scenarioTypeId != null" >
+        scenario_type_id,
+      </if>
+      <if test="insuredRoyaltyRate != null" >
+        insured_royalty_rate,
+      </if>
+      <if test="insuredRoyaltyFee != null" >
+        insured_royalty_fee,
+      </if>
+      <if test="confirmMoneyStatus != null" >
+        confirm_money_status,
+      </if>
+      <if test="confirmMoneyTime != null" >
+        confirm_money_time,
+      </if>
+      <if test="confirmMoneyPeopleName != null" >
+        confirm_money_people_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleFormSn != null" >
+        #{settleFormSn,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        #{insuranceCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        #{insuranceCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="scenarioTypeId != null" >
+        #{scenarioTypeId,jdbcType=BIT},
+      </if>
+      <if test="insuredRoyaltyRate != null" >
+        #{insuredRoyaltyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredRoyaltyFee != null" >
+        #{insuredRoyaltyFee,jdbcType=DECIMAL},
+      </if>
+      <if test="confirmMoneyStatus != null" >
+        #{confirmMoneyStatus,jdbcType=BIT},
+      </if>
+      <if test="confirmMoneyTime != null" >
+        #{confirmMoneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmMoneyPeopleName != null" >
+        #{confirmMoneyPeopleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleCompanyCheckDetailDO" >
+    update settle_company_check_detail
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleFormSn != null" >
+        settle_form_sn = #{settleFormSn,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id = #{insuranceCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name = #{insuranceCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="scenarioTypeId != null" >
+        scenario_type_id = #{scenarioTypeId,jdbcType=BIT},
+      </if>
+      <if test="insuredRoyaltyRate != null" >
+        insured_royalty_rate = #{insuredRoyaltyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredRoyaltyFee != null" >
+        insured_royalty_fee = #{insuredRoyaltyFee,jdbcType=DECIMAL},
+      </if>
+      <if test="confirmMoneyStatus != null" >
+        confirm_money_status = #{confirmMoneyStatus,jdbcType=BIT},
+      </if>
+      <if test="confirmMoneyTime != null" >
+        confirm_money_time = #{confirmMoneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmMoneyPeopleName != null" >
+        confirm_money_people_name = #{confirmMoneyPeopleName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <insert id="batchInsert">
+    insert into settle_company_check_detail(gmt_create,creator,settle_form_sn,insurance_company_id,insurance_company_name,scenario_type_id,insured_royalty_rate,insured_royalty_fee)
+    VALUES
+    <foreach collection="list" index="index" item="item" separator=",">
+      (now(),#{item.creator},#{item.settleFormSn},#{item.insuranceCompanyId},#{item.insuranceCompanyName},#{item.scenarioTypeId},#{item.insuredRoyaltyRate},#{item.insuredRoyaltyFee})
+    </foreach>
+  </insert>
+
+  <select id="selectByIdsForConfirmMoney" resultType="com.tqmall.mana.beans.entity.settle.extend.InsuranceCompanySettleDetailDO">
+    select
+      cd.id,
+      cd.settle_form_sn as settleFormSn,
+      cd.confirm_money_status as confirmMoneyStatus,
+      sf.cooperation_mode_id as cooperationModeId,
+      sf.insurance_company_id as insuranceCompanyId
+    from settle_company_check_detail cd, settle_form sf
+    where cd.settle_form_sn=sf.insured_form_no
+    and cd.insurance_company_id=sf.insurance_company_id
+    and cd.id in
+    <foreach collection="idList" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="selectBySettleFormSnList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_company_check_detail
+    where is_deleted='N' and settle_form_sn in
+    <foreach collection="settleFormSnList" item="item" index="index" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+    and insurance_company_id = #{insuranceCompanyId}
+  </select>
+
+
+  <select id="getDeletedData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_company_check_detail
+    where is_deleted='Y'
+    and settle_form_sn in
+    <foreach collection="settleFormSnList" item="item" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+    and insurance_company_id = #{insuranceCompanyId}
+  </select>
+
+</mapper>

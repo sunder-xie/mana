@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 应用名称 -->
+    <dubbo:application name="${dubbo.application.name}" organization="Data" owner="hzt"/>
+
+    <!-- 注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" />
+
+    <!-- 监控中心 -->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 端口 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" />
+
+    <!--dubbo服务端-->
+    <import resource="dubbo/dubbo-service.xml"/>
+
+    <!--dubbo消费端-->
+    <!-- 可选，建议测试环境可关闭，线上环境开启。关闭dubbo启动校验依赖服务端是否正常 -->
+    <dubbo:consumer timeout="60000" check="false"/>
+
+    <import resource="dubbo/dubbo-consumer-insurance.xml"/>
+    <import resource="dubbo/dubbo-consumer-stall.xml"/>
+    <import resource="dubbo/dubbo-consumer-athena.xml"/>
+    <import resource="dubbo/dubbo-consumer-ucenter.xml"/>
+    <import resource="dubbo/dubbo-consumer-search.xml"/>
+    <import resource="dubbo/dubbo-consumer-holy.xml"/>
+    <import resource="dubbo/dubbo-consumer-finance.xml"/>
+
+</beans>

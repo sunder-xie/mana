@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleShopBaseDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleShopBaseDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="settled_cash_amount" property="settledCashAmount" jdbcType="DECIMAL" />
+    <result column="payable_cash_amount" property="payableCashAmount" jdbcType="DECIMAL" />
+    <result column="settled_bonus_amount" property="settledBonusAmount" jdbcType="DECIMAL" />
+    <result column="payable_bonus_amount" property="payableBonusAmount" jdbcType="DECIMAL" />
+    <result column="wait_effect_package_num" property="waitEffectPackageNum" jdbcType="INTEGER" />
+    <result column="wait_package_num" property="waitPackageNum" jdbcType="INTEGER" />
+    <result column="send_package_num" property="sendPackageNum" jdbcType="INTEGER" />
+    <result column="receive_package_num" property="receivePackageNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, agent_id, settled_cash_amount, 
+    payable_cash_amount, settled_bonus_amount, payable_bonus_amount,wait_effect_package_num, wait_package_num,
+    send_package_num, receive_package_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_shop_base
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_shop_base
+    where id = #{id}
+  </delete>
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopBaseDO" >
+    insert into settle_shop_base
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+        gmt_create,
+        gmt_modified,
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="settledCashAmount != null" >
+        settled_cash_amount,
+      </if>
+      <if test="payableCashAmount != null" >
+        payable_cash_amount,
+      </if>
+      <if test="settledBonusAmount != null" >
+        settled_bonus_amount,
+      </if>
+      <if test="payableBonusAmount != null" >
+        payable_bonus_amount,
+      </if>
+      <if test="waitEffectPackageNum != null" >
+        wait_effect_package_num,
+      </if>
+      <if test="waitPackageNum != null" >
+        wait_package_num,
+      </if>
+      <if test="sendPackageNum != null" >
+        send_package_num,
+      </if>
+      <if test="receivePackageNum != null" >
+        receive_package_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+     now(),
+     now(),
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null" >
+        #{agentId},
+      </if>
+      <if test="settledCashAmount != null" >
+        #{settledCashAmount},
+      </if>
+      <if test="payableCashAmount != null" >
+        #{payableCashAmount},
+      </if>
+      <if test="settledBonusAmount != null" >
+        #{settledBonusAmount},
+      </if>
+      <if test="payableBonusAmount != null" >
+        #{payableBonusAmount},
+      </if>
+      <if test="waitEffectPackageNum != null" >
+        #{waitEffectPackageNum},
+      </if>
+      <if test="waitPackageNum != null" >
+        #{waitPackageNum},
+      </if>
+      <if test="sendPackageNum != null" >
+        #{sendPackageNum},
+      </if>
+      <if test="receivePackageNum != null" >
+        #{receivePackageNum},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopBaseDO" >
+    update settle_shop_base
+    <set >
+        gmt_modified = now(),
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId},
+      </if>
+      <if test="settledCashAmount != null" >
+        settled_cash_amount = #{settledCashAmount},
+      </if>
+      <if test="payableCashAmount != null" >
+        payable_cash_amount = #{payableCashAmount},
+      </if>
+      <if test="settledBonusAmount != null" >
+        settled_bonus_amount = #{settledBonusAmount},
+      </if>
+      <if test="payableBonusAmount != null" >
+        payable_bonus_amount = #{payableBonusAmount},
+      </if>
+      <if test="waitEffectPackageNum != null" >
+        wait_effect_package_num = #{waitEffectPackageNum},
+      </if>
+      <if test="waitPackageNum != null" >
+        wait_package_num = #{waitPackageNum},
+      </if>
+      <if test="sendPackageNum != null" >
+        send_package_num = #{sendPackageNum},
+      </if>
+      <if test="receivePackageNum != null" >
+        receive_package_num = #{receivePackageNum},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+
+  <select id="selectByDO" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopBaseDO" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_shop_base
+    where is_deleted = 'N'
+
+    <if test="agentId != null" >
+      and agent_id = #{agentId}
+    </if>
+    <if test="settledCashAmount != null" >
+      and settled_cash_amount = #{settledCashAmount}
+    </if>
+    <if test="payableCashAmount != null" >
+      and payable_cash_amount = #{payableCashAmount}
+    </if>
+    <if test="settledBonusAmount != null" >
+      and settled_bonus_amount = #{settledBonusAmount}
+    </if>
+    <if test="payableBonusAmount != null" >
+      and payable_bonus_amount = #{payableBonusAmount}
+    </if>
+    <if test="waitEffectPackageNum != null" >
+      and wait_effect_package_num = #{waitEffectPackageNum}
+    </if>
+    <if test="waitPackageNum != null" >
+      and wait_package_num = #{waitPackageNum}
+    </if>
+    <if test="sendPackageNum != null" >
+      send_package_num = #{sendPackageNum}
+    </if>
+    <if test="receivePackageNum != null" >
+      and receive_package_num = #{receivePackageNum}
+    </if>
+  </select>
+</mapper>

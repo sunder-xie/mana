@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleCheckDetailDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleCheckDetailDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="settle_sql_table_id" property="settleSqlTableId" jdbcType="INTEGER" />
+    <result column="insurance_basic_id" property="insuranceBasicId" jdbcType="INTEGER" />
+    <result column="cooperation_mode_id" property="cooperationModeId" jdbcType="INTEGER" />
+    <result column="cooperation_mode_name" property="cooperationModeName" jdbcType="VARCHAR" />
+    <result column="settle_rule_type" property="settleRuleType" jdbcType="INTEGER" />
+    <result column="license_no" property="licenseNo" jdbcType="VARCHAR" />
+    <result column="car_owner_name" property="carOwnerName" jdbcType="VARCHAR" />
+    <result column="insurance_company_id" property="insuranceCompanyId" jdbcType="INTEGER" />
+    <result column="insurance_company_name" property="insuranceCompanyName" jdbcType="VARCHAR" />
+    <result column="settle_project_id" property="settleProjectId" jdbcType="INTEGER" />
+    <result column="settle_project_name" property="settleProjectName" jdbcType="VARCHAR" />
+    <result column="settle_condition_id" property="settleConditionId" jdbcType="INTEGER" />
+    <result column="settle_condition_name" property="settleConditionName" jdbcType="VARCHAR" />
+    <result column="settle_condition_time" property="settleConditionTime" jdbcType="TIMESTAMP" />
+    <result column="audit_status" property="auditStatus" jdbcType="INTEGER" />
+    <result column="audit_people_name" property="auditPeopleName" jdbcType="VARCHAR" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="settle_rate" property="settleRate" jdbcType="DECIMAL" />
+    <result column="settle_fee" property="settleFee" jdbcType="DECIMAL" />
+    <result column="settle_fee_status" property="settleFeeStatus" jdbcType="INTEGER" />
+    <result column="settle_people_name" property="settlePeopleName" jdbcType="VARCHAR" />
+    <result column="settle_time" property="settleTime" jdbcType="TIMESTAMP" />
+    <result column="settle_package_name" property="settlePackageName" jdbcType="VARCHAR" />
+    <result column="settle_package_status" property="settlePackageStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, agent_id, settle_sql_table_id, 
+    insurance_basic_id, cooperation_mode_id, cooperation_mode_name, settle_rule_type, 
+    license_no, car_owner_name, insurance_company_id, insurance_company_name, settle_project_id, 
+    settle_project_name, settle_condition_id, settle_condition_name, settle_condition_time, 
+    audit_status, audit_people_name, audit_time, settle_rate, settle_fee, settle_fee_status, 
+    settle_people_name, settle_time, settle_package_name, settle_package_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_check_detail
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_check_detail
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.mana.beans.entity.settle.SettleCheckDetailDO" >
+    insert into settle_check_detail (id, is_deleted, gmt_create, 
+      gmt_modified, creator, modifier, 
+      agent_id, settle_sql_table_id, insurance_basic_id, 
+      cooperation_mode_id, cooperation_mode_name, settle_rule_type, 
+      license_no, car_owner_name, insurance_company_id, 
+      insurance_company_name, settle_project_id, 
+      settle_project_name, settle_condition_id, settle_condition_name, 
+      settle_condition_time, audit_status, audit_people_name, 
+      audit_time, settle_rate, settle_fee, 
+      settle_fee_status, settle_people_name, settle_time, 
+      settle_package_name, settle_package_status)
+    values (#{id}, #{isDeleted,jdbcType=CHAR}, #{gmtCreate}, 
+      #{gmtModified}, #{creator}, #{modifier}, 
+      #{agentId}, #{settleSqlTableId}, #{insuranceBasicId}, 
+      #{cooperationModeId}, #{cooperationModeName}, #{settleRuleType}, 
+      #{licenseNo}, #{carOwnerName}, #{insuranceCompanyId}, 
+      #{insuranceCompanyName}, #{settleProjectId}, 
+      #{settleProjectName}, #{settleConditionId}, #{settleConditionName}, 
+      #{settleConditionTime}, #{auditStatus}, #{auditPeopleName}, 
+      #{auditTime}, #{settleRate}, #{settleFee}, 
+      #{settleFeeStatus}, #{settlePeopleName}, #{settleTime}, 
+      #{settlePackageName}, #{settlePackageStatus})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleCheckDetailDO" >
+    insert into settle_check_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="settleSqlTableId != null" >
+        settle_sql_table_id,
+      </if>
+      <if test="insuranceBasicId != null" >
+        insurance_basic_id,
+      </if>
+      <if test="cooperationModeId != null" >
+        cooperation_mode_id,
+      </if>
+      <if test="cooperationModeName != null" >
+        cooperation_mode_name,
+      </if>
+      <if test="settleRuleType != null" >
+        settle_rule_type,
+      </if>
+      <if test="licenseNo != null" >
+        license_no,
+      </if>
+      <if test="carOwnerName != null" >
+        car_owner_name,
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id,
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name,
+      </if>
+      <if test="settleProjectId != null" >
+        settle_project_id,
+      </if>
+      <if test="settleProjectName != null" >
+        settle_project_name,
+      </if>
+      <if test="settleConditionId != null" >
+        settle_condition_id,
+      </if>
+      <if test="settleConditionName != null" >
+        settle_condition_name,
+      </if>
+      <if test="settleConditionTime != null" >
+        settle_condition_time,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="auditPeopleName != null" >
+        audit_people_name,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="settleRate != null" >
+        settle_rate,
+      </if>
+      <if test="settleFee != null" >
+        settle_fee,
+      </if>
+      <if test="settleFeeStatus != null" >
+        settle_fee_status,
+      </if>
+      <if test="settlePeopleName != null" >
+        settle_people_name,
+      </if>
+      <if test="settleTime != null" >
+        settle_time,
+      </if>
+      <if test="settlePackageName != null" >
+        settle_package_name,
+      </if>
+      <if test="settlePackageStatus != null" >
+        settle_package_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified},
+      </if>
+      <if test="creator != null" >
+        #{creator},
+      </if>
+      <if test="modifier != null" >
+        #{modifier},
+      </if>
+      <if test="agentId != null" >
+        #{agentId},
+      </if>
+      <if test="settleSqlTableId != null" >
+        #{settleSqlTableId},
+      </if>
+      <if test="insuranceBasicId != null" >
+        #{insuranceBasicId},
+      </if>
+      <if test="cooperationModeId != null" >
+        #{cooperationModeId},
+      </if>
+      <if test="cooperationModeName != null" >
+        #{cooperationModeName},
+      </if>
+      <if test="settleRuleType != null" >
+        #{settleRuleType},
+      </if>
+      <if test="licenseNo != null" >
+        #{licenseNo},
+      </if>
+      <if test="carOwnerName != null" >
+        #{carOwnerName},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        #{insuranceCompanyId},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        #{insuranceCompanyName},
+      </if>
+      <if test="settleProjectId != null" >
+        #{settleProjectId},
+      </if>
+      <if test="settleProjectName != null" >
+        #{settleProjectName},
+      </if>
+      <if test="settleConditionId != null" >
+        #{settleConditionId},
+      </if>
+      <if test="settleConditionName != null" >
+        #{settleConditionName},
+      </if>
+      <if test="settleConditionTime != null" >
+        #{settleConditionTime},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus},
+      </if>
+      <if test="auditPeopleName != null" >
+        #{auditPeopleName},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime},
+      </if>
+      <if test="settleRate != null" >
+        #{settleRate},
+      </if>
+      <if test="settleFee != null" >
+        #{settleFee},
+      </if>
+      <if test="settleFeeStatus != null" >
+        #{settleFeeStatus},
+      </if>
+      <if test="settlePeopleName != null" >
+        #{settlePeopleName},
+      </if>
+      <if test="settleTime != null" >
+        #{settleTime},
+      </if>
+      <if test="settlePackageName != null" >
+        #{settlePackageName},
+      </if>
+      <if test="settlePackageStatus != null" >
+        #{settlePackageStatus},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleCheckDetailDO" >
+    update settle_check_detail
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId},
+      </if>
+      <if test="settleSqlTableId != null" >
+        settle_sql_table_id = #{settleSqlTableId},
+      </if>
+      <if test="insuranceBasicId != null" >
+        insurance_basic_id = #{insuranceBasicId},
+      </if>
+      <if test="cooperationModeId != null" >
+        cooperation_mode_id = #{cooperationModeId},
+      </if>
+      <if test="cooperationModeName != null" >
+        cooperation_mode_name = #{cooperationModeName},
+      </if>
+      <if test="settleRuleType != null" >
+        settle_rule_type = #{settleRuleType},
+      </if>
+      <if test="licenseNo != null" >
+        license_no = #{licenseNo},
+      </if>
+      <if test="carOwnerName != null" >
+        car_owner_name = #{carOwnerName},
+      </if>
+      <if test="insuranceCompanyId != null" >
+        insurance_company_id = #{insuranceCompanyId},
+      </if>
+      <if test="insuranceCompanyName != null" >
+        insurance_company_name = #{insuranceCompanyName},
+      </if>
+      <if test="settleProjectId != null" >
+        settle_project_id = #{settleProjectId},
+      </if>
+      <if test="settleProjectName != null" >
+        settle_project_name = #{settleProjectName},
+      </if>
+      <if test="settleConditionId != null" >
+        settle_condition_id = #{settleConditionId},
+      </if>
+      <if test="settleConditionName != null" >
+        settle_condition_name = #{settleConditionName},
+      </if>
+      <if test="settleConditionTime != null" >
+        settle_condition_time = #{settleConditionTime},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus},
+      </if>
+      <if test="auditPeopleName != null" >
+        audit_people_name = #{auditPeopleName},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime},
+      </if>
+      <if test="settleRate != null" >
+        settle_rate = #{settleRate},
+      </if>
+      <if test="settleFee != null" >
+        settle_fee = #{settleFee},
+      </if>
+      <if test="settleFeeStatus != null" >
+        settle_fee_status = #{settleFeeStatus},
+      </if>
+      <if test="settlePeopleName != null" >
+        settle_people_name = #{settlePeopleName},
+      </if>
+      <if test="settleTime != null" >
+        settle_time = #{settleTime},
+      </if>
+      <if test="settlePackageName != null" >
+        settle_package_name = #{settlePackageName},
+      </if>
+      <if test="settlePackageStatus != null" >
+        settle_package_status = #{settlePackageStatus},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.mana.beans.entity.settle.SettleCheckDetailDO" >
+    update settle_check_detail
+    set is_deleted = #{isDeleted,jdbcType=CHAR},
+      gmt_create = #{gmtCreate},
+      gmt_modified = #{gmtModified},
+      creator = #{creator},
+      modifier = #{modifier},
+      agent_id = #{agentId},
+      settle_sql_table_id = #{settleSqlTableId},
+      insurance_basic_id = #{insuranceBasicId},
+      cooperation_mode_id = #{cooperationModeId},
+      cooperation_mode_name = #{cooperationModeName},
+      settle_rule_type = #{settleRuleType},
+      license_no = #{licenseNo},
+      car_owner_name = #{carOwnerName},
+      insurance_company_id = #{insuranceCompanyId},
+      insurance_company_name = #{insuranceCompanyName},
+      settle_project_id = #{settleProjectId},
+      settle_project_name = #{settleProjectName},
+      settle_condition_id = #{settleConditionId},
+      settle_condition_name = #{settleConditionName},
+      settle_condition_time = #{settleConditionTime},
+      audit_status = #{auditStatus},
+      audit_people_name = #{auditPeopleName},
+      audit_time = #{auditTime},
+      settle_rate = #{settleRate},
+      settle_fee = #{settleFee},
+      settle_fee_status = #{settleFeeStatus},
+      settle_people_name = #{settlePeopleName},
+      settle_time = #{settleTime},
+      settle_package_name = #{settlePackageName},
+      settle_package_status = #{settlePackageStatus}
+    where id = #{id}
+  </update>
+</mapper>

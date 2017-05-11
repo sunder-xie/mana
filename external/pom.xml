@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mana</artifactId>
+        <groupId>com.tqmall.mana</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>external</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.tqmall.mana</groupId>
+            <artifactId>beans</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tqmall.insurance</groupId>
+            <artifactId>insurance-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tqmall.tqmallstall</groupId>
+            <artifactId>tqmallstall-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tqmall.athena</groupId>
+            <artifactId>athena-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tqmall.search</groupId>
+            <artifactId>dubbo-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tqmall.ucenter</groupId>
+            <artifactId>ucenter-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tqmall.holy</groupId>
+            <artifactId>holy-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tqmall.finance</groupId>
+            <artifactId>finance-client</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+</project>

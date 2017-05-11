@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="default">
+        <!-- 数据库 -->
+        <property name="jdbc.driverClassName"
+                  defaultValue="com.mysql.jdbc.Driver"
+                  description="JDBC driver class name"/>
+        <property name="jdbc.url"
+                  defaultValue="jdbc:mysql://127.0.0.1:3306/mana?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"
+                  description="JDBC URL"/>
+        <property name="jdbc.username" defaultValue="root"
+                  description="JDBC username"/>
+        <property name="jdbc.password" defaultValue="root"
+                  description="JDBC password"/>
+
+        <!-- redis -->
+        <property name="redis.host" defaultValue="redis://MySQL_Server:root@127.0.0.1:6379/41"
+                  description="redis"/>
+
+        <!-- dubbo -->
+        <property name="dubbo.application.name" defaultValue="MaNa"/>
+        <property name="zookeeper.address" defaultValue="127.0.0.1"/>
+        <property name="dubbo.port" defaultValue="20881"/>
+        <property name="dubbo.service.version" defaultValue="1.0.0.daily"/>
+
+        <property name="dubbo.consumer.insurance.version" defaultValue="1.0.0.dev"/>
+        <property name="dubbo.consumer.stall.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consumer.athena.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consumer.ucenter.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consumer.search.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consumer.holy.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consumer.finance.version" defaultValue="1.0.0.daily"/>
+
+
+        <property name="send.coupon.key" defaultValue="zhimakaimen"/>
+
+        <property name="legend.host" defaultValue="http://"/>
+
+        <property name="openid.client.clientId" defaultValue="0105fafc-b427-4966-8jf2-064dsgf5228f"/>
+        <property name="openid.client.clientSecret" defaultValue="1234"/>
+        <property name="idp.url" defaultValue="https://"/>
+
+        <property name="insurance.mq.host" defaultValue="10.251.240.60"/>
+        <property name="insurance.mq.port" defaultValue="5672"/>
+        <property name="insurance.mq.userName" defaultValue="insurance"/>
+        <property name="insurance.mq.password" defaultValue="insurancetest"/>
+        <property name="mana.mq.switch" defaultValue="on"/>
+        <property name="mana.mq.insurance.form.queue" defaultValue="mana_insurance_form_queue_test"/>
+        <property name="mana.mq.insurance.settle.queue" defaultValue="mana_insurance_settle_queue_test"/>
+
+        <property name="default.city.id" defaultValue="383"/>
+
+        <property name="environment.version" defaultValue="dev"/>
+
+        <property name="search.domain" defaultValue="http://"/>
+
+
+    </group>
+    <script>
+        <generate template="application.properties.vm"
+                  destfile="/WEB-INF/classes/application.properties"
+                  charset="UTF-8"/>
+
+    </script>
+</config>

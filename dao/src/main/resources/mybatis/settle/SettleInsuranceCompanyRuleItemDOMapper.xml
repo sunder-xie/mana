@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleInsuranceCompanyRuleItemDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleInsuranceCompanyRuleItemDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="settle_rule_id" property="settleRuleId" jdbcType="INTEGER" />
+    <result column="scenario_type" property="scenarioType" jdbcType="TINYINT" />
+    <result column="insurance_type" property="insuranceType" jdbcType="TINYINT" />
+    <result column="commission_rate" property="commissionRate" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, settle_rule_id, scenario_type, 
+    insurance_type, commission_rate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_insurance_company_rule_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_insurance_company_rule_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.mana.beans.entity.settle.SettleInsuranceCompanyRuleItemDO" >
+    insert into settle_insurance_company_rule_item (id, is_deleted, gmt_create, 
+      gmt_modified, creator, modifier, 
+      settle_rule_id, scenario_type, insurance_type, 
+      commission_rate)
+    values (#{id,jdbcType=INTEGER}, #{isDeleted,jdbcType=CHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{settleRuleId,jdbcType=INTEGER}, #{scenarioType,jdbcType=TINYINT}, #{insuranceType,jdbcType=TINYINT}, 
+      #{commissionRate,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleInsuranceCompanyRuleItemDO" >
+    insert into settle_insurance_company_rule_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="settleRuleId != null" >
+        settle_rule_id,
+      </if>
+      <if test="scenarioType != null" >
+        scenario_type,
+      </if>
+      <if test="insuranceType != null" >
+        insurance_type,
+      </if>
+      <if test="commissionRate != null" >
+        commission_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleRuleId != null" >
+        #{settleRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="scenarioType != null" >
+        #{scenarioType,jdbcType=TINYINT},
+      </if>
+      <if test="insuranceType != null" >
+        #{insuranceType,jdbcType=TINYINT},
+      </if>
+      <if test="commissionRate != null" >
+        #{commissionRate,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleInsuranceCompanyRuleItemDO" >
+    update settle_insurance_company_rule_item
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="settleRuleId != null" >
+        settle_rule_id = #{settleRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="scenarioType != null" >
+        scenario_type = #{scenarioType,jdbcType=TINYINT},
+      </if>
+      <if test="insuranceType != null" >
+        insurance_type = #{insuranceType,jdbcType=TINYINT},
+      </if>
+      <if test="commissionRate != null" >
+        commission_rate = #{commissionRate,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.mana.beans.entity.settle.SettleInsuranceCompanyRuleItemDO" >
+    update settle_insurance_company_rule_item
+    set is_deleted = #{isDeleted,jdbcType=CHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      settle_rule_id = #{settleRuleId,jdbcType=INTEGER},
+      scenario_type = #{scenarioType,jdbcType=TINYINT},
+      insurance_type = #{insuranceType,jdbcType=TINYINT},
+      commission_rate = #{commissionRate,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="batchInsert">
+    insert into settle_insurance_company_rule_item(gmt_create,creator,settle_rule_id,scenario_type,insurance_type,commission_rate)
+    VALUES
+    <foreach collection="list" item="item" separator="," index="index">
+      (#{item.gmtCreate},#{item.creator},#{item.settleRuleId},#{item.scenarioType},#{item.insuranceType},#{item.commissionRate})
+    </foreach>
+  </insert>
+
+  <update id="batchUpdate" parameterType="com.tqmall.mana.beans.entity.settle.SettleInsuranceCompanyRuleItemDO">
+      update settle_insurance_company_rule_item
+      set commission_rate=#{commissionRate},gmt_modified=#{gmtModified},modifier=#{modifier}
+      where settle_rule_id=#{settleRuleId} and scenario_type=#{scenarioType} and insurance_type=#{insuranceType}
+  </update>
+
+  <update id="deleteRuleItemBySettleRuleId">
+    UPDATE
+    settle_insurance_company_rule_item
+    set is_deleted='Y'
+    where settle_rule_id=#{settleRuleId}
+  </update>
+
+  <select id="selectCountBySettleRuleIds" resultType="java.lang.Integer">
+    select count(*)
+    from settle_insurance_company_rule_item
+    where is_deleted='N'
+    <if test="settleRuleIdList!=null">
+      and settle_rule_id in
+      <foreach collection="settleRuleIdList" index="index" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectRuleItemBysettleRuleId" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from settle_insurance_company_rule_item
+    where is_deleted='N' and settle_rule_id in
+    <foreach collection="settleRuleIdList" index="index" item="item" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+    order by scenario_type , commission_rate
+  </select>
+
+  <select id="selectRuleItemBySettleRuleIdAndScenarioType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_insurance_company_rule_item
+    where is_deleted='N' and settle_rule_id=#{settleRuleId} and scenario_type=#{scenarioType}
+  </select>
+</mapper>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.customer.ManaCustomerDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.customer.ManaCustomerDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="customer_mobile" property="customerMobile" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="customer_source" property="customerSource" jdbcType="TINYINT" />
+
+    <result column="certificate_type" property="certificateType" jdbcType="VARCHAR" />
+    <result column="certificate_no" property="certificateNo" jdbcType="VARCHAR" />
+    <result column="relation_id" property="relationId" jdbcType="INTEGER" />
+    <result column="remark_info" property="remarkInfo" jdbcType="VARCHAR" />
+    <result column="has_sync" property="hasSync" jdbcType="TINYINT" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, customer_mobile, customer_name, 
+    customer_source, certificate_type, certificate_no, relation_id, remark_info, has_sync
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mana_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mana_customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerDO"
+          useGeneratedKeys="true" keyProperty="id" >
+    insert into mana_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="customerMobile != null" >
+        customer_mobile,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerSource != null" >
+        customer_source,
+      </if>
+
+      <if test="certificateType != null" >
+        certificate_type,
+      </if>
+      <if test="certificateNo != null" >
+        certificate_no,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="remarkInfo != null" >
+        remark_info,
+      </if>
+      <if test="hasSync != null" >
+        has_sync,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerMobile != null" >
+        #{customerMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSource != null" >
+        #{customerSource,jdbcType=TINYINT},
+      </if>
+
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkInfo != null" >
+        #{remarkInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="hasSync != null" >
+        #{hasSync},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerDO" >
+    update mana_customer
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerMobile != null" >
+        customer_mobile = #{customerMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSource != null" >
+        customer_source = #{customerSource,jdbcType=TINYINT},
+      </if>
+
+      <if test="certificateType != null" >
+        certificate_type = #{certificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        certificate_no = #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkInfo != null" >
+        remark_info = #{remarkInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="hasSync != null" >
+        has_sync = #{hasSync},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <sql id="Common_Condition" >
+    <where>
+      is_deleted = 'N'
+      <if test="customerMobile != null">
+        and customer_mobile = #{customerMobile}
+      </if>
+      <if test="customerName != null">
+        and customer_name = #{customerName}
+      </if>
+      <if test="customerSource != null">
+        and customer_source = #{customerSource}
+      </if>
+      ORDER by gmt_create desc
+    </where>
+  </sql>
+
+  <select id="selectListByDO" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerDO" >
+    select
+    <include refid="Base_Column_List" />
+    from mana_customer
+    <include refid="Common_Condition" />
+  </select>
+
+  <sql id="selectPaging_condition">
+    <where>
+      c.is_deleted = 'N' and v.is_deleted = 'N'
+      and c.id = v.customer_id
+      <if test="customerMobile != null">
+        and c.customer_mobile = #{customerMobile}
+      </if>
+      <if test="customerName != null">
+        and c.customer_name = #{customerName}
+      </if>
+      <if test="licencePlate != null">
+        and v.licence_plate = #{licencePlate}
+      </if>
+    </where>
+    ORDER by c.gmt_create desc,v.gmt_create desc
+  </sql>
+
+  <select id="selectPagingList" resultType="com.tqmall.mana.beans.entity.customer.CustomerVehiclePageDO" parameterType="com.tqmall.mana.beans.param.CommonPageParam" >
+    select
+    c.id as customerId,
+    v.id as vehicleId,
+    c.customer_name as customerName,
+    c.customer_mobile as customerMobile,
+    v.licence_plate as licencePlate,
+    c.customer_source as customerSource,
+    v.insure_status as insureStatus,
+    v.insure_end_date as insureEndDate,
+    v.insure_intention as insureIntention
+    from mana_customer c,mana_customer_vehicle v
+    <include refid="selectPaging_condition"/>
+    limit #{offerSet},#{pageSize}
+  </select>
+
+  <select id="selectCountByDO" resultType="java.lang.Integer" parameterType="com.tqmall.mana.beans.param.CommonPageParam">
+    select count(1)
+    from mana_customer c,mana_customer_vehicle v
+    <include refid="selectPaging_condition"/>
+  </select>
+
+  <sql id="selectCustomerFormPage_condition">
+    <where>
+      c.is_deleted = 'N' and v.is_deleted = 'N'
+      and c.id = v.customer_id
+      <if test="customerMobile != null">
+        and c.customer_mobile = #{customerMobile}
+      </if>
+      <if test="customerName != null">
+        and c.customer_name = #{customerName}
+      </if>
+      <if test="customerSource != null">
+        and c.customer_source = #{customerSource}
+      </if>
+      <if test="licencePlate != null">
+        and v.licence_plate = #{licencePlate}
+      </if>
+      <if test="insureIntention != null">
+        and v.insure_intention = #{insureIntention}
+      </if>
+      <if test="insureStatus != null">
+        and v.insure_status = #{insureStatus}
+      </if>
+      <if test="cooperationMode != null">
+        and v.cooperation_mode = #{cooperationMode}
+      </if>
+      <if test="agentName != null">
+        and v.agent_name = #{agentName}
+      </if>
+      <if test="insureCompanyId != null">
+        and v.insure_company_id = #{insureCompanyId}
+      </if>
+      <if test="insureStartDate != null">
+        and v.insure_end_date >= #{insureStartDate}
+      </if>
+      <if test="insureEndDate != null">
+        <![CDATA[
+       and v.insure_end_date <= #{insureEndDate}
+        ]]>
+      </if>
+    </where>
+    ORDER by c.gmt_create desc,v.gmt_create desc
+  </sql>
+
+  <select id="selectCustomerFormPageList" resultType="com.tqmall.mana.beans.entity.customer.CustomerPageDO" parameterType="com.tqmall.mana.beans.param.CommonPageParam">
+    select
+    c.id as customerId,
+    c.customer_name as customerName,
+    c.customer_mobile as customerMobile,
+    c.customer_source as customerSource,
+    v.id as customerVehicleId,
+    v.gmt_create as gmtCreate,
+    v.creator as creator,
+    v.insurance_form_id as insuranceFormId,
+    v.agent_type as agentType,
+    v.agent_id as agentId,
+    v.agent_name as agentName,
+    v.licence_plate as licencePlate,
+    v.insure_company_id as insureCompanyId,
+    v.insure_intention as insureIntention,
+    v.cooperation_mode as cooperationMode,
+    v.insure_status as insureStatus,
+    v.quit_insure_status as quitInsureStatus,
+    v.insure_end_date as insureEndDate
+    from mana_customer c,mana_customer_vehicle v
+    <include refid="selectCustomerFormPage_condition"/>
+    limit #{offerSet},#{pageSize}
+  </select>
+
+  <select id="selectCustomerFormPageCount" resultType="java.lang.Integer" parameterType="com.tqmall.mana.beans.param.CommonPageParam">
+    select count(1)
+    from mana_customer c,mana_customer_vehicle v
+    <include refid="selectCustomerFormPage_condition"/>
+  </select>
+
+</mapper>

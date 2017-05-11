@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleShopCheckDetailExtendDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleShopCheckDetailExtendDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="shop_check_detail_id" property="shopCheckDetailId" jdbcType="INTEGER" />
+    <result column="reward_status" property="rewardStatus" jdbcType="TINYINT" />
+    <result column="reward_effect_time" property="rewardEffectTime" jdbcType="TIMESTAMP" />
+    <result column="withdraw_cash_status" property="withdrawCashStatus" jdbcType="TINYINT" />
+    <result column="apply_people_name" property="applyPeopleName" jdbcType="VARCHAR" />
+    <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+
+    <result column="allowance_status" property="allowanceStatus" jdbcType="TINYINT" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
+    <result column="warehouse_name" property="warehouseName" jdbcType="VARCHAR" />
+    <result column="material_type" property="materialType" jdbcType="TINYINT" />
+    <result column="material_num" property="materialNum" jdbcType="INTEGER" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, shop_check_detail_id, 
+    reward_status, reward_effect_time, withdraw_cash_status, apply_people_name, apply_time,
+    allowance_status, warehouse_id, warehouse_name, material_type, material_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_shop_check_detail_extend
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_shop_check_detail_extend
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopCheckDetailExtendDO" >
+    insert into settle_shop_check_detail_extend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="shopCheckDetailId != null" >
+        shop_check_detail_id,
+      </if>
+      <if test="rewardStatus != null" >
+        reward_status,
+      </if>
+      <if test="rewardEffectTime != null" >
+        reward_effect_time,
+      </if>
+      <if test="withdrawCashStatus != null" >
+        withdraw_cash_status,
+      </if>
+      <if test="applyPeopleName != null" >
+        apply_people_name,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+
+      <if test="allowanceStatus != null" >
+        allowance_status,
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id,
+      </if>
+      <if test="warehouseName != null" >
+        warehouse_name,
+      </if>
+      <if test="materialType != null" >
+        material_type,
+      </if>
+      <if test="materialNum != null" >
+        material_num,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCheckDetailId != null" >
+        #{shopCheckDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="rewardStatus != null" >
+        #{rewardStatus,jdbcType=TINYINT},
+      </if>
+      <if test="rewardEffectTime != null" >
+        #{rewardEffectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="withdrawCashStatus != null" >
+        #{withdrawCashStatus,jdbcType=TINYINT},
+      </if>
+      <if test="applyPeopleName != null" >
+        #{applyPeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="allowanceStatus != null" >
+        #{allowanceStatus},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId},
+      </if>
+      <if test="warehouseName != null" >
+        #{warehouseName},
+      </if>
+      <if test="materialType != null" >
+        #{materialType},
+      </if>
+      <if test="materialNum != null" >
+        #{materialNum},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleShopCheckDetailExtendDO" >
+    update settle_shop_check_detail_extend
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCheckDetailId != null" >
+        shop_check_detail_id = #{shopCheckDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="rewardStatus != null" >
+        reward_status = #{rewardStatus,jdbcType=TINYINT},
+      </if>
+      <if test="rewardEffectTime != null" >
+        reward_effect_time = #{rewardEffectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="withdrawCashStatus != null" >
+        withdraw_cash_status = #{withdrawCashStatus,jdbcType=TINYINT},
+      </if>
+      <if test="applyPeopleName != null" >
+        apply_people_name = #{applyPeopleName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="allowanceStatus != null" >
+        allowance_status = #{allowanceStatus},
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id = #{warehouseId},
+      </if>
+      <if test="warehouseName != null" >
+        warehouse_name = #{warehouseName},
+      </if>
+      <if test="materialType != null" >
+        material_type = #{materialType},
+      </if>
+      <if test="materialNum != null" >
+        material_num = #{materialNum},
+      </if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="updateDetailExtend" parameterType="com.tqmall.mana.beans.entity.settle.SettleInsuranceMaterialAllowanceDO" >
+    update settle_shop_check_detail_extend
+    <set >
+      <if test="allowanceStatus != null" >
+       allowance_status = #{allowanceStatus,jdbcType=TINYINT},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtApplid != null" >
+        apply_time = #{gmtApplid,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applidModifier != null" >
+        apply_people_name = #{applidModifier,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shop_check_detail_id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByShopCheckDetailId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_shop_check_detail_extend
+    where shop_check_detail_id = #{shopCheckDetailId,jdbcType=INTEGER}
+    and is_deleted = 'N'
+    limit 1
+  </select>
+
+  <select id="selectExtendDOByDetailIdList" resultType="com.tqmall.mana.beans.entity.settle.extend.ShopSettleDetailExtendDO" >
+    select sde.id,
+      sde.shop_check_detail_id as shopCheckDetailId,
+      sde.withdraw_cash_status as withdrawCashStatus,
+      sd.biz_sn as bizSn,
+      sd.agent_id as agentId,
+      sd.settle_fee as settleFee,
+      sd.settle_fee_status as settleFeeStatus,
+      sd.cooperation_mode_id as cooperationModeId
+    from settle_shop_check_detail sd,settle_shop_check_detail_extend sde
+    where sd.id=sde.shop_check_detail_id
+    and sd.is_deleted='N' and sde.is_deleted='N'
+    and sde.shop_check_detail_id in
+    <foreach collection="detailIdList" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+</mapper>

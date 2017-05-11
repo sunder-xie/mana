@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.insurance.ManaInsuranceItemDOMapper">
+    <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.insurance.ManaInsuranceItemDO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="CHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+        <result column="insurance_basic_id" property="insuranceBasicId" jdbcType="INTEGER"/>
+        <result column="insurance_type" property="insuranceType" jdbcType="TINYINT"/>
+        <result column="is_deductible" property="isDeductible" jdbcType="TINYINT"/>
+        <result column="insurance_name" property="insuranceName" jdbcType="VARCHAR"/>
+        <result column="insurance_amount" property="insuranceAmount" jdbcType="DECIMAL"/>
+        <result column="insurance_fee" property="insuranceFee" jdbcType="DECIMAL"/>
+        <result column="insurance_fee_ren_bao" property="insuranceFeeRenBao" jdbcType="DECIMAL"/>
+        <result column="ren_bao_remark" property="renBaoRemark" jdbcType="VARCHAR"/>
+        <result column="insurance_fee_ping_an" property="insuranceFeePingAn" jdbcType="DECIMAL"/>
+        <result column="ping_an_remark" property="pingAnRemark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, insurance_basic_id, insurance_type, is_deductible,
+        insurance_name, insurance_amount, insurance_fee, insurance_fee_ren_bao, ren_bao_remark,
+        insurance_fee_ping_an, ping_an_remark
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from mana_insurance_item
+        where id = #{id}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.insurance.ManaInsuranceItemDO"
+                useGeneratedKeys="true" keyProperty="id">
+        insert into mana_insurance_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="insuranceBasicId != null">
+                insurance_basic_id,
+            </if>
+            <if test="insuranceType != null">
+                insurance_type,
+            </if>
+            <if test="isDeductible != null">
+                is_deductible,
+            </if>
+            <if test="insuranceName != null">
+                insurance_name,
+            </if>
+            <if test="insuranceAmount != null">
+                insurance_amount,
+            </if>
+            <if test="insuranceFee != null">
+                insurance_fee,
+            </if>
+            <if test="insuranceFeeRenBao != null">
+                insurance_fee_ren_bao,
+            </if>
+            <if test="renBaoRemark != null">
+                ren_bao_remark,
+            </if>
+            <if test="insuranceFeePingAn != null">
+                insurance_fee_ping_an,
+            </if>
+            <if test="pingAnRemark != null">
+                ping_an_remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insuranceBasicId != null">
+                #{insuranceBasicId},
+            </if>
+            <if test="insuranceType != null">
+                #{insuranceType},
+            </if>
+            <if test="isDeductible != null">
+                #{isDeductible},
+            </if>
+            <if test="insuranceName != null">
+                #{insuranceName},
+            </if>
+            <if test="insuranceAmount != null">
+                #{insuranceAmount},
+            </if>
+            <if test="insuranceFee != null">
+                #{insuranceFee},
+            </if>
+            <if test="insuranceFeeRenBao != null">
+                #{insuranceFeeRenBao},
+            </if>
+            <if test="renBaoRemark != null">
+                #{renBaoRemark},
+            </if>
+            <if test="insuranceFeePingAn != null">
+                #{insuranceFeePingAn},
+            </if>
+            <if test="pingAnRemark != null">
+                #{pingAnRemark},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.insurance.ManaInsuranceItemDO">
+        update mana_insurance_item
+        <set>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insuranceBasicId != null">
+                insurance_basic_id = #{insuranceBasicId},
+            </if>
+            <if test="insuranceType != null">
+                insurance_type = #{insuranceType},
+            </if>
+            <if test="isDeductible != null">
+                is_deductible = #{isDeductible},
+            </if>
+            <if test="insuranceName != null">
+                insurance_name = #{insuranceName},
+            </if>
+            <if test="insuranceAmount != null">
+                insurance_amount = #{insuranceAmount},
+            </if>
+            <if test="insuranceFee != null">
+                insurance_fee = #{insuranceFee},
+            </if>
+            <if test="insuranceFeeRenBao != null">
+                insurance_fee_ren_bao = #{insuranceFeeRenBao},
+            </if>
+            <if test="renBaoRemark != null">
+                ren_bao_remark = #{renBaoRemark},
+            </if>
+            <if test="insuranceFeePingAn != null">
+                insurance_fee_ping_an = #{insuranceFeePingAn},
+            </if>
+            <if test="pingAnRemark != null">
+                ping_an_remark = #{pingAnRemark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectByBasicId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from mana_insurance_item
+        where insurance_basic_id = #{basicId}
+        and is_deleted = 'N'
+    </select>
+
+
+    <update id="updateByDO">
+        update mana_insurance_item
+        <set>
+            <if test="upDO.isDeleted != null">
+                is_deleted = #{upDO.isDeleted},
+            </if>
+            gmt_modified = now(),
+            <if test="upDO.insuranceBasicId != null">
+                insurance_basic_id = #{upDO.insuranceBasicId},
+            </if>
+            <if test="upDO.insuranceType != null">
+                insurance_type = #{upDO.insuranceType},
+            </if>
+            <if test="upDO.isDeductible != null">
+                is_deductible = #{upDO.isDeductible},
+            </if>
+            <if test="upDO.insuranceName != null">
+                insurance_name = #{upDO.insuranceName},
+            </if>
+            <if test="upDO.insuranceAmount != null">
+                insurance_amount = #{upDO.insuranceAmount},
+            </if>
+            <if test="upDO.insuranceFee != null">
+                insurance_fee = #{upDO.insuranceFee},
+            </if>
+            <if test="upDO.insuranceFeeRenBao != null">
+                insurance_fee_ren_bao = #{upDO.insuranceFeeRenBao},
+            </if>
+            <if test="upDO.renBaoRemark != null">
+                ren_bao_remark = #{upDO.renBaoRemark},
+            </if>
+            <if test="upDO.insuranceFeePingAn != null">
+                insurance_fee_ping_an = #{upDO.insuranceFeePingAn},
+            </if>
+            <if test="upDO.pingAnRemark != null">
+                ping_an_remark = #{upDO.pingAnRemark},
+            </if>
+        </set>
+        <where>
+            <if test="whereDO.isDeleted != null">
+                and is_deleted = #{whereDO.isDeleted}
+            </if>
+            <if test="whereDO.insuranceBasicId != null">
+                and insurance_basic_id = #{whereDO.insuranceBasicId}
+            </if>
+            <if test="whereDO.insuranceType != null">
+                and insurance_type = #{whereDO.insuranceType}
+            </if>
+            <if test="whereDO.isDeductible != null">
+                and is_deductible = #{whereDO.isDeductible}
+            </if>
+            <if test="whereDO.insuranceName != null">
+                and insurance_name = #{whereDO.insuranceName}
+            </if>
+            <if test="whereDO.insuranceAmount != null">
+                and insurance_amount = #{whereDO.insuranceAmount}
+            </if>
+            <if test="whereDO.insuranceFee != null">
+                and insurance_fee = #{whereDO.insuranceFee}
+            </if>
+            <if test="whereDO.insuranceFeeRenBao != null">
+                and insurance_fee_ren_bao = #{whereDO.insuranceFeeRenBao}
+            </if>
+            <if test="whereDO.renBaoRemark != null">
+                and ren_bao_remark = #{whereDO.renBaoRemark}
+            </if>
+            <if test="whereDO.insuranceFeePingAn != null">
+                and insurance_fee_ping_an = #{whereDO.insuranceFeePingAn}
+            </if>
+            <if test="whereDO.pingAnRemark != null">
+                and ping_an_remark = #{whereDO.pingAnRemark}
+            </if>
+        </where>
+    </update>
+
+
+    <!--批量插入关系-->
+    <insert id="insertBatch" >
+        insert into mana_insurance_item
+        (insurance_basic_id,insurance_type,is_deductible,insurance_name,insurance_amount,insurance_fee,insurance_fee_ren_bao,ren_bao_remark,insurance_fee_ping_an,ping_an_remark,gmt_modified, gmt_create)
+        values
+        <foreach collection="saveList" item="item" index="index" open="" separator=","  close="">
+            (#{item.insuranceBasicId}, #{item.insuranceType}, #{item.isDeductible},#{item.insuranceName},#{item.insuranceAmount},#{item.insuranceFee},
+            #{item.insuranceFeeRenBao},#{item.renBaoRemark},#{item.insuranceFeePingAn},#{item.pingAnRemark}, now(),now())
+        </foreach>
+    </insert>
+
+</mapper>

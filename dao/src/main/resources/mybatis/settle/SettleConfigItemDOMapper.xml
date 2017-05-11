@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleConfigItemDOMapper">
+    <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleConfigItemDO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="CHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+        <result column="creator" property="creator" jdbcType="VARCHAR"/>
+        <result column="modifier" property="modifier" jdbcType="VARCHAR"/>
+        <result column="basic_id" property="basicId" jdbcType="INTEGER"/>
+        <result column="item_start_value" property="itemStartValue" jdbcType="DECIMAL"/>
+        <result column="item_end_value" property="itemEndValue" jdbcType="DECIMAL"/>
+        <result column="item_rate" property="itemRate" jdbcType="DECIMAL"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, basic_id, item_start_value, 
+    item_end_value, item_rate
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from settle_config_item
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from settle_config_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.tqmall.mana.beans.entity.settle.SettleConfigItemDO">
+    insert into settle_config_item (id, is_deleted, gmt_create, 
+      gmt_modified, creator, modifier, 
+      basic_id, item_start_value, item_end_value, 
+      item_rate)
+    values (#{id,jdbcType=INTEGER}, #{isDeleted,jdbcType=CHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{basicId,jdbcType=INTEGER}, #{itemStartValue,jdbcType=DECIMAL}, #{itemEndValue,jdbcType=DECIMAL}, 
+      #{itemRate,jdbcType=DECIMAL})
+  </insert>
+    <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleConfigItemDO">
+        insert into settle_config_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="basicId != null">
+                basic_id,
+            </if>
+            <if test="itemStartValue != null">
+                item_start_value,
+            </if>
+            <if test="itemEndValue != null">
+                item_end_value,
+            </if>
+            <if test="itemRate != null">
+                item_rate,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=CHAR},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="basicId != null">
+                #{basicId,jdbcType=INTEGER},
+            </if>
+            <if test="itemStartValue != null">
+                #{itemStartValue,jdbcType=DECIMAL},
+            </if>
+            <if test="itemEndValue != null">
+                #{itemEndValue,jdbcType=DECIMAL},
+            </if>
+            <if test="itemRate != null">
+                #{itemRate,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleConfigItemDO">
+        update settle_config_item
+        <set>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=CHAR},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="basicId != null">
+                basic_id = #{basicId,jdbcType=INTEGER},
+            </if>
+            <if test="itemStartValue != null">
+                item_start_value = #{itemStartValue,jdbcType=DECIMAL},
+            </if>
+            <if test="itemEndValue != null">
+                item_end_value = #{itemEndValue,jdbcType=DECIMAL},
+            </if>
+            <if test="itemRate != null">
+                item_rate = #{itemRate,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tqmall.mana.beans.entity.settle.SettleConfigItemDO">
+    update settle_config_item
+    set is_deleted = #{isDeleted,jdbcType=CHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      basic_id = #{basicId,jdbcType=INTEGER},
+      item_start_value = #{itemStartValue,jdbcType=DECIMAL},
+      item_end_value = #{itemEndValue,jdbcType=DECIMAL},
+      item_rate = #{itemRate,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectItemDOListByBasicId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from settle_config_item
+        where is_deleted = 'N'
+        and basic_id = #{basicId,jdbcType=INTEGER}
+    </select>
+
+
+    <select id="selectItemByBasicIds" resultType="com.tqmall.mana.beans.entity.settle.extend.SettleConfigItemExtendDO"
+            parameterType="java.lang.Integer">
+      select
+        b.insurance_company_name as insuranceCompanyName,
+        b.insurance_type as insuranceType,
+        b.calculate_mode as calculateMode,
+        b.group_name as groupName,
+        i.id as id,
+        i.basic_id as basicId,
+        i.item_start_value as itemStartValue,
+        i.item_end_value as itemEndValue,
+        i.item_rate as itemRate
+      from settle_config_basic b,settle_config_item i
+      where b.id=i.basic_id
+      and b.is_deleted='N'
+      and i.is_deleted='N'
+      and b.id in
+      <foreach collection="basicIds" item="item" open="(" separator="," close=")">
+          #{item}
+      </foreach>
+    </select>
+
+</mapper>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.customer.ManaCustomerVehicleDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.customer.ManaCustomerVehicleDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="licence_plate" property="licencePlate" jdbcType="VARCHAR" />
+    <result column="has_licence_plate" property="hasLicencePlate" jdbcType="TINYINT" />
+    <result column="vehicle_type" property="vehicleType" jdbcType="VARCHAR" />
+    <result column="insure_company_id" property="insureCompanyId" jdbcType="INTEGER" />
+    <result column="insure_status" property="insureStatus" jdbcType="TINYINT" />
+    <result column="insure_start_date" property="insureStartDate" jdbcType="TIMESTAMP" />
+    <result column="insure_end_date" property="insureEndDate" jdbcType="TIMESTAMP" />
+    <result column="insure_province" property="insureProvince" jdbcType="VARCHAR" />
+    <result column="insure_province_code" property="insureProvinceCode" jdbcType="VARCHAR" />
+    <result column="insure_city" property="insureCity" jdbcType="VARCHAR" />
+    <result column="insure_city_code" property="insureCityCode" jdbcType="VARCHAR" />
+    <result column="insure_vehicle_type" property="insureVehicleType" jdbcType="VARCHAR" />
+    <result column="engine_no" property="engineNo" jdbcType="VARCHAR" />
+    <result column="vin_no" property="vinNo" jdbcType="VARCHAR" />
+    <result column="vehicle_reg_date" property="vehicleRegDate" jdbcType="TIMESTAMP" />
+    <result column="remark_info" property="remarkInfo" jdbcType="VARCHAR" />
+    <result column="insure_intention" property="insureIntention" jdbcType="TINYINT" />
+    <result column="has_sync" property="hasSync" jdbcType="TINYINT" />
+
+    <result column="cooperation_mode" property="cooperationMode" jdbcType="TINYINT" />
+    <result column="agent_type" property="agentType" jdbcType="TINYINT" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="agent_name" property="agentName" jdbcType="VARCHAR" />
+    <result column="insurance_form_id" property="insuranceFormId" jdbcType="INTEGER" />
+    <result column="quit_insure_status" property="quitInsureStatus" jdbcType="TINYINT" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, customer_id, licence_plate, 
+    has_licence_plate, vehicle_type, insure_company_id, insure_status, insure_start_date, 
+    insure_end_date, insure_province, insure_province_code, insure_city, insure_city_code, 
+    insure_vehicle_type, engine_no, vin_no, vehicle_reg_date, remark_info,
+    insure_intention, has_sync, cooperation_mode, agent_type, agent_id, agent_name,
+    insurance_form_id, quit_insure_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mana_customer_vehicle
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mana_customer_vehicle
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerVehicleDO"
+          useGeneratedKeys="true" keyProperty="id" >
+    insert into mana_customer_vehicle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="licencePlate != null" >
+        licence_plate,
+      </if>
+      <if test="hasLicencePlate != null" >
+        has_licence_plate,
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type,
+      </if>
+      <if test="insureCompanyId != null" >
+        insure_company_id,
+      </if>
+      <if test="insureStatus != null" >
+        insure_status,
+      </if>
+      <if test="insureStartDate != null" >
+        insure_start_date,
+      </if>
+      <if test="insureEndDate != null" >
+        insure_end_date,
+      </if>
+      <if test="insureProvince != null" >
+        insure_province,
+      </if>
+      <if test="insureProvinceCode != null" >
+        insure_province_code,
+      </if>
+      <if test="insureCity != null" >
+        insure_city,
+      </if>
+      <if test="insureCityCode != null" >
+        insure_city_code,
+      </if>
+      <if test="insureVehicleType != null" >
+        insure_vehicle_type,
+      </if>
+      <if test="engineNo != null" >
+        engine_no,
+      </if>
+      <if test="vinNo != null" >
+        vin_no,
+      </if>
+      <if test="vehicleRegDate != null" >
+        vehicle_reg_date,
+      </if>
+      <if test="remarkInfo != null" >
+        remark_info,
+      </if>
+      <if test="insureIntention != null" >
+        insure_intention,
+      </if>
+      <if test="hasSync != null" >
+        has_sync,
+      </if>
+
+      <if test="cooperationMode != null" >
+        cooperation_mode,
+      </if>
+      <if test="agentType != null" >
+        agent_type,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="agentName != null" >
+        agent_name,
+      </if>
+      <if test="insuranceFormId != null" >
+        insurance_form_id,
+      </if>
+      <if test="quitInsureStatus != null" >
+        quit_insure_status,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="licencePlate != null" >
+        #{licencePlate,jdbcType=VARCHAR},
+      </if>
+      <if test="hasLicencePlate != null" >
+        #{hasLicencePlate,jdbcType=TINYINT},
+      </if>
+      <if test="vehicleType != null" >
+        #{vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="insureCompanyId != null" >
+        #{insureCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="insureStatus != null" >
+        #{insureStatus,jdbcType=TINYINT},
+      </if>
+      <if test="insureStartDate != null" >
+        #{insureStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insureEndDate != null" >
+        #{insureEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insureProvince != null" >
+        #{insureProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="insureProvinceCode != null" >
+        #{insureProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insureCity != null" >
+        #{insureCity,jdbcType=VARCHAR},
+      </if>
+      <if test="insureCityCode != null" >
+        #{insureCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insureVehicleType != null" >
+        #{insureVehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vinNo != null" >
+        #{vinNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleRegDate != null" >
+        #{vehicleRegDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarkInfo != null" >
+        #{remarkInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="insureIntention != null" >
+        #{insureIntention},
+      </if>
+      <if test="hasSync != null" >
+        #{hasSync},
+      </if>
+
+      <if test="cooperationMode != null" >
+        #{cooperationMode,jdbcType=TINYINT},
+      </if>
+      <if test="agentType != null" >
+        #{agentType,jdbcType=TINYINT},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceFormId != null" >
+        #{insuranceFormId,jdbcType=INTEGER},
+      </if>
+      <if test="quitInsureStatus != null" >
+        #{quitInsureStatus},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerVehicleDO" >
+    update mana_customer_vehicle
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="licencePlate != null" >
+        licence_plate = #{licencePlate,jdbcType=VARCHAR},
+      </if>
+      <if test="hasLicencePlate != null" >
+        has_licence_plate = #{hasLicencePlate,jdbcType=TINYINT},
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type = #{vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="insureCompanyId != null" >
+        insure_company_id = #{insureCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="insureStatus != null" >
+        insure_status = #{insureStatus,jdbcType=TINYINT},
+      </if>
+      <if test="insureStartDate != null" >
+        insure_start_date = #{insureStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insureEndDate != null" >
+        insure_end_date = #{insureEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insureProvince != null" >
+        insure_province = #{insureProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="insureProvinceCode != null" >
+        insure_province_code = #{insureProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insureCity != null" >
+        insure_city = #{insureCity,jdbcType=VARCHAR},
+      </if>
+      <if test="insureCityCode != null" >
+        insure_city_code = #{insureCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insureVehicleType != null" >
+        insure_vehicle_type = #{insureVehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        engine_no = #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vinNo != null" >
+        vin_no = #{vinNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleRegDate != null" >
+        vehicle_reg_date = #{vehicleRegDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarkInfo != null" >
+        remark_info = #{remarkInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="insureIntention != null" >
+        insure_intention = #{insureIntention},
+      </if>
+      <if test="hasSync != null" >
+        has_sync = #{hasSync},
+      </if>
+
+      <if test="cooperationMode != null" >
+        cooperation_mode = #{cooperationMode,jdbcType=TINYINT},
+      </if>
+      <if test="agentType != null" >
+        agent_type = #{agentType,jdbcType=TINYINT},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceFormId != null" >
+        insurance_form_id = #{insuranceFormId,jdbcType=INTEGER},
+      </if>
+      <if test="quitInsureStatus != null" >
+        quit_insure_status = #{quitInsureStatus,jdbcType=TINYINT},
+      </if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <sql id="Common_Condition" >
+    <where>
+      is_deleted = 'N'
+      <if test="customerId != null">
+        and customer_id = #{customerId}
+      </if>
+      <if test="licencePlate != null">
+        and licence_plate = #{licencePlate}
+      </if>
+      <if test="insureStatus != null">
+        and insure_status = #{insureStatus}
+      </if>
+      ORDER  by gmt_create DESC
+    </where>
+  </sql>
+
+  <select id="selectListByDO" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerVehicleDO" >
+    select
+    <include refid="Base_Column_List" />
+    from mana_customer_vehicle
+    <include refid="Common_Condition" />
+  </select>
+
+  <select id="selectPagingList" resultMap="BaseResultMap" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerVehicleDO" >
+    select
+    <include refid="Base_Column_List" />
+    from mana_customer_vehicle
+    <include refid="Common_Condition" />
+    limit #{offerSet},#{pageSize}
+  </select>
+
+  <select id="selectCountByDO" resultType="java.lang.Integer" parameterType="com.tqmall.mana.beans.entity.customer.ManaCustomerVehicleDO">
+    select count(1)
+    from mana_customer_vehicle
+    <include refid="Common_Condition" />
+  </select>
+
+</mapper>

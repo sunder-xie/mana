@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- dubbo服务异常处理 -->
+    <bean id="dubboServerInterceptor" class="com.tqmall.mana.server.interceptor.DubboServerInterceptor"/>
+    <aop:config proxy-target-class="false">
+        <aop:pointcut id="dubboServerPointcut" expression="execution(* com.tqmall.mana.server..*.*(..))"/>
+        <aop:advisor advice-ref="dubboServerInterceptor" pointcut-ref="dubboServerPointcut"/>
+    </aop:config>
+
+
+    <!--redis 缓存的aop,以注解ManaCache 为准-->
+    <bean id="manaCacheInterceptor" class="com.tqmall.mana.biz.interceptor.ManaCacheInterceptor"/>
+    <aop:config proxy-target-class="false">
+        <aop:pointcut id="cacheRecorder" expression="execution(* com.tqmall.mana..*.*(..)) and @annotation(com.tqmall.mana.component.annotation.cache.ManaCache)"/>
+        <aop:advisor advice-ref="manaCacheInterceptor" pointcut-ref="cacheRecorder" />
+    </aop:config>
+
+    <!--redis分布式锁的aop，以注解ManaLock 为准-->
+    <bean id="manaLockInterceptor" class="com.tqmall.mana.biz.interceptor.ManaLockInterceptor"/>
+    <aop:config proxy-target-class="false">
+        <aop:pointcut id="lockRecorder" expression="execution(* com.tqmall.mana.biz..*.*(..)) and @annotation(com.tqmall.mana.component.annotation.lock.ManaLock)"/>
+        <aop:advisor advice-ref="manaLockInterceptor" pointcut-ref="lockRecorder" />
+    </aop:config>
+
+
+</beans>

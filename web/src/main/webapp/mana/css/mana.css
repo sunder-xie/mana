@@ -1,0 +1,291 @@
+/* 通用的css样式 */
+/*.top-menu{*/
+    /*margin-right: 10px !important;*/
+/*}*/
+/*.page-footer{*/
+    /*padding: 8px 20px 5px 20px !important;*/
+/*}*/
+/*.page-content{*/
+    /*min-height: 1028px;*/
+    /*font-size: 14px;*/
+/*}*/
+/*.page-logo{*/
+    /*padding-left: 16px !important;*/
+    /*padding-top: 11px !important;*/
+    /*width: auto !important;*/
+    /*color: #c6cfda;*/
+    /*font-size: 17px;*/
+/*}*/
+body{
+    font-family: "Microsoft YaHei";
+}
+.hidden{
+    display: none !important;
+}
+.selected{
+    background: #287f87;
+}
+.necessary{
+    color: #ff0000;
+}
+.content-title{
+    font-weight: bold;
+    font-family: "Microsoft YaHei";
+}
+.note{
+    padding: 10px;
+    border-left: 5px solid #eee;
+    margin: 0 0 20px 0;
+}
+em, i{
+    font-style: normal;
+}
+input,select,textarea{
+    border: 1px solid #ddd;
+}
+.mana-table{
+    table-layout: auto;
+    width: 100%;
+}
+.mana-table thead tr{
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    background: #fff;
+}
+.mana-table tbody tr{
+    text-align: center;
+    /*height: 65px;*/
+    /*line-height: 65px;*/
+    background: #f9f9f9;
+}
+.mana-table tbody tr td{
+    padding: 10px;
+}
+.mana-table thead tr, .mana-table tbody tr:nth-of-type(even){
+    background: #fff;
+}
+/*左边导航栏样式start*/
+.sidebar-toggler{
+    text-align: right;
+}
+.sidebar-toggler i{
+    display: inline-block;
+    width: 30px;
+    height: 27px;
+    background: url("../../static/metronic/layout/img/sidebar_inline_toggler_icon_darkblue.jpg") no-repeat center;
+    vertical-align: middle;
+}
+.home-menu, .home-menu a{
+    color: #fff !important;
+    display: inline-block;
+    width: 83%;
+}
+.home-menu{
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+.home-icon{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url("../../static/img/leftMenu/home-icon.png") no-repeat center;
+    vertical-align: text-top;
+}
+.current-icon{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -6px;
+    width: 6px;
+    height: 12px;
+    background: url("../../static/img/leftMenu/current-icon.png") no-repeat center;
+    vertical-align: text-top;
+}
+.basicInfo-icon{
+    display: inline-block;
+    width: 14px;
+    height: 16px;
+    background: url("../../static/img/leftMenu/basicInfo-icon.png") no-repeat center;
+    vertical-align: text-top;
+}
+.carOwner-icon{
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+    background: url("../../static/img/leftMenu/canOwner-icon.png") no-repeat center;
+    vertical-align: text-top;
+}
+.icon-diamond{
+    vertical-align: text-top;
+}
+.title{
+    margin-left: 8px;
+}
+.mana-nav-left > ul > li{
+    position: relative;
+    border-bottom: 1px solid #3d4957;
+    color: #fff;
+    font-size: 16px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+.mana-nav-left .used:hover{
+    background: #287f87;
+}
+.mana-nav-left > ul > ul li{
+    position: relative;
+}
+.mana-nav-left ul ul a{
+    padding: 10px 0 10px 40px;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+}
+/*左边导航栏样式end*/
+
+/*头部样式start*/
+.top-menu{
+    padding: 10px 0;
+    background: #2b3643;
+    position: relative;
+}
+.top-menu span:nth-child(1){
+    font-size: 18px;
+    color: #fff;
+    margin-left: 20px;
+    font-weight: bold;
+    font-family: "Microsoft YaHei";
+}
+.top-menu span:nth-child(1) em{
+    color: #f0b41d;
+    font-size: 14px;
+    margin-left: 3px;
+}
+.top-menu span:nth-child(2){
+    font-size: 12px;
+    float: right;
+    color: #fff;
+    margin-right: 20px;
+    font-weight: bold;
+    font-family: "Microsoft YaHei";
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+}
+.top-menu .down-icon{
+    right: 30px;
+}
+.administrator em{
+    vertical-align: middle;
+}
+.admin-icon{
+    display: inline-block;
+    width: 11px;
+    height: 15px;
+    background: url("../../static/img/leftMenu/admin-icon.png") no-repeat center;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.Z-angle{
+    /*width: 10px;*/
+    /*height: 6px;*/
+    /*background: url("../../static/img/leftMenu/down-icon.png") no-repeat center;*/
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -8px;
+}
+/*.admin-menu-list{*/
+    /*width: 120px;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*text-align: center;*/
+    /*background: #fff;*/
+    /*padding: 10px;*/
+    /*top: 45px;*/
+    /*display: none;*/
+/*}*/
+.icon-off{
+    margin:0 5px 0 20px;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+.icon-off:before{
+    content:'\f011';
+}
+#logoutBtn{
+    cursor: pointer;
+}
+/*头部样式end*/
+
+/*body样式start*/
+.mana-body-content{
+    background: #364150;
+    font-size: 0;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    min-width: 920px;
+    overflow: auto;
+}
+.mana-nav-left{
+    display: inline-block;
+    min-width: 180px;
+    font-size: 12px;
+    vertical-align: top;
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;
+}
+.mana-content-right{
+    min-width: 1038px;
+    display: inline-block;
+    min-height: 660px;
+    background: #F1F3FA;
+    font-size: 12px;
+    -webkit-box-flex: 6;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 6;         /* OLD - Firefox 19- */
+    -webkit-flex: 6;          /* Chrome */
+    -ms-flex: 6;              /* IE 10 */
+    flex: 6;
+    padding: 15px 15px;
+}
+/*body样式end*/
+/* ＝＝＝＝＝＝＝＝   公共分页样式 start ＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+.qxy_page {margin: 20px 0; text-align: center; }
+.qxy_page_inner {display: inline-block; *display: inline; *zoom: 1; font-size: 0; border: 1px solid #ddd; border-radius: 5px; }
+.qxy_page a, .qxy_page span {display: inline-block; *display: inline; *zoom: 1; padding: 0 12px; height: 32px; line-height: 32px; color: #3c8dbc; text-decoration: none; background-color: #fff; border-right: 1px solid #ddd; font-size: 12px; vertical-align: middle; }
+.qxy_page span.disabled {color: #777; cursor: not-allowed; background-color: #fbfbfb; border-color: #ddd; }
+.opt_right span.disabled {color: #999; cursor: not-allowed; }
+.qxy_page a:hover {color: #2a6496; background-color: #eee; border-color: #ddd; }
+.qxy_page span.yqx-pg-current {color: #fff; background: #3c8dbc; }
+.qxy_page input {width: 32px; height: 18px; margin: -2px 2px 0; line-height: 18px; font-size: 12px; color: #999; text-align: center; vertical-align: middle; border: 1px solid #ccc;background: #fff;}
+.qxy_page .qxy_page_count {border-radius: 5px 0 0 5px; }
+.qxy_page .qxy_go_btn {border-right: none; border-radius: 0 5px 5px 0; }
+/* ＝＝＝＝＝＝＝＝   公共分页样式 end ＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.remark-style{
+    color: orangered;
+}
+
+input:read-only,select:disabled{
+    cursor: not-allowed;
+    background-color: #d8d8d8;
+}
+

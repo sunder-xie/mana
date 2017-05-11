@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.extend.SettleShopStatisticsMapper" >
+
+  <select id="shopServicePackageStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.SettleShopStatisticsDO" >
+    select
+      sum(case sp.settle_package_status when 0 then 1 else 0 end) as waitPackageNum,
+      sum(case sp.settle_package_status when 1 then 1 else 0 end) as sendPackageNum,
+      sum(case sp.settle_package_status when 2 then 1 else 0 end) as receivePackageNum,
+      sum(case sp.settle_package_status when 3 then 1 else 0 end) as waitEffectPackageNum
+    from settle_shop_check_detail sd, settle_service_check_detail sp
+    where sd.insurance_order_sn=sp.insurance_order_sn
+    and sd.settle_project_id=3
+    and sd.is_deleted='N' and sp.is_deleted='N'
+    and sd.agent_id = #{shopId}
+  </select>
+
+  <select id="shopSettleFeeStatistics" resultType="com.tqmall.mana.beans.entity.settle.extend.SettleShopStatisticsDO" >
+    select
+      sum(case when settle_fee_status in(0,1) then settle_fee else 0 end) as payableCashAmount,
+      sum(case when settle_fee_status=2 then settle_fee else 0 end) as settledCashAmount
+    from settle_shop_check_detail
+    where is_deleted='N'
+    and settle_rule_type = #{settleRuleType}
+    and agent_id = #{shopId}
+  </select>
+
+</mapper>

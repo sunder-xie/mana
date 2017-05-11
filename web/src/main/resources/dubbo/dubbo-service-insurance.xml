@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+   <!--保险，基础字典-->
+    <bean id="insuranceDicService" class="com.tqmall.mana.server.insurance.InsuranceDicServiceImpl" />
+    <dubbo:service interface="com.tqmall.mana.client.service.insurance.InsuranceDicService"
+                   ref="insuranceDicService" version="${dubbo.service.version}" owner="xigeng.zhong"/>
+
+    <!--保险,获取mana现金券配置规则信息-->
+    <bean id="rpcCashCouponRuleConfigService" class="com.tqmall.mana.server.cashcoupon.RpcCashCouponRuleConfigServiceImpl" />
+    <dubbo:service interface="com.tqmall.mana.client.service.cashcoupon.RpcCashCouponRuleConfigService"
+                   ref="rpcCashCouponRuleConfigService" version="${dubbo.service.version}" owner="hong.zhang"/>
+
+
+
+</beans>

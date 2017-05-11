@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.cashcoupon.CashCouponRuleConfigDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.cashcoupon.CashCouponRuleConfigDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="online_forcible_minfee" property="onlineForcibleMinfee" jdbcType="DECIMAL" />
+    <result column="online_commercial_minfee" property="onlineCommercialMinfee" jdbcType="DECIMAL" />
+    <result column="online_form_validate_days" property="onlineFormValidateDays" jdbcType="INTEGER" />
+    <result column="online_cooperation_mode" property="onlineCooperationMode" jdbcType="INTEGER" />
+    <result column="offline_forcible_minfee" property="offlineForcibleMinfee" jdbcType="DECIMAL" />
+    <result column="offline_commercial_minfee" property="offlineCommercialMinfee" jdbcType="DECIMAL" />
+    <result column="offline_form_validate_days" property="offlineFormValidateDays" jdbcType="INTEGER" />
+    <result column="offline_cooperation_mode" property="offlineCooperationMode" jdbcType="INTEGER" />
+    <result column="face_amount" property="faceAmount" jdbcType="DECIMAL" />
+    <result column="cash_coupon_validate_days" property="cashCouponValidateDays" jdbcType="INTEGER" />
+    <result column="rule_status" property="ruleStatus" jdbcType="INTEGER" />
+    <result column="forcible_rebate_ratio" property="forcibleRebateRatio" jdbcType="DECIMAL" />
+    <result column="commercial_rebate_ratio" property="commercialRebateRatio" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, online_forcible_minfee, 
+    online_commercial_minfee, online_form_validate_days, online_cooperation_mode, offline_forcible_minfee, 
+    offline_commercial_minfee, offline_form_validate_days, offline_cooperation_mode, 
+    face_amount, cash_coupon_validate_days, rule_status, forcible_rebate_ratio, commercial_rebate_ratio
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cash_coupon_rule_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cash_coupon_rule_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.mana.beans.entity.cashcoupon.CashCouponRuleConfigDO" >
+    insert into cash_coupon_rule_config (id, is_deleted, gmt_create, 
+      gmt_modified, creator, modifier, 
+      online_forcible_minfee, online_commercial_minfee, 
+      online_form_validate_days, online_cooperation_mode, 
+      offline_forcible_minfee, offline_commercial_minfee, 
+      offline_form_validate_days, offline_cooperation_mode, 
+      face_amount, cash_coupon_validate_days, rule_status, 
+      forcible_rebate_ratio, commercial_rebate_ratio
+      )
+    values (#{id,jdbcType=INTEGER}, #{isDeleted,jdbcType=CHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{onlineForcibleMinfee,jdbcType=DECIMAL}, #{onlineCommercialMinfee,jdbcType=DECIMAL}, 
+      #{onlineFormValidateDays,jdbcType=INTEGER}, #{onlineCooperationMode,jdbcType=INTEGER},
+      #{offlineForcibleMinfee,jdbcType=DECIMAL}, #{offlineCommercialMinfee,jdbcType=DECIMAL}, 
+      #{offlineFormValidateDays,jdbcType=INTEGER}, #{offlineCooperationMode,jdbcType=INTEGER},
+      #{faceAmount,jdbcType=DECIMAL}, #{cashCouponValidateDays,jdbcType=INTEGER}, #{ruleStatus,jdbcType=INTEGER},
+      #{forcibleRebateRatio,jdbcType=DECIMAL}, #{commercialRebateRatio,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.cashcoupon.CashCouponRuleConfigDO" useGeneratedKeys="true" keyProperty="id" >
+    insert into cash_coupon_rule_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="onlineForcibleMinfee != null" >
+        online_forcible_minfee,
+      </if>
+      <if test="onlineCommercialMinfee != null" >
+        online_commercial_minfee,
+      </if>
+      <if test="onlineFormValidateDays != null" >
+        online_form_validate_days,
+      </if>
+      <if test="onlineCooperationMode != null" >
+        online_cooperation_mode,
+      </if>
+      <if test="offlineForcibleMinfee != null" >
+        offline_forcible_minfee,
+      </if>
+      <if test="offlineCommercialMinfee != null" >
+        offline_commercial_minfee,
+      </if>
+      <if test="offlineFormValidateDays != null" >
+        offline_form_validate_days,
+      </if>
+      <if test="offlineCooperationMode != null" >
+        offline_cooperation_mode,
+      </if>
+      <if test="faceAmount != null" >
+        face_amount,
+      </if>
+      <if test="cashCouponValidateDays != null" >
+        cash_coupon_validate_days,
+      </if>
+      <if test="ruleStatus != null" >
+        rule_status,
+      </if>
+      <if test="forcibleRebateRatio != null" >
+        forcible_rebate_ratio,
+      </if>
+      <if test="commercialRebateRatio != null" >
+        commercial_rebate_ratio,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineForcibleMinfee != null" >
+        #{onlineForcibleMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="onlineCommercialMinfee != null" >
+        #{onlineCommercialMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="onlineFormValidateDays != null" >
+        #{onlineFormValidateDays,jdbcType=INTEGER},
+      </if>
+      <if test="onlineCooperationMode != null" >
+        #{onlineCooperationMode,jdbcType=INTEGER},
+      </if>
+      <if test="offlineForcibleMinfee != null" >
+        #{offlineForcibleMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="offlineCommercialMinfee != null" >
+        #{offlineCommercialMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="offlineFormValidateDays != null" >
+        #{offlineFormValidateDays,jdbcType=INTEGER},
+      </if>
+      <if test="offlineCooperationMode != null" >
+        #{offlineCooperationMode,jdbcType=INTEGER},
+      </if>
+      <if test="faceAmount != null" >
+        #{faceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="cashCouponValidateDays != null" >
+        #{cashCouponValidateDays,jdbcType=INTEGER},
+      </if>
+      <if test="ruleStatus != null" >
+        #{ruleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="forcibleRebateRatio != null" >
+        #{forcibleRebateRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="commercialRebateRatio != null" >
+        #{commercialRebateRatio,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.cashcoupon.CashCouponRuleConfigDO" >
+    update cash_coupon_rule_config
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineForcibleMinfee != null" >
+        online_forcible_minfee = #{onlineForcibleMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="onlineCommercialMinfee != null" >
+        online_commercial_minfee = #{onlineCommercialMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="onlineFormValidateDays != null" >
+        online_form_validate_days = #{onlineFormValidateDays,jdbcType=INTEGER},
+      </if>
+      <if test="onlineCooperationMode != null" >
+        online_cooperation_mode = #{onlineCooperationMode,jdbcType=INTEGER},
+      </if>
+      <if test="offlineForcibleMinfee != null" >
+        offline_forcible_minfee = #{offlineForcibleMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="offlineCommercialMinfee != null" >
+        offline_commercial_minfee = #{offlineCommercialMinfee,jdbcType=DECIMAL},
+      </if>
+      <if test="offlineFormValidateDays != null" >
+        offline_form_validate_days = #{offlineFormValidateDays,jdbcType=INTEGER},
+      </if>
+      <if test="offlineCooperationMode != null" >
+        offline_cooperation_mode = #{offlineCooperationMode,jdbcType=INTEGER},
+      </if>
+      <if test="faceAmount != null" >
+        face_amount = #{faceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="cashCouponValidateDays != null" >
+        cash_coupon_validate_days = #{cashCouponValidateDays,jdbcType=INTEGER},
+      </if>
+      <if test="ruleStatus != null" >
+        rule_status = #{ruleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="forcibleRebateRatio != null" >
+        forcible_rebate_ratio = #{forcibleRebateRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="commercialRebateRatio != null" >
+        commercial_rebate_ratio = #{commercialRebateRatio,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.mana.beans.entity.cashcoupon.CashCouponRuleConfigDO" >
+    update cash_coupon_rule_config
+    set is_deleted = #{isDeleted,jdbcType=CHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      online_forcible_minfee = #{onlineForcibleMinfee,jdbcType=DECIMAL},
+      online_commercial_minfee = #{onlineCommercialMinfee,jdbcType=DECIMAL},
+      online_form_validate_days = #{onlineFormValidateDays,jdbcType=INTEGER},
+      online_cooperation_mode = #{onlineCooperationMode,jdbcType=INTEGER},
+      offline_forcible_minfee = #{offlineForcibleMinfee,jdbcType=DECIMAL},
+      offline_commercial_minfee = #{offlineCommercialMinfee,jdbcType=DECIMAL},
+      offline_form_validate_days = #{offlineFormValidateDays,jdbcType=INTEGER},
+      offline_cooperation_mode = #{offlineCooperationMode,jdbcType=INTEGER},
+      face_amount = #{faceAmount,jdbcType=DECIMAL},
+      cash_coupon_validate_days = #{cashCouponValidateDays,jdbcType=INTEGER},
+      rule_status = #{ruleStatus,jdbcType=INTEGER},
+      forcible_rebate_ratio = #{forcibleRebateRatio,jdbcType=DECIMAL},
+      commercial_rebate_ratio = #{commercialRebateRatio,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="batchSelectConfigList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from cash_coupon_rule_config
+    where is_deleted = 'N' and id in
+    <foreach collection="ruleIds" index="index" open="(" separator="," close=")" item="ruleId">
+      #{ruleId}
+    </foreach>
+  </select>
+</mapper>

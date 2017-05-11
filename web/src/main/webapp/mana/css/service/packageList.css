@@ -1,0 +1,108 @@
+/*列表公用样式开始*/
+.p-title{
+    font-size: 14px;
+    color: #999999;
+    height: 40px;
+    line-height: 35px;
+}
+.search-box{
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #d2d6de;
+    border-bottom: 1px solid #d2d6de;
+}
+.search-box input {
+    width: 500px;
+    height: 38px;
+    line-height: 40px;
+    padding-left: 15px;
+    background: #f4f4f4;
+    border-radius: 3px;
+}
+input, select, textarea {
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+    width: 150px;
+    background: #f4f4f4;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.all-list-box{
+    margin-top: 10px;
+    border-top: 1px solid #d2d6de;
+    border-bottom: 1px solid #d2d6de;
+}
+.ver-align{
+    vertical-align: middle;
+}
+.rebate-list .mana-table tr.lightGrey{
+    background-color: #f9f9f9;
+    border-top: #f4f4f4;
+}
+.rebate-list .mana-table tr.white{
+    background-color: #ffffff;
+    border-top: #f4f4f4;
+}
+/*列表公用样式结束*/
+
+/*基础管理样式 开始*/
+.row-box{
+    padding: 10px 0 10px 20px;
+    box-sizing: border-box;
+    border-top: 1px solid #f4f4f4;
+}
+.row-box:first-child{
+    border-top:none;
+}
+.jump-add,.search-button{
+    width: 100px;
+    height: 40px;
+    border-radius: 2px;
+}
+.jump-add{
+    background: #f05a28;
+    color: #ffffff;
+    border: 1px solid #c45530;
+}
+.jump-add a{
+    color: #ffffff;
+}
+.search-button{
+    background: #287f87;
+    color: #ffffff;
+    border: 1px solid #24696f;
+}
+.fenye {
+    margin: 15px 0;
+    float: right;
+}
+
+/*覆盖基础css 开始*/
+.mana-table thead tr, .mana-table tbody tr:nth-of-type(even){
+    background:none;
+}
+.mana-table tbody >tr,.mana-table tbody >tr tbody tr{
+    background: #f9f9f9;
+}
+.mana-table > thead>tr,
+.mana-table > tbody>tr:nth-of-type(even),
+.mana-table > thead>tr tbody tr,
+.mana-table > tbody>tr:nth-of-type(even) tbody tr{
+    background: #fff;
+}
+.ver-align > table{
+    width: 100%;
+}
+.rebate-list .mana-table tr.bColor-green{
+    background-color: #e3eced;
+}
+.layui-laypage-total {
+    background-color: #F1F3FA !important;
+}
+/*覆盖基础css 结束*/
+.mana-table a{
+    text-decoration: underline;
+    margin-right: 4px;
+    color: #113C78;
+}

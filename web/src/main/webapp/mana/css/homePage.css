@@ -1,0 +1,72 @@
+.carOwnerInfo{
+    width: 1040px;
+    margin: 20px auto 0;
+}
+/*搜索部分样式start*/
+.carOwnerInfo-search{
+    height: 82px;
+    line-height: 82px;
+    background: #fff;
+    border-radius: 3px;
+}
+.carOwnerInfo-search input{
+    width: 800px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+    background: #f4f4f4;
+    border-radius: 3px;
+    margin-left: 20px;
+}
+.doSearch{
+    display: inline-block;
+    width: 100px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    margin-left: 10px;
+    background: #287f87;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+/*改变placeholder默认颜色*/
+.carOwnerInfo-search input::-webkit-input-placeholder {color:#bababa}/* WebKit和Blink（Safari,Google Chrome, Opera15+ */
+
+.carOwnerInfo-search input:-moz-placeholder {color:#bababa}/* Mozilla Firefox 4-18 */
+
+.carOwnerInfo-search input::-moz-placeholder {color:#bababa}/*  Mozilla Firefox 19+ */
+
+.carOwnerInfo-search input:-ms-input-placeholder {color:#bababa}/* IE10+ */
+/*搜索部分样式end*/
+
+/*信息列表样式start*/
+.carOwnerInfoList{
+    width: 1040px;
+    margin-top: 10px;
+}
+/*table{*/
+/*table-layout: auto;*/
+/*width: 100%;*/
+/*}*/
+/*table thead tr{*/
+/*height: 42px;*/
+/*line-height: 42px;*/
+/*text-align: center;*/
+/*background: #fff;*/
+/*}*/
+/*table tbody tr{*/
+/*text-align: center;*/
+/*/!*height: 65px;*!/*/
+/*/!*line-height: 65px;*!/*/
+/*background: #f9f9f9;*/
+/*}*/
+/*table tbody tr td{*/
+/*padding: 10px;*/
+/*}*/
+/*table thead tr, table tbody tr:nth-of-type(even){*/
+/*background: #fff;*/
+/*}*/
+/*信息列表样式end*/

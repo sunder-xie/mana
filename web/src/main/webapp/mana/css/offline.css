@@ -1,0 +1,323 @@
+/*列表公用样式开始*/
+.p-title {
+    font-size: 14px;
+    color: #999999;
+    height: 40px;
+    line-height: 35px;
+}
+.text-center{
+    text-align: center!important;
+}
+.search-box {
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #d2d6de;
+    border-bottom: 1px solid #d2d6de;
+}
+
+input, select{
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+    background: #f4f4f4;
+    vertical-align: middle;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.select {
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+    width: 110px;
+    background: #f4f4f4;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.input {
+    padding-left: 6px;
+    padding-right: 6px;
+    background: #f4f4f4;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.all-list-box {
+    margin-top: 10px;
+    border-bottom: 1px solid #d2d6de;
+}
+
+.ver-align {
+    vertical-align: middle;
+}
+
+.mana-table {
+    border-top: 1px solid #d2d6de;
+}
+
+.rebate-list .mana-table tr.lightGrey {
+    background-color: #f9f9f9;
+    border-top: #f4f4f4;
+}
+
+.mana-table td {
+    vertical-align: middle;
+}
+
+table td {
+    text-align: center;
+}
+
+.rebate-list .mana-table tr.white {
+    background-color: #ffffff;
+    border-top: #f4f4f4;
+}
+
+.storeResult {
+    background-color: #f9f9f9;
+    position: absolute;
+    left: 60px;
+    top: 34px;
+    width: 200px;
+    border: #dddddd 1px solid;
+    display: none;
+    height: 300px;
+    overflow: auto;
+    z-index: 99;
+}
+
+.storeResult li {
+    width: 100%;
+    cursor: pointer;
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+.storeResult li:hover {
+    background-color: #287f87;
+}
+
+/*列表公用样式结束*/
+
+/*基础管理样式 开始*/
+.row-box {
+    padding: 10px 0 10px 20px;
+    box-sizing: border-box;
+    border-top: 1px solid #f4f4f4;
+}
+
+.row-box:first-child {
+    border-top: none;
+}
+
+.jump-add, .search-button, .export-button {
+    width: 100px;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.jump-add {
+    background: #f05a28;
+    color: #ffffff;
+    border: 1px solid #c45530;
+}
+
+.jump-add a {
+    color: #ffffff;
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    line-height: 40px;
+}
+
+.select-condition {
+    display: inline-block;
+    margin-right: 32px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.select-condition span {
+    display: inline-block;
+    width: 57px;
+    text-align: center;
+    color: #444444;
+    font-size: 14px;
+}
+
+.search-button {
+    background: #287f87;
+    color: #ffffff;
+    border: 1px solid #24696f;
+}
+
+.export-button, .audit-status-btn {
+    background: #f4f4f4;
+    color: #999999;
+    border: 1px solid #d2d6de;
+}
+
+.audit-status-tg-btn {
+    color: #287f87;
+    height: 25px;
+    border: 1px solid #287f87;
+}
+.audit-status-bh-btn {
+    color: #D26755;
+    height: 25px;
+    border: 1px solid #D26755;
+}
+.js-audit1,.js-audit2{
+    height: 25px!important;
+}
+
+
+.fenye {
+    margin: 15px 0;
+    float: right;
+}
+
+.car-owner-Info-set {
+    font-size: 14px;
+    color: orangered;
+}
+
+/*基础管理 结束*/
+
+/*覆盖基础css 开始*/
+.mana-table thead tr, .mana-table tbody tr:nth-of-type(even) {
+    background: none;
+}
+
+.mana-table tbody > tr, .mana-table tbody > tr tbody tr {
+    background: #f9f9f9;
+}
+
+.mana-table > thead > tr,
+.mana-table > tbody > tr:nth-of-type(even),
+.mana-table > thead > tr tbody tr,
+.mana-table > tbody > tr:nth-of-type(even) tbody tr {
+    background: #fff;
+}
+.ver-align > table {
+    width: 100%;
+}
+
+.rebate-list {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.rebate-list .mana-table tr.bColor-green {
+    background-color: #e3eced;
+}
+
+.bounty-table {
+    max-width: 1500px;
+}
+
+.bounty-table tr td {
+    width: 8%;
+}
+
+.service-table tr td {
+    width: 5%;
+}
+
+.bounty-table tbody tr td {
+    border-right: 1px solid #999999;
+}
+
+.bounty-table tbody tr td:last-child {
+    border-right: none;
+}
+
+.bounty-table tr {
+    border-top: 1px solid #999999;
+}
+
+.bounty-table tr:first-child {
+    border-top: none;
+}
+
+.bounty-table tbody tr {
+    height: 38px;
+}
+
+/*覆盖基础css 结束*/
+.mana-table a {
+    text-decoration: underline;
+    margin-right: 4px;
+    color: #113C78;
+}
+
+.layui-laypage-total {
+    background-color: #F1F3FA !important;
+}
+
+.second-table {
+    min-width: 600px;
+}
+
+.third-table {
+    min-width: 320px;
+}
+
+.mana-table tr td.padding-none {
+    padding: 0;
+}
+
+.four-table {
+    min-width: 135px;
+}
+
+.remove-tr, .modify {
+    cursor: pointer;
+}
+
+.mana-table tbody > tr.tr-background {
+    background: #e3eced;
+}
+
+.four-table tr td.min-w {
+    min-width: 120px;
+}
+.mana-table tbody tr td:first-child {
+    text-align: right;
+}
+.mana-table tbody tr td:last-child {
+    text-align: left;
+}
+.mana-content-right {
+    min-width: 1080px;
+}
+
+.cxdate {
+    width: 86px;
+    height: 20px;
+    padding: 6px 25px 6px 10px;
+    background: #f4f4f4 url("/static/img/dd.gif") no-repeat right;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #444444;
+    margin: 0 10px;
+}
+.cxdate-ext{
+    margin: 0!important;
+}
+
+.fenye {
+    float: right;
+    line-height: normal;
+    padding-top: 5px;
+}
+.color-red{
+    color: red;
+    width: 40%;
+}
+.btn-foot{
+    text-align: center;
+    margin-top: 25px;
+}

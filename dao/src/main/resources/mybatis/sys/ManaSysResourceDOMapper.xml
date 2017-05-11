@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.sys.ManaSysResourceDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.sys.ManaSysResourceDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="resource_name" property="resourceName" jdbcType="VARCHAR" />
+    <result column="resource_url" property="resourceUrl" jdbcType="VARCHAR" />
+    <result column="resource_type" property="resourceType" jdbcType="TINYINT" />
+    <result column="resource_description" property="resourceDescription" jdbcType="VARCHAR" />
+    <result column="resource_sort" property="resourceSort" jdbcType="INTEGER" />
+    <result column="resource_permission" property="resourcePermission" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, parent_id, resource_name, 
+    resource_url, resource_type, resource_description, resource_sort, resource_permission
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mana_sys_resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mana_sys_resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.sys.ManaSysResourceDO" >
+    insert into mana_sys_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="resourceName != null" >
+        resource_name,
+      </if>
+      <if test="resourceUrl != null" >
+        resource_url,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+      <if test="resourceDescription != null" >
+        resource_description,
+      </if>
+      <if test="resourceSort != null" >
+        resource_sort,
+      </if>
+      <if test="resourcePermission != null" >
+        resource_permission,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+        #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=TINYINT},
+      </if>
+      <if test="resourceDescription != null" >
+        #{resourceDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceSort != null" >
+        #{resourceSort,jdbcType=INTEGER},
+      </if>
+      <if test="resourcePermission != null" >
+        #{resourcePermission,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.sys.ManaSysResourceDO" >
+    update mana_sys_resource
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceName != null" >
+        resource_name = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+        resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=TINYINT},
+      </if>
+      <if test="resourceDescription != null" >
+        resource_description = #{resourceDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceSort != null" >
+        resource_sort = #{resourceSort,jdbcType=INTEGER},
+      </if>
+      <if test="resourcePermission != null" >
+        resource_permission = #{resourcePermission,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectUserPermissions" resultType="java.lang.String" parameterType="java.lang.String">
+    select res.resource_permission
+    from mana_sys_user_role ur, mana_sys_role ro,
+    mana_sys_role_resource rr, mana_sys_resource res
+    where ur.user_name = #{userName}
+    and ur.role_id=ro.id and ro.id=rr.role_id
+    and rr.resource_id=res.id
+    and ro.is_deleted='N' and res.is_deleted='N'
+  </select>
+
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from mana_sys_resource
+    where parent_id = #{pid}
+    and is_deleted = 'N'
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from mana_sys_resource
+    where is_deleted = 'N'
+  </select>
+
+  <select id="getRoleResource" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select r.*
+    from mana_sys_resource r, mana_sys_role_resource rr
+    where rr.role_id = #{roleId}
+    and r.id = rr.resource_id
+    and r.is_deleted = 'N'
+  </select>
+
+  <select id="getUserMenuResource" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select res.*
+    from mana_sys_user_role ur, mana_sys_role ro,
+    mana_sys_role_resource rr, mana_sys_resource res
+    where ur.user_name = #{userName}
+    and ur.role_id=ro.id and ro.id=rr.role_id
+    and rr.resource_id=res.id
+    and ro.is_deleted='N' and res.is_deleted='N'
+    and res.resource_type = 0
+  </select>
+
+  <update id="logicDeleteByPid" >
+    update mana_sys_resource
+    set is_deleted = 'Y', modifier = #{operator}, gmt_modified = now()
+    where parent_id = #{pid}
+  </update>
+
+</mapper>

@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.mana.dao.mapper.settle.SettleFormDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.mana.beans.entity.settle.SettleFormDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="insured_form_no" property="insuredFormNo" jdbcType="VARCHAR" />
+    <result column="insurance_form_id" property="insuranceFormId" jdbcType="INTEGER" />
+    <result column="insurance_order_sn" property="insuranceOrderSn" jdbcType="VARCHAR" />
+    <result column="insurance_type_id" property="insuranceTypeId" jdbcType="BIT" />
+    <result column="insured_fee" property="insuredFee" jdbcType="DECIMAL" />
+    <result column="cooperation_mode_id" property="cooperationModeId" jdbcType="BIT" />
+    <result column="bill_sign_time" property="billSignTime" jdbcType="TIMESTAMP" />
+    <result column="applicant_name" property="applicantName" jdbcType="VARCHAR" />
+    <result column="be_applied_name" property="beAppliedName" jdbcType="VARCHAR" />
+    <result column="vehicle_sn" property="vehicleSn" jdbcType="VARCHAR" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="agent_name" property="agentName" jdbcType="VARCHAR" />
+    <result column="agent_account" property="agentAccount" jdbcType="VARCHAR" />
+    <result column="agent_tag" property="agentTag" jdbcType="TINYINT" />
+    <result column="insured_apply_no" property="insuredApplyNo" jdbcType="VARCHAR" />
+    <result column="insured_start_time" property="insuredStartTime" jdbcType="TIMESTAMP" />
+    <result column="insured_province" property="insuredProvince" jdbcType="VARCHAR" />
+    <result column="insured_city" property="insuredCity" jdbcType="VARCHAR" />
+    <result column="insured_province_code" property="insuredProvinceCode" jdbcType="VARCHAR" />
+    <result column="insured_city_code" property="insuredCityCode" jdbcType="VARCHAR" />
+    <result column="tax_fee" property="taxFee" jdbcType="DECIMAL" />
+    <result column="insurance_company_id" property="insuranceCompanyId" jdbcType="INTEGER" />
+
+  </resultMap>
+  
+  <resultMap id="BaseResultBOMap" type="com.tqmall.mana.beans.BO.settle.SettleFormBO" extends="BaseResultMap">
+    <result column="insurance_company_id" property="insuranceCompanyId" jdbcType="INTEGER" />
+    <result column="insurance_company_name" property="insuranceCompanyName" jdbcType="VARCHAR" />
+    <result column="scenario_type_id" property="scenarioTypeId" jdbcType="BIT" />
+    <result column="insured_royalty_rate" property="insuredRoyaltyRate" jdbcType="DECIMAL" />
+    <result column="insured_royalty_fee" property="insuredRoyaltyFee" jdbcType="DECIMAL" />
+    <result column="confirm_money_status" property="confirmMoneyStatus" jdbcType="BIT" />
+    <result column="confirm_money_time" property="confirmMoneyTime" jdbcType="TIMESTAMP" />
+    <result column="confirm_money_people_name" property="confirmMoneyPeopleName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, insured_form_no, insurance_form_id, 
+    insurance_order_sn, insurance_type_id, insured_fee, cooperation_mode_id, bill_sign_time, 
+    applicant_name, be_applied_name, vehicle_sn, agent_id, agent_name, agent_account, agent_tag,
+    insured_apply_no, insured_start_time, insured_province, insured_city, insured_province_code, 
+    insured_city_code, tax_fee, insurance_company_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_form
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settle_form
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleFormDO" >
+    insert into settle_form
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="insuredFormNo != null" >
+        insured_form_no,
+      </if>
+      <if test="insuranceFormId != null" >
+        insurance_form_id,
+      </if>
+      <if test="insuranceOrderSn != null" >
+        insurance_order_sn,
+      </if>
+      <if test="insuranceTypeId != null" >
+        insurance_type_id,
+      </if>
+      <if test="insuredFee != null" >
+        insured_fee,
+      </if>
+      <if test="cooperationModeId != null" >
+        cooperation_mode_id,
+      </if>
+      <if test="billSignTime != null" >
+        bill_sign_time,
+      </if>
+      <if test="applicantName != null" >
+        applicant_name,
+      </if>
+      <if test="beAppliedName != null" >
+        be_applied_name,
+      </if>
+      <if test="vehicleSn != null" >
+        vehicle_sn,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="agentName != null" >
+        agent_name,
+      </if>
+      <if test="agentAccount != null" >
+        agent_account,
+      </if>
+      <if test="agentTag != null" >
+        agent_tag,
+      </if>
+      <if test="insuredApplyNo != null" >
+        insured_apply_no,
+      </if>
+      <if test="insuredStartTime != null" >
+        insured_start_time,
+      </if>
+      <if test="insuredProvince != null" >
+        insured_province,
+      </if>
+      <if test="insuredCity != null" >
+        insured_city,
+      </if>
+      <if test="insuredProvinceCode != null" >
+        insured_province_code,
+      </if>
+      <if test="insuredCityCode != null" >
+        insured_city_code,
+      </if>
+      <if test="taxFee != null">
+        tax_fee,
+      </if>
+      <if test="insuranceCompanyId != null">
+        insurance_company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredFormNo != null" >
+        #{insuredFormNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceFormId != null" >
+        #{insuranceFormId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceOrderSn != null" >
+        #{insuranceOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceTypeId != null" >
+        #{insuranceTypeId,jdbcType=BIT},
+      </if>
+      <if test="insuredFee != null" >
+        #{insuredFee,jdbcType=DECIMAL},
+      </if>
+      <if test="cooperationModeId != null" >
+        #{cooperationModeId,jdbcType=BIT},
+      </if>
+      <if test="billSignTime != null" >
+        #{billSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applicantName != null" >
+        #{applicantName,jdbcType=VARCHAR},
+      </if>
+      <if test="beAppliedName != null" >
+        #{beAppliedName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleSn != null" >
+        #{vehicleSn,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentAccount != null" >
+        #{agentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="agentTag != null" >
+        #{agentTag},
+      </if>
+      <if test="insuredApplyNo != null" >
+        #{insuredApplyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredStartTime != null" >
+        #{insuredStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuredProvince != null" >
+        #{insuredProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCity != null" >
+        #{insuredCity,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredProvinceCode != null" >
+        #{insuredProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCityCode != null" >
+        #{insuredCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxFee != null">
+        #{taxFee},
+      </if>
+      <if test="insuranceCompanyId != null">
+        #{insuranceCompanyId},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.mana.beans.entity.settle.SettleFormDO" >
+    update settle_form
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredFormNo != null" >
+        insured_form_no = #{insuredFormNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceFormId != null" >
+        insurance_form_id = #{insuranceFormId,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceOrderSn != null" >
+        insurance_order_sn = #{insuranceOrderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceTypeId != null" >
+        insurance_type_id = #{insuranceTypeId,jdbcType=BIT},
+      </if>
+      <if test="insuredFee != null" >
+        insured_fee = #{insuredFee,jdbcType=DECIMAL},
+      </if>
+      <if test="cooperationModeId != null" >
+        cooperation_mode_id = #{cooperationModeId,jdbcType=BIT},
+      </if>
+      <if test="billSignTime != null" >
+        bill_sign_time = #{billSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applicantName != null" >
+        applicant_name = #{applicantName,jdbcType=VARCHAR},
+      </if>
+      <if test="beAppliedName != null" >
+        be_applied_name = #{beAppliedName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleSn != null" >
+        vehicle_sn = #{vehicleSn,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null" >
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentAccount != null" >
+        agent_account = #{agentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredApplyNo != null" >
+        insured_apply_no = #{insuredApplyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredStartTime != null" >
+        insured_start_time = #{insuredStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuredProvince != null" >
+        insured_province = #{insuredProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCity != null" >
+        insured_city = #{insuredCity,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredProvinceCode != null" >
+        insured_province_code = #{insuredProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCityCode != null" >
+        insured_city_code = #{insuredCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxFee != null">
+        tax_fee = #{taxFee},
+      </if>
+      <if test="insuranceCompanyId != null">
+        insurance_company_id = #{insuranceCompanyId},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <sql id="Condition">
+    <where>
+      form.is_deleted='N' and c.is_deleted='N'
+      and form.insured_form_no=c.settle_form_sn
+      and form.insurance_company_id=c.insurance_company_id
+      <if test="agentName!=null">
+        and form.agent_name like '%${agentName}%'
+      </if>
+      <if test="cooperationModeId!=null">
+        and form.cooperation_mode_id=#{cooperationModeId}
+      </if>
+      <if test="billSignTimeStart!=null">
+        and form.bill_sign_time &gt;= #{billSignTimeStart}
+      </if>
+      <if test="billSignTimeEnd!=null">
+        and form.bill_sign_time &lt; #{billSignTimeEnd}
+      </if>
+      <if test="insuredStartTimeStart!=null">
+        and form.insured_start_time &gt;= #{insuredStartTimeStart}
+      </if>
+      <if test="insuredStartTimeEnd!=null">
+        and form.insured_start_time &lt; #{insuredStartTimeEnd}
+      </if>
+      <if test="confirmMoneyTimeStart!=null">
+        and c.confirm_money_time &gt;= #{confirmMoneyTimeStart}
+      </if>
+      <if test="comfirmMoneyTimeEnd!=null">
+        and c.confirm_money_time &lt; #{comfirmMoneyTimeEnd}
+      </if>
+      <if test="confirmMoneyStatus!=null">
+        and c.confirm_money_status=#{confirmMoneyStatus}
+      </if>
+      <if test="insuredProvinceCode!=null">
+          and form.insured_province_code=#{insuredProvinceCode}
+      </if>
+      <if test="insuredCityCode!=null">
+        and form.insured_city_code=#{insuredCityCode}
+      </if>
+      <if test="scenarioTypeId!=null">
+        and c.scenario_type_id=#{scenarioTypeId}
+      </if>
+      <if test="insuranceTypeId!=null">
+        and form.insurance_type_id=#{insuranceTypeId}
+      </if>
+      <if test="vehicleSn!=null">
+        and form.vehicle_sn=#{vehicleSn}
+      </if>
+      <if test="insuranceCompanyId!=null">
+        and c.insurance_company_id=#{insuranceCompanyId}
+      </if>
+      <if test="insuredFormNo!=null">
+        and form.insured_form_no=#{insuredFormNo}
+      </if>
+      <if test="agentTag != null">
+        and form.agent_tag=#{agentTag}
+      </if>
+    </where>
+  </sql>
+
+  <select id="getCountByCondition" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+    select count(*)
+    from settle_form form,settle_company_check_detail c
+    <include refid="Condition" />
+  </select>
+
+  <select id="getSettleFormListForPage" resultMap="BaseResultBOMap">
+    select
+    c.id, form.insured_form_no, form.insurance_form_id,
+    form.insurance_order_sn, form.insurance_type_id, form.insured_fee, form.cooperation_mode_id, form.bill_sign_time,
+    form.applicant_name, form.be_applied_name, form.vehicle_sn, form.agent_id, form.agent_name, form.agent_account, form.agent_tag,
+    form.insured_apply_no, form.insured_start_time, form.insured_province, form.insured_city, form.insured_province_code,
+    form.insured_city_code,form.tax_fee,c.insurance_company_id, c.insurance_company_name, c.scenario_type_id, c.insured_royalty_rate, c.insured_royalty_fee,
+    c.confirm_money_status, c.confirm_money_time, c.confirm_money_people_name
+    from settle_form form,settle_company_check_detail c
+    <include refid="Condition" />
+    order by form.bill_sign_time desc,form.id DESC
+    <if test="start!=null and offset!=null">
+      limit #{start},#{offset}
+    </if>
+  </select>
+
+  <select id="sumInsuredFee" resultType="com.tqmall.mana.beans.BO.settle.SettleCompanyAmountSumBO" parameterType="java.util.HashMap">
+    select
+    sum(form.insured_fee) as totalInsuredFee,
+    sum(c.insured_royalty_fee) as totalInsuredRoyaltyFee
+    from settle_form form,settle_company_check_detail c
+    <include refid="Condition" />
+  </select>
+
+  <select id="getSettleFormListByInsuranceOrderSn" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_form
+    where is_deleted='N' and insurance_order_sn in
+    <foreach collection="insuranceOrderSnList" item="item" index="index" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+
+  <select id="selectIdByFormNo" resultType="java.lang.Integer" >
+    select id
+    from settle_form
+    where is_deleted='N'
+    and insured_form_no = #{formNo}
+    and insurance_company_id = #{insuranceCompanyId}
+    limit 1
+  </select>
+
+  <select id="getPayableTotalAmount" resultType="java.math.BigDecimal" parameterType="java.util.Map">
+    select
+    sum(f.insured_fee+f.tax_fee) as payableTotalAmount
+    from settle_car_owner_check_detail c,settle_form f
+    where c.is_deleted='N'
+    and c.insurance_order_sn=f.insurance_order_sn
+    <if test="vehiclePeopleName!=null">
+      and c.vehicle_people_name=#{vehiclePeopleName}
+    </if>
+    <if test="vehicleSn!=null">
+      and c.vehicle_sn=#{vehicleSn}
+    </if>
+    <if test="insuranceOrderSn!=null">
+      and c.insurance_order_sn=#{insuranceOrderSn}
+    </if>
+    <if test="secondPayNo!=null">
+      and c.second_pay_no=#{secondPayNo}
+    </if>
+    <if test="firstPayNo!=null">
+      and c.first_pay_no=#{firstPayNo}
+    </if>
+    <if test="secondPayStatus!=null">
+      and c.second_pay_status=#{secondPayStatus}
+    </if>
+    <if test="gmtFirstPaidStart!=null and gmtFirstPaidEnd!=null">
+      and c.gmt_first_paid between #{gmtFirstPaidStart} and #{gmtFirstPaidEnd}
+    </if>
+    <if test="gmtSecondPaidStart!=null and gmtSecondPaidEnd!=null">
+      and c.gmt_second_paid between #{gmtSecondPaidStart} and #{gmtSecondPaidEnd}
+    </if>
+    <if test="agentName!=null">
+      and c.agent_name=#{agentName}
+    </if>
+    <if test="isTqmallPayStatus!=null">
+      and c.is_tqmall_pay_status=#{isTqmallPayStatus}
+    </if>
+    <if test="isTqmallGetPaid">
+      and c.is_tqmall_get_paid=#{isTqmallGetPaid}
+    </if>
+    <if test="insuranceCompanyId!=null">
+      and c.insurance_company_id=#{insuranceCompanyId}
+    </if>
+    <if test="settleServiceSn!=null">
+      and c.settle_service_sn=#{settleServiceSn}
+    </if>
+  </select>
+
+
+  <select id="selectByFormNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_form
+    where is_deleted='N'
+    and insured_form_no = #{formNo}
+    limit 1
+  </select>
+
+
+  <select id="selectByAgentId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from settle_form
+    where agent_id = #{agentId} and is_deleted='N'
+  </select>
+
+  
+  <select id="getDeletedData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from settle_form
+    where is_deleted='Y'
+    and insurance_order_sn in
+    <foreach collection="insuranceOrderSnList" item="item" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+</mapper>
